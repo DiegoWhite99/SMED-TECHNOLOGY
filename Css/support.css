@@ -13,53 +13,91 @@ body {
     color: #fff;
 }
 
-/* section 1*/ 
-
 .smed-support-hero {
-    min-height: calc(100vh - 40px); /* ajusta según la altura de tu nav */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-    color: white;
-    text-align: center;
-    padding: 40px;
-    box-sizing: border-box;
-  }
-  
-  .hero-content {
-    max-width: 800px;
-    animation: fadeIn 2s ease-out forwards;
-  }
-  
-  .hero-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #00ffaa;
-    margin-bottom: 10px;
-  }
-  
-  .hero-title span {
-    display: inline-block;
-    background: #00ffaa;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.4rem;
-    opacity: 0.85;
-  }
-  
-  @keyframes fadeIn {
-    .....
-  }
-  
-  @keyframes bounce {
-    from {
-      transform: translateY(0px);
-    }
-    to {
-      transform: translateY(-10px);
-    }
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+  background-color: #0f172a;
+  color: #fff;
+  padding: 2rem;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-title span {
+  color: #38bdf8;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+}
+
+.ingresar-btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ingresar-btn:hover {
+  background-color: #0ea5e9;
+}
+
+/* ============================
+   Contenedor de Bienvenida
+=============================== */
+#welcome-container {
+  margin-top: 2rem;
+  background-color: #1e293b;
+  padding: 2rem;
+  border-radius: 12px;
+  color: #e2e8f0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#welcome-container h2 {
+  margin-bottom: 1rem;
+  color: #38bdf8;
+}
+
+#welcome-container p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-top: 2px solid #38bdf8;
+  border-bottom: 2px solid #38bdf8;
+}
+
+.timeline-step {
+  text-align: center;
+  flex: 1;
+  color: #cbd5e1;
+  font-weight: bold;
+}
+
+.timeline-step.active {
+  color: #38bdf8;
+}
