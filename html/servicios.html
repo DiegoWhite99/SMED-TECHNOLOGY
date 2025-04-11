@@ -20,280 +20,289 @@
   </style>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="../icons/icono-principal.svg" type="image/png">
-  <link rel="stylesheet" href="../Css/servicios.css">
   <link rel="stylesheet" href="../Css/nav.css">
+  <link rel="stylesheet" href="../Css/servicios.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <div class="wrapper">
-      <nav class="nav">
-        <div class="nav-logo">
-          <p> Smed Technology </p>
-        </div>
-        <div class="nav-menu" id="navMenu">
-          <ul>
+  <div class="wrapper">
+    <nav class="nav">
+      <div class="nav-logo">
+        <p> Smed Technology </p>
+      </div>
+      <div class="nav-menu" id="navMenu">
+        <ul>
 
-            <li><a href="blog.html" class="link">¿Quienes somos?</a></li>
-            <li><a href="servicios.html" class="link">Servicios</a></li>
-            <li><a href="tienda.html" class="link">Tienda</a></li>
-            <li><a href="experiencias.html" class="link">Experiencias</a></li>
+          <li><a href="blog.html" class="link">¿Quienes somos?</a></li>
+          <li><a href="servicios.html" class="link">Servicios</a></li>
+          <li><a href="tienda.html" class="link">Tienda</a></li>
+          <li><a href="experiencias.html" class="link">Experiencias</a></li>
 
-          </ul>
-        </div>
-        <div class="nav-button">
-          <button class="btn btn-outline-light" id="loginbtn" onclick="location.href='../html/login.html';">Ingresar</button>
-        </div>
-        <div class="nav-menu-btn">
-          <i class="bx bx-menu" onclick="MyMenuFuction()"></i>
-        </div>
-      </nav>
-      <main>
-        <section class="principal_section">
-          <div class="tittle_principal">
-            <h1 id="tittle1">LA TECNOLOGÍA EN TUS MANOS</h1>
-            <h2 id="tittle1-2">A TU ALCANCE</h2>
-            <!-- Nueva sección de íconos -->
-            <div class="services_section">
-              <div class="service_item">
-                <img src="../icons/consultar.svg" alt="Formación">
-                <p>Asesorias</p>
-              </div>
-              <div class="service_item">
-                <img src="../icons/apoyo-tecnico.svg" alt="Soporte" >
-                <p>Soporte</p>
-              </div>
-              <div class="service_item">
-                <img src="../icons/red-global.svg" alt="Redes">
-                <p>Redes</p>
-              </div>
-              <div class="service_item">
-                <img src="../icons/red-en-la-nube.svg" alt="Cloud">
-                <p>Cloud</p>
-              </div>
-              <div class="service_item">
-                <img src="../icons/programacion.svg" alt="Desarrollo">
-                <p>Desarrollo</p>
-              </div>
+        </ul>
+      </div>
+      <div class="nav-button">
+        <button class="btn btn-outline-light" id="loginbtn"
+          onclick="location.href='../html/login.html';">Ingresar</button>
+      </div>
+      <div class="nav-menu-btn">
+        <i class="bx bx-menu" onclick="MyMenuFuction()"></i>
+      </div>
+    </nav>
+    <main>
+      <section class="principal_section">
+        <div class="tittle_principal">
+          <h1 id="tittle1">LA TECNOLOGÍA EN TUS MANOS</h1>
+          <h2 id="tittle1-2">A TU ALCANCE</h2>
+          <!-- Nueva sección de íconos -->
+          <div class="services_section">
+            <div class="service_item">
+              <img src="../icons/consultar.svg" alt="Formación">
+              <p>Asesorias</p>
+            </div>
+            <div class="service_item">
+              <img src="../icons/apoyo-tecnico.svg" alt="Soporte" onclick="location.href='../html/support.html';">
+              <p>Soporte</p>
+            </div>
+            <div class="service_item">
+              <img src="../icons/red-global.svg" alt="Redes">
+              <p>Redes</p>
+            </div>
+            <div class="service_item">
+              <img src="../icons/red-en-la-nube.svg" alt="Cloud">
+              <p>Cloud</p>
+            </div>
+            <div class="service_item">
+              <img src="../icons/programacion.svg" alt="Desarrollo">
+              <p>Desarrollo</p>
             </div>
           </div>
-          <div class="hero_campaign">
-            <img src="../images/servicios_banner.gif" alt="Campaña SMED">
-            <div class="hero_text_card">
-              <span class="badge">SMED LLC</span>
-              <h3>Impulsa tu visión</h3>
-              <p>Convierte tus ideas en soluciones tecnológicas reales.</p>
+        </div>
+        <div class="hero_campaign">
+          <img src="../images/servicios_banner.gif" alt="Campaña SMED">
+          <div class="hero_text_card">
+            <span class="badge">SMED LLC</span>
+            <h3>Impulsa tu visión</h3>
+            <p>Convierte tus ideas en soluciones tecnológicas reales.</p>
+          </div>
+        </div>
+      </section>
+
+      <!--section2-->
+      <section class="slider-section">
+        <h2 class="slider-title">Servicios Destacados</h2>
+        <div class="slider-container">
+          <button class="slider-btn left" onclick="moveSlide(-1)">&#10094;</button>
+
+          <div class="slider-track" id="sliderTrack">
+            <div class="card">
+              <div class="card-image">
+                <img src="../images/campaña/smed (2).svg" alt="Sitio Web">
+              </div>
+              <div class="card-content">
+                <h3>Sitio Web</h3>
+                <p>Tu presencia digital con diseño moderno y optimizado</p>
+                <p id="condicion">Precio sujeto a los requerimientos del proyecto y la necesidad del cliente.</p>
+                <span class="price">solicitud 📩</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-image">
+                <img src="../images/campaña/smed_network.svg" alt="Redes & Cableado">
+              </div>
+              <div class="card-content">
+                <h3>Redes & Cableado</h3>
+                <p>Instalación y organización de tu red desde cero.</p>
+                <p id="condicion">Precio sujeto a los requerimientos de tipología y despliegue en redes.</p>
+                <span class="price">solicitud 📩</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-image">
+                <img src="../images/campaña/smed_support.svg" alt="Soporte Técnico">
+              </div>
+              <div class="card-content">
+                <h3>Soporte Técnico</h3>
+                <p>Revisión, diagnóstico y soluciones efectivas desde 60.000</p>
+                <p id="condicion">Precio sujeto a los requerimientos del cliente y <br> las fallas de los equipos</p>
+                <span class="price">$60.000 </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-image">
+                <img src="../images/campaña/smed_gaming.gif" alt="Gaming">
+              </div>
+              <div class="card-content">
+                <h3>Arma tu PC!</h3>
+                <p>Te asesoramos con relacion presupuesto para que armes <br> el setup de tus sueños</p>
+                <p id="condicion">Precio sujeto a los requerimientos del cliente </p>
+                <span class="price">solicitud 📩</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-image">
+                <img src="../images/campaña/smed_consultoria.gif" alt="Soporte Técnico">
+              </div>
+              <div class="card-content">
+                <h3>Asesorias para empresas</h3>
+                <p>Contactanos! para darte el mejor servicio empresarial</p>
+                <span class="price">solicitud 📩</span>
+              </div>
+            </div>
+
+            <!-- Más cards aquí si quieres -->
+          </div>
+
+          <button class="slider-btn right" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+      </section>
+      <!--proyectos furutos -->
+      <section class="futuros-proyectos-section">
+        <section class="futuros-proyectos-section">
+          <h2 class="slider-title">Futuros Proyectos</h2>
+          <div class="proyectos-grid">
+            <div class="proyecto-card">
+              <div class="proyecto-img">
+                <img src="../images/campaña/smed_academy.svg" alt="SMED Academy" />
+              </div>
+              <h3 class="proyecto-titulo">SMED Academy</h3>
+              <p class="proyecto-descripcion">
+                SMED Academy proyecta una alianza estratégica con Elvecr, startup experta en plataformas educativas
+                Moodle. Juntas buscan integrar infraestructura robusta y soporte técnico especializado para ofrecer
+                entornos de aprendizaje modernos y adaptados a la formación tecnológica actual.
+              </p>
+            </div>
+
+            <div class="proyecto-card">
+              <div class="proyecto-img">
+                <img src="../images/campaña/smed_home.svg" alt="SMED Tools" />
+              </div>
+              <h3 class="proyecto-titulo">SMED Home</h3>
+              <p class="proyecto-descripcion">
+                SMED Home nace como una propuesta de automatización doméstica orientada a facilitar la vida diaria.
+                Integra soluciones de control inteligente para iluminación, seguridad y dispositivos conectados, con
+                énfasis en accesibilidad, eficiencia energética y soporte personalizado. Una experiencia tecnológica
+                pensada para el hogar moderno.
+              </p>
             </div>
           </div>
         </section>
 
-<!--section2-->
-<section class="slider-section">
-  <h2 class="slider-title">Servicios Destacados</h2>
-  <div class="slider-container">
-    <button class="slider-btn left" onclick="moveSlide(-1)">&#10094;</button>
+        <!--Nuestras cualidades-->
+        <section class="section-cualidades">
+          <h2 class="our_cualitestittle" style="text-align: left;">Nuestras Cualidades</h2>
+          <div class="card-container">
 
-    <div class="slider-track" id="sliderTrack">
-      <div class="card">
-        <div class="card-image">
-          <img src="../images/campaña/smed (2).svg" alt="Sitio Web">
+            <!-- Tarjeta 1 -->
+            <div class="card">
+              <div class="card-icon">
+                <img src="../icons/mesa-de-ayuda.svg" alt="Soporte" class="icon-img">
+              </div>
+              <div>
+                <div class="card-title green">Soporte Personalizado</div>
+                <div class="card-text">Asistencia técnica y guía según tus necesidades reales.</div>
+              </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="card">
+              <div class="card-icon">
+                <img src="../icons/smed_seguridad.svg" alt="Seguridad" class="icon-img">
+              </div>
+              <div>
+                <div class="card-title blue">Seguridad Garantizada</div>
+                <div class="card-text">Protocolos actualizados para proteger tu información.</div>
+              </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="card">
+              <div class="card-icon">
+                <img src="../icons/conocimineto.svg" alt="Conocimiento" class="icon-img">
+              </div>
+              <div>
+                <div class="card-title orange">Conocimiento Aplicado</div>
+                <div class="card-text">Formación y soluciones basadas en experiencia real.</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!--section final-->
+        <section class="section-servicio-flujo">
+          <h2 class="title-servicio">📋 ¿Cómo funciona nuestro servicio?</h2>
+          <div class="step-container">
+            <div class="step">📝 Agenda tu cita</div>
+            <div class="step">🔍 Revisamos tu equipo</div>
+            <div class="step">🔧 Reparamos o damos mantenimiento</div>
+            <div class="step">✅ Entrega + soporte post-servicio</div>
+          </div>
+          <audio id="pop-sound" src="../mp3/pop-6.mp3" preload="auto"></audio>
+        </section>
+
+    </main>
+
+    <footer>
+      <div class="footer-logo">
+        <a href="#"><img src="../images/smed-_1_oficial_1.webp" alt="logo" Style="height: 100px;"></a>
+        <p>
+
+          <br>
+          En SMED, transformamos tus ideas digitales en realidad. Ofrecemos soluciones personalizadas en diseño web y
+          soporte técnico para ayudarte a alcanzar tus objetivos. Desde el desarrollo web hasta la asistencia técnica,
+          estamos aquí para impulsar tus proyectos al éxito. 💻✨
+        </p>
+      </div>
+      <br>
+      <div class="footer-container">
+        <div class="footer-info">
+          <h3>Contacto</h3>
+          <p>Dirección: Cr 78 K #46 B 21 sur, Bogota, Colombia</p>
+          <p>Teléfono: +57 302 4306848 </p>
+          <p>Email: smed.techhub@gmail.com</p>
         </div>
-        <div class="card-content">
-          <h3>Sitio Web</h3>
-          <p>Tu presencia digital con diseño moderno y optimizado</p>
-          <p id="condicion">Precio sujeto a los requerimientos del proyecto y la necesidad del cliente.</p>
-          <span class="price">solicitud 📩</span>
+        <div class="footer-links">
+          <h3>Enlaces Útiles</h3>
+          <ul>
+            <li><a href="./login.html">Inicio</a></li>
+            <li><a href="./servicios.html">Servicios</a></li>
+            <li><a href="./tienda.html">Tienda</a></li>
+            <li><a href="./experiencias.html">Experiencias</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h3>Síguenos</h3>
+          <ul>
+            <li><a href="https://www.facebook.com/profile.php?id=61558691450269"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li><a href="https://x.com/Smed_Technology"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.instagram.com/smed_technology/"><i class="fab fa-instagram"></i></a></li>
+
+          </ul>
         </div>
       </div>
-
-      <div class="card">
-        <div class="card-image">
-          <img src="../images/campaña/smed_network.svg" alt="Redes & Cableado">
-        </div>
-        <div class="card-content">
-          <h3>Redes & Cableado</h3>
-          <p>Instalación y organización de tu red desde cero.</p>
-          <p id="condicion">Precio sujeto a los requerimientos de tipología y despliegue en redes.</p>
-          <span class="price">solicitud 📩</span>
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SMED. Todos los derechos reservados.</p>
       </div>
-
-      <div class="card">
-        <div class="card-image">
-          <img src="../images/campaña/smed_support.svg" alt="Soporte Técnico">
-        </div>
-        <div class="card-content">
-          <h3>Soporte Técnico</h3>
-          <p>Revisión, diagnóstico y soluciones efectivas desde 60.000</p>
-          <p id="condicion">Precio sujeto a los requerimientos del cliente y <br> las fallas de los equipos</p>
-          <span class="price">$60.000 </span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-image">
-          <img src="../images/campaña/smed_gaming.gif" alt="Gaming">
-        </div>
-        <div class="card-content">
-          <h3>Arma tu PC!</h3>
-          <p>Te asesoramos con relacion presupuesto para que armes <br> el setup de tus sueños</p>
-          <p id="condicion">Precio sujeto a los requerimientos del cliente  </p>
-          <span class="price">solicitud 📩</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-image">
-          <img src="../images/campaña/smed_consultoria.gif" alt="Soporte Técnico">
-        </div>
-        <div class="card-content">
-          <h3>Asesorias para empresas</h3>
-          <p>Contactanos! para darte el mejor servicio empresarial</p>
-          <span class="price">solicitud 📩</span>
-        </div>
-      </div>
-
-      <!-- Más cards aquí si quieres -->
-    </div>
-
-    <button class="slider-btn right" onclick="moveSlide(1)">&#10095;</button>
+    </footer>
   </div>
-</section>
-<!--proyectos furutos -->
-<section class="futuros-proyectos-section">
-  <section class="futuros-proyectos-section">
-    <h2 class="slider-title">Futuros Proyectos</h2>
-    <div class="proyectos-grid">
-      <div class="proyecto-card">
-        <div class="proyecto-img">
-          <img src="../images/campaña/smed_academy.svg" alt="SMED Academy" />
-        </div>
-        <h3 class="proyecto-titulo">SMED Academy</h3>
-        <p class="proyecto-descripcion">
-          SMED Academy proyecta una alianza estratégica con Elvecr, startup experta en plataformas educativas Moodle. Juntas buscan integrar infraestructura robusta y soporte técnico especializado para ofrecer entornos de aprendizaje modernos y adaptados a la formación tecnológica actual.
-        </p>
-      </div>
-  
-      <div class="proyecto-card">
-        <div class="proyecto-img">
-          <img src="../images/campaña/smed_home.svg" alt="SMED Tools" />
-        </div>
-        <h3 class="proyecto-titulo">SMED Home</h3>
-        <p class="proyecto-descripcion">
-          SMED Home nace como una propuesta de automatización doméstica orientada a facilitar la vida diaria. Integra soluciones de control inteligente para iluminación, seguridad y dispositivos conectados, con énfasis en accesibilidad, eficiencia energética y soporte personalizado. Una experiencia tecnológica pensada para el hogar moderno.
-        </p>
-      </div>
-    </div>
-  </section>
-  
-  <!--Nuestras cualidades-->
-  <section class="section-cualidades">
-    <h2  class="our_cualitestittle"  style="text-align: left;">Nuestras Cualidades</h2>
-    <div class="card-container">
-  
-      <!-- Tarjeta 1 -->
-      <div class="card">
-        <div class="card-icon">
-          <img src="../icons/mesa-de-ayuda.svg" alt="Soporte" class="icon-img">
-        </div>
-        <div>
-          <div class="card-title green">Soporte Personalizado</div>
-          <div class="card-text">Asistencia técnica y guía según tus necesidades reales.</div>
-        </div>
-      </div>
-  
-      <!-- Tarjeta 2 -->
-      <div class="card">
-        <div class="card-icon">
-          <img src="../icons/smed_seguridad.svg" alt="Seguridad" class="icon-img">
-        </div>
-        <div>
-          <div class="card-title blue">Seguridad Garantizada</div>
-          <div class="card-text">Protocolos actualizados para proteger tu información.</div>
-        </div>
-      </div>
-  
-      <!-- Tarjeta 3 -->
-      <div class="card">
-        <div class="card-icon">
-          <img src="../icons/conocimineto.svg" alt="Conocimiento" class="icon-img">
-        </div>
-        <div>
-          <div class="card-title orange">Conocimiento Aplicado</div>
-          <div class="card-text">Formación y soluciones basadas en experiencia real.</div>
-        </div>
-      </div>
-  
-    </div>
-  </section>
-  
-<!--section final-->
-    <section class="section-servicio-flujo">
-      <h2 class="title-servicio">📋 ¿Cómo funciona nuestro servicio?</h2>
-      <div class="step-container">
-        <div class="step">📝 Agenda tu cita</div>
-        <div class="step">🔍 Revisamos tu equipo</div>
-        <div class="step">🔧 Reparamos o damos mantenimiento</div>
-        <div class="step">✅ Entrega + soporte post-servicio</div>
-      </div>
-      <audio id="pop-sound" src="../mp3/pop-6.mp3" preload="auto"></audio>
-    </section>
-  
-</main>
-
-  <footer>
-    <div class="footer-logo">
-      <a href="#"><img src="../images/smed-_1_oficial_1.webp" alt="logo" Style="height: 100px;"></a>
-      <p>
-
-        <br>
-        En SMED, transformamos tus ideas digitales en realidad. Ofrecemos soluciones personalizadas en diseño web y
-        soporte técnico para ayudarte a alcanzar tus objetivos. Desde el desarrollo web hasta la asistencia técnica,
-        estamos aquí para impulsar tus proyectos al éxito. 💻✨
-      </p>
-    </div>
-    <br>
-    <div class="footer-container">
-      <div class="footer-info">
-        <h3>Contacto</h3>
-        <p>Dirección: Cr 78 K #46 B 21 sur, Bogota, Colombia</p>
-        <p>Teléfono: +57 302 4306848 </p>
-        <p>Email: smed.techhub@gmail.com</p>
-      </div>
-      <div class="footer-links">
-        <h3>Enlaces Útiles</h3>
-        <ul>
-          <li><a href="./login.html">Inicio</a></li>
-          <li><a href="./servicios.html">Servicios</a></li>
-          <li><a href="./tienda.html">Tienda</a></li>
-          <li><a href="./experiencias.html">Experiencias</a></li>
-        </ul>
-      </div>
-      <div class="footer-social">
-        <h3>Síguenos</h3>
-        <ul>
-          <li><a href="https://www.facebook.com/profile.php?id=61558691450269"><i class="fab fa-facebook-f"></i></a>
-          </li>
-          <li><a href="https://x.com/Smed_Technology"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="https://www.instagram.com/smed_technology/"><i class="fab fa-instagram"></i></a></li>
-
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 SMED. Todos los derechos reservados.</p>
-    </div>
-  </footer> 
-
-<!-- Contenedor para particles.js -->
-<div id="particles-js"></div>
-<script src="../JS/particles.js"></script>
-<script src="../JS/app.js"></script>
-<script src="../JS/card_services.js"></script>
-<script src="../JS/section_end.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  <!-- Contenedor para particles.js -->
+  <div id="particles-js"></div>
+  <script src="../JS/particles.js"></script>
+  <script src="../JS/app.js"></script>
+  <script src="../JS/card_services.js"></script>
+  <script src="../JS/section_end.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
 
 </body>
 

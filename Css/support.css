@@ -13,6 +13,45 @@ body {
     color: #fff;
 }
 
+<<<<<<< Updated upstream
+/* .nav {
+    height: 100px;
+    //pendiente arreglar
+    background-image: url('/images/nav.jpg');
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+} */
+
+.titulo1 {
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+}
+
+.titulo1 h1 {
+    margin-left: 5px;
+}
+
+/*titulo central*/
+
+.titulo_Pri {
+    font-family: "Orbitron", sans-serif;
+    display: flex;
+    align-items: center;
+    width: 35%;
+    height: 23%;
+    margin-top: 2%;
+    margin-left: 34%;
+    font-size: 25px;
+    border-radius: 30px;
+    text-align: center;
+    justify-content: center;
+}
+=======
+/* section 1*/ 
+
 .smed-support-hero {
     min-height: calc(100vh - 40px); /* ajusta según la altura de tu nav */
     display: flex;
@@ -61,156 +100,4 @@ body {
       transform: translateY(-10px);
     }
   }
-  
-/*section boton*/ 
-.ingresar-btn {
-    margin-top: 30px;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, #00ffaa, #007bff);
-    color: #000;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: transform 0.6s ease, box-shadow 0.8s ease;
-  }
-  
-  .ingresar-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #00ffaa;
-  }
-  
-  .timeline-section {
-    text-align: center;
-    padding: 60px 20px;
-    background: rgba(0, 0, 0, 0.75);
-    animation: fadeIn 0s ease-out forwards;
-  }
-  
-  .timeline-title {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    background: linear-gradient(to right, #00ffaa, #007bff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .timeline-steps {
-    list-style: none;
-    padding: 0;
-    font-size: 1.3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .hidden {
-    display: none;
-  }
-
-/* line time progress /* 
-/* Timeline container base */
-.timeline-container {
-    margin-top: 40px;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .timeline-title {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #00ffaa;
-  }
-  
-  /* Ocultar por defecto */
-  .hidden {
-    display: none;
-  }
-  
-  /* Timeline line + steps */
-  .timeline {
-    display: flex;
-    justify-content: space-between;
-    margin: 30px auto;
-    max-width: 800px;
-    position: relative;
-  }
-  
-  .timeline::before {
-    content: '';
-    position: absolute;
-    top: 35px;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: #555;
-    z-index: 0;
-  }
-  
-  .timeline-step {
-    width: 33%;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .timeline-step .step-icon {
-    background-color: #444;
-    border: 2px solid #00ffaa;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin: 0 auto 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #00ffaa;
-    font-size: 1.5rem;
-  }
-  
-  .timeline-step.active .step-icon {
-    background-color: #00ffaa;
-    color: #000;
-  }
-  
-  .timeline-step p {
-    font-weight: 500;
-    color: #fff;
-  }
-  
-  /* Botón Ingresar */
-  .ingresar-btn {
-    margin-top: 25px;
-    padding: 12px 24px;
-    background-color: #00ffaa;
-    color: #000;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .ingresar-btn:hover {
-    background-color: #00dd99;
-  }
-  
-  /* Sección debajo de cada paso */
-  .form-section {
-    margin-top: 30px;
-    background-color: #1a1a1a;
-    border: 1px solid #00ffaa;
-    padding: 20px;
-    border-radius: 12px;
-  }
-
-  .nombre-input {
-    padding: 10px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    margin: 10px 0;
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-  }
+>>>>>>> Stashed changes
