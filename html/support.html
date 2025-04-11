@@ -6,8 +6,8 @@
   <title>Semd Suppord</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="/icons/icono-principal.svg" type="image/png">
-  <link rel="stylesheet" href="../Css/blog.css">
   <link rel="stylesheet" href="../Css/nav.css">
+  <link rel="stylesheet" href="../Css/support.css	">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 </head>
@@ -18,7 +18,6 @@
       </div>
       <div class="nav-menu" id="navMenu">
         <ul>
-
           <li><a href="blog.html" class="link">¿Quienes somos?</a></li>
           <li><a href="servicios.html" class="link">Servicios</a></li>
           <li><a href="tienda.html" class="link">Tienda</a></li>
@@ -30,15 +29,49 @@
       </div>
     </nav>
 <main>
+  <!--Section mensaje-->
   <section class="smed-support-hero">
     <div class="hero-content">
       <h1 class="hero-title">Bienvenido a <span>SMED SUPPORT</span></h1>
       <p class="hero-subtitle">Aquí tus dispositivos tienen <strong>una segunda oportunidad</strong> ✨</p>
+      <input type="text" id="cliente-nombre" placeholder="Ingresa tu nombre" class="nombre-input">
+      <button id="ingresar-btn" class="ingresar-btn">Ingresar</button>
+
+
+      <div id="timeline-container" class="timeline-container hidden">
+        <h2 class="timeline-title">Bienvenido a tu servicio de mantenimiento</h2>
+      
+        <div class="timeline">
+          <div class="timeline-step active" id="step1">
+            <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
+            <p>Recepción</p>
+          </div>
+          <div class="timeline-step" id="step2">
+            <div class="step-icon"><i class="fas fa-tools"></i></div>
+            <p>Reparación</p>
+          </div>
+          <div class="timeline-step" id="step3">
+            <div class="step-icon"><i class="fas fa-box-open"></i></div>
+            <p>Entrega</p>
+          </div>
+        </div>
+      
+        <!-- Secciones que se mostrarán según la etapa -->
+        <div id="form-etapa1" class="form-section hidden">
+          <p><strong>Rellena la hoja de vida del dispositivo</strong></p>
+          <!-- Aquí luego metemos el formulario completo -->
+        </div>
+      </div>
+      
     </div>
-  </section>
-  
-  
+  </section>  
+
+ 
+
 </main>
+  
+
 
 </body>
+<script src="../JS/time_line.js"></script>
 </html>
