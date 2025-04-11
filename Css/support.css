@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-image: url(../images/S-M-E-D.webp);
-    color: #fff;
+  background-image: url(../images/S-M-E-D.webp);
+  color: #fff;
 }
 
 .smed-support-hero {
@@ -26,6 +26,7 @@ body {
 
 .hero-content {
   max-width: 800px;
+  width: 100%;
 }
 
 .hero-title {
@@ -43,6 +44,29 @@ body {
   margin-bottom: 2rem;
 }
 
+/* ==========================
+   Input de nombre del cliente
+============================= */
+.nombre-input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  outline: none;
+}
+
+.nombre-input::placeholder {
+  color: #94a3b8;
+}
+
+/* ==========================
+   Botón ingresar
+============================= */
 .ingresar-btn {
   padding: 1rem 2rem;
   font-size: 1.1rem;
@@ -58,10 +82,10 @@ body {
   background-color: #0ea5e9;
 }
 
-/* ============================
-   Contenedor de Bienvenida
-=============================== */
-#welcome-container {
+/* ==========================
+   Contenedor de Timeline
+============================= */
+.timeline-container {
   margin-top: 2rem;
   background-color: #1e293b;
   padding: 2rem;
@@ -70,34 +94,58 @@ body {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid #334155;
 }
 
-#welcome-container h2 {
-  margin-bottom: 1rem;
+.timeline-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
   color: #38bdf8;
+  font-weight: 600;
 }
 
-#welcome-container p {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-}
-
-.timeline-container {
+/* Timeline visual */
+.timeline {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
-  padding: 1rem 0;
+  align-items: center;
+  margin-bottom: 2rem;
   border-top: 2px solid #38bdf8;
   border-bottom: 2px solid #38bdf8;
+  padding: 1rem 0;
 }
 
 .timeline-step {
-  text-align: center;
   flex: 1;
+  text-align: center;
   color: #cbd5e1;
-  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .timeline-step.active {
   color: #38bdf8;
+}
+
+.step-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ==========================
+   Formulario oculto para Etapa 1
+============================= */
+.form-section {
+  background-color: #0f172a;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  margin-top: 1rem;
+  color: #e2e8f0;
+}
+
+/* ==========================
+   Utilidad para ocultar
+============================= */
+.hidden {
+  display: none;
 }

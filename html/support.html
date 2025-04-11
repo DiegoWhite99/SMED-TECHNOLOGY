@@ -1,37 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semd Suppord</title>
+  <title>Smed Support</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="/icons/icono-principal.svg" type="image/png">
   <link rel="stylesheet" href="../Css/blog.css">
   <link rel="stylesheet" href="../Css/nav.css">
+  <link rel="stylesheet" href="../Css/support.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+  <nav class="nav">
+    <div class="nav-logo">
+      <p> Smed Technology </p>
+    </div>
+    <div class="nav-menu" id="navMenu">
+      <ul>
+        <li><a href="blog.html" class="link">¿Quiénes somos?</a></li>
+        <li><a href="servicios.html" class="link">Servicios</a></li>
+        <li><a href="tienda.html" class="link">Tienda</a></li>
+        <li><a href="experiencias.html" class="link">Experiencias</a></li>
+      </ul>
+    </div>
+    <div class="nav-button">
+      <button class="btn white-btn" id="loginbtn" onclick="location.href='login.html';">Inicio</button>
+    </div>
+  </nav>
 
-  <header>
-    <nav class="nav">
-      <div class="nav-logo">
-        <p> Smed Technology </p>
-      </div>
-      <div class="nav-menu" id="navMenu">
-        <ul>
+  <main>
+    <!--Section mensaje-->
+    <section class="smed-support-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Bienvenido a <span>SMED SUPPORT</span></h1>
+        <p class="hero-subtitle">Aquí tus dispositivos tienen <strong>una segunda oportunidad</strong> ✨</p>
 
-          <li><a href="blog.html" class="link">¿Quienes somos?</a></li>
-          <li><a href="servicios.html" class="link">Servicios</a></li>
-          <li><a href="tienda.html" class="link">Tienda</a></li>
-          <li><a href="experiencias.html" class="link">Experiancias</a></li>
-        </ul>
-      </div>
-      <div class="nav-button">
-        <button class="btn white-btn" id="loginbtn" onclick="location.href='login.html';">Inicio</button>
-      </div>
-    </nav>
-  </header>
+        <input type="text" id="cliente-nombre" placeholder="Ingresa tu nombre" class="nombre-input">
+        <button id="ingresar-btn" class="ingresar-btn">Ingresar</button>
 
+        <div id="timeline-container" class="timeline-container hidden">
+          <h2 class="timeline-title" id="mensaje-cliente">Bienvenido a tu servicio de mantenimiento</h2>
+
+          <div class="timeline">
+            <div class="timeline-step active" id="step1">
+              <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
+              <p>Recepción</p>
+            </div>
+            <div class="timeline-step" id="step2">
+              <div class="step-icon"><i class="fas fa-tools"></i></div>
+              <p>Reparación</p>
+            </div>
+            <div class="timeline-step" id="step3">
+              <div class="step-icon"><i class="fas fa-box-open"></i></div>
+              <p>Entrega</p>
+            </div>
+          </div>
+
+          <!-- Sección editable -->
+          <div id="form-etapa1" class="form-section hidden">
+            <p><strong>Rellena la hoja de vida del dispositivo</strong></p>
+            <!-- Aquí va el formulario cuando lo implementes -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('ingresar-btn').addEventListener('click', () => {
+      const nombre = document.getElementById('cliente-nombre').value.trim();
+      const mensaje = document.getElementById('mensaje-cliente');
+      const contenedor = document.getElementById('timeline-container');
+
+      if (nombre !== "") {
+        mensaje.textContent = `Bienvenido a tu servicio de mantenimiento, ${nombre}`;
+        contenedor.classList.remove('hidden');
+      } else {
+        alert('Por favor ingresa tu nombre.');
+      }
+    });
+  </script>
 </body>
 </html>
