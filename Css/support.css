@@ -50,6 +50,63 @@ body {
 }
 
 /* ==========================
+   Formulario
+============================= */
+.form-check .form-check-input {
+  float: none;
+}
+
+.form-section {
+  background-color: #E3DAC9;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.form-floating {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-floating>div {
+  flex: 1;
+}
+
+.btn-primary {
+  background-color: #38bdf8;
+  color: #0f172a;
+}
+
+.btn-primary:hover {
+  background-color: #0ea5e9;
+  color: #0f172a;
+}
+
+.form-control {
+  background-color: #334155;
+  color: white;
+}
+
+.form-floating label {
+  color: #38bdf8;
+}
+
+.form-select {
+  background-color: #334155;
+  color: white;
+  border: 1px solid #ced4da;
+}
+
+input[type="file"].form-control {
+  background-color: #334155;
+  border: 1px solid #ced4da;
+}
+
+label[for="floatingInput"] {
+  color: #38bdf8;
+}
+/* ==========================
    Input de nombre del cliente
 ============================= */
 .nombre-input {
