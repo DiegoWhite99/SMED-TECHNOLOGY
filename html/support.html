@@ -140,22 +140,13 @@
               <h3>Ingreso del Dispositivo</h3>
 
               <div class="form-row">
-                <!-- <div>
-                  <label for="nombre-persona">Nombre del cliente</label>
-                  <input type="text" id="nombre-persona" name="nombre-persona" required />
-                </div> -->
                 <div class="form-floating mb-3">
-                  <input type="email" id="nombre-persona" class="form-control" name="nombre-persona"
-                    placeholder="Nombre" required>
-                  <label for="floatingInput">Nombre del cliente</label>
+                  <input type="email" id="nombre-persona" class="form-control" name="email-persona"
+                    placeholder="Correo" required>
+                  <label for="floatingInput">Correo</label>
                 </div>
-
-                <!-- <div>
-                  <label for="documento">Documento de identidad</label>
-                  <input type="text" id="documento" name="documento" required />
-                </div> -->
                 <div class="form-floating">
-                  <input type="email" id="documento" name="documento" class="form-control"
+                  <input type="text" id="documento" name="documento" class="form-control"
                     placeholder="Documento de identidad" required>
                   <label for="floatingInput">Documento</label>
                 </div>
@@ -172,26 +163,14 @@
                   <option value="otro">Otro</option>
                 </select>
                 <label for="tipo-dispositivo" class="kind-dev">Tipo de dispositivo</label>
-                <!-- <div>
-                  <label for="nombre-equipo">Nombre del equipo</label>
-                  <input type="text" id="nombre-equipo" name="nombre-equipo" required />
-                </div> -->
               </div>
 
               <div class="form-row">
-                <!-- <div>
-                  <label for="marca">Marca</label>
-                  <input type="text" id="marca" name="marca" required />
-                </div> -->
                 <div class="form-floating mb-3">
                   <input type="text" id="nombre-persona" class="form-control" id="marca" name="marca"
                     placeholder="Marca del equipo" required>
                   <label for="floatingInput">Marca</label>
                 </div>
-                <!-- <div>
-                  <label for="serial">Serial</label>
-                  <input type="text" id="serial" name="serial" required />
-                </div> -->
                 <div class="form-floating mb-3">
                   <input type="text" id="serial" name="serial" class="form-control" placeholder="Serial del equipo"
                     required>
@@ -200,16 +179,6 @@
               </div>
 
               <div class="form-row">
-                <!-- <div>
-                  <label for="estado">Estado del equipo</label>
-                  <select id="estado" name="estado" required>
-                    <option value="">Selecciona una opción</option>
-                    <option value="bueno">Bueno</option>
-                    <option value="regular">Regular</option>
-                    <option value="critico">Crítico</option>
-                  </select>
-                </div>
-                <div> -->
                 <div class="form-floating">
                   <select class="form-select" id="estado" name="estado" aria-label="Floating label select" required>
                     <option value="">Selecciona una opción</option>
@@ -222,44 +191,25 @@
                   <label for="estado">Estado del equipo</label>
                 </div>
               </div>
-              <!-- <label for="foto">Registro fotográfico</label>
-                <input type="file" id="foto" name="foto" accept="image/*" required /> -->
               <div class="mb-3">
                 <label for="formFileMultiple" class="form-label">Registro fotográfico</label>
                 <input class="form-control" type="file" id="foto" name="foto" multiple accept="image/*" required>
               </div>
           </div>
-
-          <!-- <div style="margin-bottom: 1rem;">
-                <label for="diagnostico">Primer diagnóstico</label>
-                <textarea id="diagnostico" name="diagnostico" rows="3" style="width: 100%;" required></textarea>
-              </div> -->
           <div class="form-floating" style="margin-top: 1rem;">
             <textarea class="form-control" placeholder="Deja un comentario aqui" id="diagnostico"
               name="diagnostico"></textarea>
             <label for="floatingTextarea">Primer diagnóstico</label>
           </div>
-
-          <!-- <div style="margin-bottom: 0.5rem;">
-                <input type="checkbox" id="autorizo-datos" name="autorizo-datos" required>
-                <label for="autorizo-datos">Autorizo el tratamiento de mis datos personales.</label>
-              </div> -->
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="autorizo-datos" name="autorizo-datos" required>
             <label class="form-check-label" for="checkDefault">Autorizo el tratamiento de mis datos personales.</label>
           </div>
-
-          <!-- <div style="margin-bottom: 1rem;">
-                <input type="checkbox" id="acepto-procedimiento" name="acepto-procedimiento" required>
-                <label for="acepto-procedimiento">Estoy de acuerdo con el procedimiento técnico.</label>
-              </div> -->
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="acepto-procedimiento"
               name="acepto-procedimiento" required>
             <label class="form-check-label" for="checkDefault">Estoy de acuerdo con el procedimiento técnico.</label>
           </div>
-
-          <!-- <button type="button" id="descargar-pdf" class="ingresar-btn" style="margin-top: 1rem;">Descargar PDF</button> -->
           <input class="btn btn-primary" type="submit" value="Descargar PDF" id="descargar-pdf"
             style="margin-top: 1rem;">
           </form>
