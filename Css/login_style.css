@@ -22,9 +22,9 @@ body {
     min-height: 110vh;
 }
 
-#registerBTN {
+/* #registerBTN {
     margin-left: 15px;
-}
+} */
 
 .btn.white-btn {
     background: rgba(255, 255, 255, 0.7);
@@ -66,7 +66,7 @@ body {
 .register-container {
     margin-bottom: 25px;
     position: absolute;
-    /* right: 820px; */
+    right: 820px;
     width: 300px;
     display: flex;
     flex-direction: column;
