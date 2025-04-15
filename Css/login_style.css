@@ -43,7 +43,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 400px;
-    height: 450px;
+    height: 550px;
     overflow: hidden;
     z-index: 2;
     background: transparent;
@@ -66,12 +66,13 @@ body {
 .register-container {
     margin-bottom: 25px;
     position: absolute;
-    right: 820px;
+    /* right: 820px; */
     width: 300px;
     display: flex;
     flex-direction: column;
     transition: .5s ease-in-out;
-    margin-right: 10%;
+    /* margin-right: 10%; */
+    margin: 20px 40px 0 0;
 }
 
 .top span {
