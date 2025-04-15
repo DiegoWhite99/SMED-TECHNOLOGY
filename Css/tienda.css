@@ -7,8 +7,8 @@
 :root {
   --card-height: 300px;
   --card-width: calc(var(--card-height) / 1.5);
-  --color: #052d7b;
-  --fondo: #052d7b;
+  --color: #0dcaf0;
+  --fondo: #0dcaf0;
   --transition-time: 0.5s;
 }
 
