@@ -73,6 +73,10 @@ body {
   flex: 1;
 }
 
+.form-floating label {
+  color: #38bdf8;
+}
+
 .btn-primary {
   background-color: #38bdf8;
   color: #0f172a;
@@ -86,10 +90,6 @@ body {
 .form-control {
   background-color: #334155;
   color: white;
-}
-
-.form-floating label {
-  color: #38bdf8;
 }
 
 .form-select {
