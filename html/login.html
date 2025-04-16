@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -22,7 +21,6 @@
         </div>
         <div class="nav-menu" id="navMenu">
             <ul>
-
                 <li><a href="blog.html" class="link">¿Quienes somos?</a></li>
                 <li><a href="servicios.html" class="link">Servicios</a></li>
                 <li><a href="tienda.html" class="link">Tienda</a></li>
@@ -38,12 +36,9 @@
         </div>
     </nav>
     <div class="wrapper">
-
         <!-------------------------formato de caja---------------->
         <div class="form-box">
-
             <!-------------------------formulario de logeo ---------------->
-
             <div class="login-container" id="login">
                 <div class="top">
                     <header>Inicia Sesion</header>
@@ -75,47 +70,49 @@
                 <div class="top">
                     <header>Registrarse</header>
                 </div>
-                <div class="two-form">
-                    <div class="input-box">
-                        <input type="text" id="nombre" class="input-field" name="Nombre" placeholder="Nombre" required>
-                        <i class="bx bx-user"></i>
+                <!---inicio de etiqueta formulario para hacer el metodo post-->
+                <form action="http://localhost:3000/registro" method="post">
+                    <div class="two-form">
+                        <div class="input-box">
+                            <input type="text" id="nombre" class="input-field" name="Nombre" placeholder="Nombre" required>
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" id="apellido" class="input-field" name="Apellido" placeholder="Apellido"
+                                required>
+                            <i class="bx bx-user"></i>
+                        </div>
                     </div>
                     <div class="input-box">
-                        <input type="text" id="apellido" class="input-field" name="Apellido" placeholder="Apellido"
+                        <input type="email" id="email" class="input-field" name="Email" placeholder="Email" required>
+                        <i class="bx bx-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="contraseña" class="input-field" name="Password" placeholder="Contraseña"
                             required>
-                        <i class="bx bx-user"></i>
+                        <i class="bx bx-lock-alt"></i>
                     </div>
-                </div>
-                <div class="input-box">
-                    <input type="email" id="email" class="input-field" name="Email" placeholder="Email" required>
-                    <i class="bx bx-envelope"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" id="contraseña" class="input-field" name="Passsword" placeholder="Contraseña"
-                        required>
-                    <i class="bx bx-lock-alt"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" id="confirmContraseña" class="input-field"
-                        placeholder=" Confirmar Contraseña" required>
-                    <i class="bx bx-lock-alt"></i>
-                </div> <!-- se agrega un segundo campo de verficacion de contraseña  en el area de registro-->
+                    <div class="input-box">
+                        <input type="password" id="confirmContraseña" class="input-field"
+                            placeholder="Confirmar Contraseña" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div> <!-- se agrega un segundo campo de verficacion de contraseña en el area de registro-->
 
-
-                <div class="input-box">
-                    <input type="submit" class="submit" id="confirmation" value="Registrarse" onclick="validar()"
-                        disbled>
-                </div>
-                <div class="two-col">
-                    <div class="one">
-                        <input type="checkbox" id="register-check">
-                        <label for="register-check"> Recordar !</label>
+                    <div class="input-box">
+                        <input type="submit" class="submit" id="confirmation" value="Registrarse" disabled>
                     </div>
-                    <div class="two">
-                        <label><a href="#">Terminos & Condiciones </a></label>
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="register-check" name="recordar">
+                            <label for="register-check"> Recordar !</label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#">Terminos & Condiciones </a></label>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
+        
         </div>
     </div>
 
@@ -126,5 +123,3 @@
 </body>
 
 </html>
-
-<!-- esto es un comentario --->
