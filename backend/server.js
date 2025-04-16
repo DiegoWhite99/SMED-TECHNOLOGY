@@ -16,6 +16,16 @@ app.use(bodyparse.json());
 
 // preparamos la conexion //
 
+/**
+ * Creates a connection to the MySQL database.
+ * 
+ * @constant {mysql.Connection} conexion - The MySQL connection instance.
+ * @property {string} host - The hostname of the database server (e.g., 'localhost').
+ * @property {number} port - The port number on which the database server is running (default: 3306).
+ * @property {string} user - The username used to authenticate with the database (e.g., 'root').
+ * @property {string} password - The password used to authenticate with the database.
+ * @property {string} database - The name of the database to connect to (e.g., 'smed_technology').
+ */
 const conexion = mysql.createConnection({
     host: 'localhost',
     port: 3306,
