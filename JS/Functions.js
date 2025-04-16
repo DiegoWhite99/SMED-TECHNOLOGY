@@ -37,11 +37,11 @@ function register(){
 }
 
 function validar() {
-    var password = document.getElementById("contraseña").value;
+    var password = document.getElementById("password").value;
     var confirmPassword = document.getElementById("confirmContraseña").value;
     var botonRegistro = document.getElementById("confirmation").value;
 
-    var campos = ["nombre", "apellido", "email", "contraseña", "confirmContraseña"];
+    var campos = ["nombre", "apellido", "email", "password", "confirmContraseña"];
 
     for (i = 0; i < campos.length; i++) {
         var valorCampo = document.getElementById(campos[i]).value;
@@ -53,13 +53,13 @@ function validar() {
     }
 
     if (password !== confirmPassword) {
-        botonRegistro.disabled = true;
+        // botonRegistro.disabled = true;
         alert("Contraseñas no coinciden");
         return false;
     } else {
-        botonRegistro.disabled = false;
+        // botonRegistro.disabled = false;
         alert("Registro Exitoso");
-        window.location = "login.html"; 
+        window.location = "../html/support.html"; 
         return true;
     }
     
