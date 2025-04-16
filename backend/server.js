@@ -21,7 +21,7 @@ const conexion = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'smed_admin23.',
-    database: 'smed_tecnology'
+    database: 'smed_technology'
 });
 
 // mensaje de error //
@@ -37,10 +37,11 @@ conexion.connect((err)=>{
 // ruta del la tabal de registro //
 
 app.post('/registro', (req, res)=> {
-    const {Nombre, Apellido, Email, Password } = req.body;
+    const {nombre, apellido, email, password } = req.body;
+    console.log('Datos recibidos:', req.body);
 
-    const sql = 'INSERT INTO smed_registro (Nombre, Apellido, Email, Password) VALUES (?,?,?,?)';
-    conexion.query(sql, [Nombre,Apellido,Email,Password], (err, result)=> {
+    const sql = 'INSERT INTO smed_registro (nombre, apellido, email, password) VALUES (?,?,?,?)';
+    conexion.query(sql, [nombre,apellido,email,password], (err, result)=> {
         if (err) {
             console.error('Error al ingresar datos:', err);
             res.status(500).send('Error al registrar un ususario');
