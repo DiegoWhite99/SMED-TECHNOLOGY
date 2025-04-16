@@ -32,4 +32,27 @@ conexion.connect((err)=>{
         return;
     }
     console.log('Registro exitoso');
-})
+});
+
+// ruta del la tabal de registro //
+
+app.post('/registro', (req, res)=> {
+    const {Nombre, Apellido, Email, Password } = req.body;
+
+    const sql = 'INSERT INTO smed_registro (Nombre, Apellido, Email, Password) VALUES (?,?,?,?)';
+    conexion.query(sql, [Nombre,Apellido,Email,Password], (err, result)=> {
+        if (err) {
+            console.error('Error al ingresar datos:', err);
+            res.status(500).send('Error al registrar un ususario');
+            return;
+        }
+        console.log('Registro insertado:', result);
+        res.status(200).send('Usuario registrado exitosamente');
+    });
+});
+
+// inicio del servidor //
+
+app.listen(PORT, ()=> {
+    console.log(`El servidor esta corriendo en http://localhost:${PORT}`);
+});
