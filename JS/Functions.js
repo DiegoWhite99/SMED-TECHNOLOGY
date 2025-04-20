@@ -53,16 +53,33 @@ function validar() {
     }
 
     if (password !== confirmPassword) {
-        // botonRegistro.disabled = true;
+        botonRegistro.disabled = true;
         alert("Contraseñas no coinciden");
         return false;
     } else {
-        // botonRegistro.disabled = false;
+        botonRegistro.disabled = false;
         alert("Registro Exitoso");
-        window.location = "../html/support.html"; 
+        // window.location = "../html/support.html";
         return true;
     }
     
 }
+
+// function validarLogin() {
+//     var email = document.getElementById("email").value;
+//     var password = document.getElementById("password").value;
+//     var botonLogin = document.getElementById("login_in").value;
+
+//     if (email === "" || password === "") {
+//         botonLogin.disabled = true;
+//         alert("Revisa los campos");
+//         return false;
+//     } else {
+//         botonLogin.disabled = false;
+//         alert("Bienvenido a SMED Technology");
+//         window.location = "../html/servicios.html"; 
+//         return true;
+//     }
+// }
 /* ---------------------------> finn deapartado de funciones para validacion de datos<----------------------- */
 
