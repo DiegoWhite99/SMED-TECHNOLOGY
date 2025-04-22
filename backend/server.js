@@ -1,13 +1,19 @@
 // fuen necesario isntalr expresss para relizar un solicitud de los  datos mas extacta y vincularla a mysql//
-const express = require('express');
-const mysql = require('mysql');
-const cors = require('cors');
-const bodyparse = require('body-parser');
+import express from 'express';
+// const express = require('express');
+import mysql from 'mysql';
+// const mysql = require('mysql');
+import cors from 'cors';
+// const cors = require('cors');
+import bodyparse from 'body-parser';
+// const bodyparse = require('body-parser');
+import dotenv from 'dotenv';
+dotenv.config(); // Para leer el archivo .env
 // const path = require('path');
 
 
 const app  = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 // este port es para el servidor no tiene nada que ver con puerto del mysql //
 
 // Middleware usamos este funcion para la comunicacion entre la base de datos y el front //
@@ -30,11 +36,11 @@ app.use(bodyparse.json());
  * @property {string} database - The name of the database to connect to (e.g., 'smed_technology').
  */
 const conexion = mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'smed_admin23.',
-    database: 'smed_technology'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 });
 
 // mensaje de error //
@@ -48,7 +54,7 @@ conexion.connect((err)=>{
 });
 
 // ruta del la tabal de login //
-app.post('/login', (req, res)=> {
+app.post(process.env.LOGIN, (req, res)=> {
     const {email, password } = req.body;
     console.log('Datos recibidos en login:', req.body);
 
@@ -75,7 +81,7 @@ app.post('/login', (req, res)=> {
 
 // ruta del la tabal de registro //
 
-app.post('/registro', (req, res)=> {
+app.post(process.env.REGISTER, (req, res)=> {
     const {nombre, apellido, email, password } = req.body;
     console.log('Datos recibidos en registro:', req.body);
 
