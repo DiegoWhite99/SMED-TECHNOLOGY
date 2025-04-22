@@ -1,15 +1,10 @@
 // fuen necesario isntalr expresss para relizar un solicitud de los  datos mas extacta y vincularla a mysql//
 import express from 'express';
-// const express = require('express');
 import mysql from 'mysql';
-// const mysql = require('mysql');
 import cors from 'cors';
-// const cors = require('cors');
 import bodyparse from 'body-parser';
-// const bodyparse = require('body-parser');
 import dotenv from 'dotenv';
 dotenv.config(); // Para leer el archivo .env
-// const path = require('path');
 
 
 const app  = express();
@@ -20,8 +15,6 @@ const PORT = process.env.PORT;
 app.use(cors());
 app.use(bodyparse.urlencoded({ extended: true}));
 app.use(bodyparse.json());
-// app.use(express.static(path.join(__dirname, 'html')));
-// app.use(express.static('public'));
 
 // preparamos la conexion //
 
@@ -58,7 +51,6 @@ app.post(process.env.LOGIN, (req, res)=> {
     const {email, password } = req.body;
     console.log('Datos recibidos en login:', req.body);
 
-    // const sql = 'SELECT email, password from smed_registro where email = ? and password = ?';
     const sql = "SELECT email, password from smed_technology.smed_login WHERE email = ? AND password = ?";
     conexion.query(sql, [email,password], (err, result)=> {
         if (err) {
@@ -69,12 +61,11 @@ app.post(process.env.LOGIN, (req, res)=> {
 
         if (result.length > 0) {
             console.log('Usuario encontrado: ', result);
-            // res.redirect('../html/servicios.html');
-            // redireccionar a la pagina de servicios //
-            res.status(200).send('<script>alert("Bienvenido a SMED Technology"); window.location.href = "../html/servicios.html";</script>');
+            // redireccionar a la pagina de support //
+            res.status(200).send('<script>alert("Bienvenido a SMED Technology"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/support.html";</script>);');
         } else {
             console.log('Usuario no encontrado');
-            res.status(401).send('<script>alert("Credenciales incorrectas"); window.location.href = "../html/login.html";</script>');
+            res.status(401).send('<script>alert("Credenciales incorrectas"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/login.html";</script>');
         }
     });
 });
@@ -93,9 +84,8 @@ app.post(process.env.REGISTER, (req, res)=> {
             return;
         }
         console.log('Registro insertado:', result);
-        res.status(200).send('Usuario registrado exitosamente');
-        // res.redirect("../html/login.html");
         // redireccionar a la pagina de login
+        res.status(200).send('<script>alert("Te has registrado exitosamente"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/login.html"</script>');
     });
 });
 
