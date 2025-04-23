@@ -19,7 +19,7 @@ var y = document.getElementById("register");
 /* ---------------------------> apartado de funciones para validacion de datos<----------------------- */
 
 function login() {
-    x.style.left = "20px";
+    x.style.left = "4%";
     y.style.right = "-520px";
     a.className += " white-btn";
     b.className = "btn";
