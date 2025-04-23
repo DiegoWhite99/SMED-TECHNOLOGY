@@ -4,6 +4,7 @@ import mysql from 'mysql';
 import cors from 'cors';
 import bodyparse from 'body-parser';
 import dotenv from 'dotenv';
+import bcrypr from 'bcrypt';
 dotenv.config(); // Para leer el archivo .env
 
 
@@ -46,48 +47,62 @@ conexion.connect((err)=>{
     console.log('Conexion exitosa a la base de datos:', conexion.config.database);
 });
 
+// ruta del la tabal de registro //
+
+app.post(process.env.REGISTER, async (req, res)=> {
+    const {nombre, apellido, email, password } = req.body;
+    console.log('Datos recibidos en registro:', req.body);
+
+    try {
+        const hashedPassword = await bcrypr.hash(password, 10); //10 veces que realiza salt rounds
+
+        const sql = 'INSERT INTO smed_technology.smed_registro (nombre, apellido, email, password) VALUES (?,?,?,?)';
+        conexion.query(sql, [nombre,apellido,email,hashedPassword], (err, result)=> {
+            if (err) {
+                console.error('Error al ingresar datos:', err);
+                res.status(500).send('Error al registrar un ususario');
+                return;
+            }
+            console.log('Registro insertado:', result);
+            // redireccionar a la pagina de login
+            res.status(200).send('<script>alert("Te has registrado exitosamente"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/login.html"</script>');
+        });
+    } catch (err) {
+        console.log('Error de ni pta idea', err);
+        res.status(500).json({ mensaje: 'Error interno' });
+    }
+});
+
 // ruta del la tabal de login //
 app.post(process.env.LOGIN, (req, res)=> {
     const {email, password } = req.body;
     console.log('Datos recibidos en login:', req.body);
 
-    const sql = "SELECT email, password from smed_technology.smed_login WHERE email = ? AND password = ?";
-    conexion.query(sql, [email,password], (err, result)=> {
+    const sql = "SELECT * FROM smed_technology.smed_login WHERE email = ?";
+    conexion.query(sql, [email], async (err, result)=> {
         if (err) {
             console.error('Error al ingresar datos:', err);
-            res.status(500).send('Error al consultar un ususario');
-            return;
+            return res.status(500).json({ mensaje: 'Error al consultar usuario' });
         }
 
-        if (result.length > 0) {
-            console.log('Usuario encontrado: ', result);
+        if (result.length === 0) {
+            return res.status(401).json({ mensaje: 'Usuario no encontrado' });
+        }
+
+        const user = result[0];
+        const isPasswordValid = await bcrypr.compare(password, user.password);
+
+        if (isPasswordValid) {
+            console.log('User Found', result);
             // redireccionar a la pagina de support //
             res.status(200).send('<script>alert("Bienvenido a SMED Technology"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/support.html";</script>);');
         } else {
-            console.log('Usuario no encontrado');
+            console.log('Incorrect Password!');
             res.status(401).send('<script>alert("Credenciales incorrectas"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/login.html";</script>');
         }
     });
 });
 
-// ruta del la tabal de registro //
-
-app.post(process.env.REGISTER, (req, res)=> {
-    const {nombre, apellido, email, password } = req.body;
-    console.log('Datos recibidos en registro:', req.body);
-
-    const sql = 'INSERT INTO smed_technology.smed_registro (nombre, apellido, email, password) VALUES (?,?,?,?)';
-    conexion.query(sql, [nombre,apellido,email,password], (err, result)=> {
-        if (err) {
-            console.error('Error al ingresar datos:', err);
-            res.status(500).send('Error al registrar un ususario');
-            return;
-        }
-        console.log('Registro insertado:', result);
-        // redireccionar a la pagina de login
-        res.status(200).send('<script>alert("Te has registrado exitosamente"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/login.html"</script>');
-    });
-});
 
 // inicio del servidor //
 
