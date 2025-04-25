@@ -360,30 +360,6 @@ footer {
   object-fit: cover;
 }
 
-/* Tarjeta de texto encima de la imagen */
-.hero_text_card {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: 16px 20px;
-  max-width: 300px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  color: #111;
-  text-align: left;
-}
-
-.hero_text_card .badge {
-  display: inline-block;
-  background-color: #ff4f2b;
-  color: white;
-  font-weight: bold;
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  border-radius: 12px;
-  margin-bottom: 6px;
-}
 
 .hero_text_card h3 {
   font-size: 1.25rem;
@@ -424,6 +400,96 @@ footer {
   min-height: 100%;
   z-index: -1;
   object-fit: cover;
+}
+
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.slider-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slider-btn.right {
+  right: 10px;
+}
+
+.slider-btn.left {
+  left: 10px;
+}
+
+.frase {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.frase-activa {
+  display: block;
+  opacity: 1;
+}
+
+.testimonios-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 10px;
+}
+
+.testimonio-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 250px;
+}
+
+.testimonio-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  
+}
+
+.testimonio-card h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.testimonio-card .estrellas {
+  margin: 5px 0;
+}
+
+.testimonio-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Aseguramos que la última tarjeta se alinee con las otras */
+.container-testimonios {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 
