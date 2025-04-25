@@ -1,22 +1,16 @@
-// fuen necesario isntalr expresss para relizar un solicitud de los  datos mas extacta y vincularla a mysql//
+// fuen necesario isntalr expresss para relizar un solicitud de los datos mas extacta y vincularla a mysql//
 import express from 'express';
 import mysql from 'mysql';
-import cors from 'cors';
-import bodyparse from 'body-parser';
 import dotenv from 'dotenv';
 import bcrypr from 'bcrypt';
 dotenv.config(); // Para leer el archivo .env
 
 
 const app  = express();
+app.use(express.json()); // para solicitudes con cuerpo JSON
+app.use(express.urlencoded({ extended: true })); // para formularios HTML
 const PORT = process.env.PORT;
 app.use(express.static('public')); // para poder acceder a los archivos estaticos como html, css, js, etc
-// este port es para el servidor no tiene nada que ver con puerto del mysql //
-
-// Middleware usamos este funcion para la comunicacion entre la base de datos y el front //
-app.use(cors());
-app.use(bodyparse.urlencoded({ extended: true}));
-app.use(bodyparse.json());
 
 // preparamos la conexion //
     
