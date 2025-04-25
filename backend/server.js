@@ -19,7 +19,7 @@ app.use(bodyparse.urlencoded({ extended: true}));
 app.use(bodyparse.json());
 
 // preparamos la conexion //
-
+    
 /**
  * Creates a connection to the MySQL database.
  * 
@@ -57,7 +57,7 @@ app.post(process.env.REGISTER, async (req, res)=> {
     try {
         const hashedPassword = await bcrypr.hash(password, 10); //10 veces que realiza salt rounds
 
-        const sql = 'INSERT INTO smed_technology.smed_registro (nombre, apellido, email, password) VALUES (?,?,?,?)';
+        const sql = 'INSERT INTO smed_technology.smed_user (nombre, apellido, email, password) VALUES (?,?,?,?)';
         conexion.query(sql, [nombre,apellido,email,hashedPassword], (err, result)=> {
             if (err) {
                 console.error('Error al ingresar datos:', err);
@@ -79,7 +79,7 @@ app.post(process.env.LOGIN, (req, res)=> {
     const {email, password } = req.body;
     console.log('Datos recibidos en login:', req.body);
 
-    const sql = "SELECT * FROM smed_technology.smed_registro WHERE email = ?";
+    const sql = "SELECT * FROM smed_technology.smed_user WHERE email = ?";
     conexion.query(sql, [email], async (err, result)=> {
         if (err) {
             console.error('Error al ingresar datos:', err);
