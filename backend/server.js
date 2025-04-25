@@ -10,6 +10,7 @@ dotenv.config(); // Para leer el archivo .env
 
 const app  = express();
 const PORT = process.env.PORT;
+app.use(express.static('public')); // para poder acceder a los archivos estaticos como html, css, js, etc
 // este port es para el servidor no tiene nada que ver con puerto del mysql //
 
 // Middleware usamos este funcion para la comunicacion entre la base de datos y el front //
@@ -65,10 +66,10 @@ app.post(process.env.REGISTER, async (req, res)=> {
             }
             console.log('Registro insertado:', result);
             // redireccionar a la pagina de login
-            res.status(200).send('<script>alert("Te has registrado exitosamente"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/login.html"</script>');
+            res.status(200).send('<script>alert("Te has registrado exitosamente"); window.location.href = "http://127.0.0.1:5500/html/login.html"</script>');
         });
     } catch (err) {
-        console.log('Error de ni pta idea', err);
+        console.log('Error interno', err);
         res.status(500).json({ mensaje: 'Error interno' });
     }
 });
@@ -78,7 +79,7 @@ app.post(process.env.LOGIN, (req, res)=> {
     const {email, password } = req.body;
     console.log('Datos recibidos en login:', req.body);
 
-    const sql = "SELECT * FROM smed_technology.smed_login WHERE email = ?";
+    const sql = "SELECT * FROM smed_technology.smed_registro WHERE email = ?";
     conexion.query(sql, [email], async (err, result)=> {
         if (err) {
             console.error('Error al ingresar datos:', err);
@@ -94,11 +95,11 @@ app.post(process.env.LOGIN, (req, res)=> {
 
         if (isPasswordValid) {
             console.log('User Found', result);
-            // redireccionar a la pagina de support //
-            res.status(200).send('<script>alert("Bienvenido a SMED Technology"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/support.html";</script>);');
+            const nombre = encodeURIComponent(user.nombre);
+            res.status(200).send(`<script> alert("Bienvenido ${nombre} a SMED Technology"); window.location.href = "http://127.0.0.1:5500/html/support.html?nombre=${nombre}"; </script>`);
         } else {
             console.log('Incorrect Password!');
-            res.status(401).send('<script>alert("Credenciales incorrectas"); window.location.href = "http://127.0.0.1:5500/bootcamp_smed/html/login.html";</script>');
+            res.status(401).send('<script>alert("Credenciales incorrectas"); window.location.href = "http://127.0.0.1:5500/html/login.html";</script>');
         }
     });
 });

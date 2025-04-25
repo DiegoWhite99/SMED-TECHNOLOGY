@@ -86,3 +86,12 @@ document.getElementById("descargar-pdf").addEventListener("click", async functio
     doc.save("hoja-de-vida.pdf");
   }
 });
+
+// window.addEventListener("DOMContentLoaded", () => {
+//   const params = new URLSearchParams(window.location.search);
+//   const nombre = params.get("nombre");
+//   if (nombre) {
+//     const mensaje = document.getElementById("mensaje-cliente");
+//     mensaje.textContent = `Bienvenido ${nombre} a tu servicio de mantenimiento.`;
+//   }
+// });
