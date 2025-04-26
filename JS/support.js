@@ -1,3 +1,12 @@
+/**
+ * Event listener que se ejecuta cuando el DOM está completamente cargado.
+ * Verifica si existe un parámetro 'nombre' en la URL y muestra un mensaje
+ * de bienvenida personalizado al usuario en el elemento con id 'mensaje-cliente'.
+ * 
+ * @event DOMContentLoaded
+ * @listens DOMContentLoaded
+ * @returns {void}
+ */
 window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const nombre = params.get("nombre");
@@ -7,35 +16,35 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-document.getElementById('ingresar-btn').addEventListener('click', function(event) {
-  document.getElementById("ocultar").style.display = "none";
-  const nombre = document.getElementById('cliente-nombre').value.trim();
-  const mensaje = document.getElementById('mensaje-cliente');
-  const contenedor = document.getElementById('timeline-container');
+// document.getElementById('ingresar-btn').addEventListener('click', function(event) {
+//   document.getElementById("ocultar").style.display = "none";
+//   const nombre = document.getElementById('cliente-nombre').value.trim();
+//   const mensaje = document.getElementById('mensaje-cliente');
+//   const contenedor = document.getElementById('timeline-container');
 
-  if (nombre !== "") {
-    mensaje.textContent = `Bienvenido ${nombre} a tu servicio de mantenimiento`;
-    contenedor.classList.remove('hidden');
-    document.getElementById('form-etapa1').classList.remove('hidden');
-  } else {
-    alert('Por favor ingresa tu nombre.');
-  }
-});
+//   if (nombre !== "") {
+//     mensaje.textContent = `Bienvenido ${nombre} a tu servicio de mantenimiento`;
+//     contenedor.classList.remove('hidden');
+//     document.getElementById('form-etapa1').classList.remove('hidden');
+//   } else {
+//     alert('Por favor ingresa tu nombre.');
+//   }
+// });
 
 
-document.getElementById('descargar-pdf').addEventListener('click', () => {
-  const element = document.getElementById('formulario-equipo');
+// document.getElementById('descargar-pdf').addEventListener('click', () => {
+//   const element = document.getElementById('formulario-equipo');
 
-  const opt = {
-    margin: 0.5,
-    filename: 'hoja-de-vida-dispositivo.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-  };
+//   const opt = {
+//     margin: 0.5,
+//     filename: 'hoja-de-vida-dispositivo.pdf',
+//     image: { type: 'jpeg', quality: 0.98 },
+//     html2canvas: { scale: 2 },
+//     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+//   };
 
-  html2pdf().set(opt).from(element).save();
-});
+//   html2pdf().set(opt).from(element).save();
+// });
 
 
 
