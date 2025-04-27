@@ -10,6 +10,9 @@ const app  = express();
 app.use(express.json()); // para solicitudes con cuerpo JSON
 app.use(express.urlencoded({ extended: true })); // para formularios HTML
 const PORT = process.env.PORT;
+const HOST = process.env.HOST;
+const S_PORT = process.env.S_PORT;
+const S_HOST = process.env.S_HOST;
 app.use(express.static('public')); // para poder acceder a los archivos estaticos como html, css, js, etc
 
 // preparamos la conexion //
@@ -90,10 +93,10 @@ app.post(process.env.LOGIN, (req, res)=> {
         if (isPasswordValid) {
             console.log('User Found', result);
             const nombre = encodeURIComponent(user.nombre);
-            res.status(200).send(`<script> alert("Bienvenido ${nombre} a SMED Technology"); window.location.href = "http://127.0.0.1:5500/html/support.html?nombre=${nombre}"; </script>`);
+            res.status(200).send(`<script> alert("Bienvenido ${nombre} a SMED Technology"); window.location.href = "http://${HOST}:${PORT}/html/support.html?nombre=${nombre}"; </script>`);
         } else {
             console.log('Incorrect Password!');
-            res.status(401).send('<script>alert("Credenciales incorrectas"); window.location.href = "http://127.0.0.1:5500/html/login.html";</script>');
+            res.status(401).send(`<script> alert("Credenciales incorrectas"); window.location.href = "http://${HOST}:${PORT}/html/login.html"; </script>`);
         }
     });
 });
@@ -101,6 +104,6 @@ app.post(process.env.LOGIN, (req, res)=> {
 
 // inicio del servidor //
 
-app.listen(PORT, ()=> {
-    console.log(`El servidor esta corriendo en http://localhost:${PORT}`);
+app.listen(S_PORT, ()=> {
+    console.log(`El servidor esta corriendo en http://${S_HOST}:${S_PORT}`);
 });
