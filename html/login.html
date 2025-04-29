@@ -8,7 +8,7 @@
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="icon" href="../images/icon_principal.webp" type="image/png">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+		integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 	<link rel="stylesheet" href="../Css/nav.css">
 	<link rel="stylesheet" href="../Css/login_style.css">
 </head>
@@ -43,17 +43,19 @@
 				<div class="top">
 					<header>Inicia Sesion</header>
 				</div>
-				<form action="http://localhost:3000/login" method="post">
+				<form id="loginForm" method="post" action="http://localhost:4000/login">
 					<div class="input-box">
-						<input type="email" class="input-field" placeholder="Usuario o correo" id="email" name="email" required>
+						<input type="email" class="input-field" placeholder="Usuario o correo" id="email" name="email"
+							required>
 						<i class="bx bx-user"></i>
 					</div>
 					<div class="input-box">
-						<input type="password" class="input-field" placeholder="password" id="password" name="password" required>
+						<input type="password" class="input-field" placeholder="password" id="password" name="password"
+							required>
 						<i class="bx bx-lock-alt"></i>
 					</div>
 					<div class="input-box">
-						<input type="submit" class="submit" id="login_in" value="Ingresar" onclick="validarLogin()">
+						<input type="submit" class="submit" id="login_in" value="Ingresar">
 					</div>
 				</form>
 				<div class="two-col">
@@ -73,10 +75,11 @@
 					<header>Registrarse</header>
 				</div>
 				<!---inicio de etiqueta formulario para hacer el metodo post-->
-				<form action="http://localhost:3000/register" method="post">
+				<form id="registerForm" method="post" action="http://localhost:4000/register">
 					<div class="two-form">
 						<div class="input-box">
-							<input type="text" id="nombre" class="input-field" name="nombre" placeholder="nombre" required>
+							<input type="text" id="nombre" class="input-field" name="nombre" placeholder="nombre"
+								required>
 							<i class="bx bx-user"></i>
 						</div>
 						<div class="input-box">
@@ -105,21 +108,23 @@
 					</div>
 				</form>
 
-					<div class="two-col">
-						<div class="one">
-							<input type="checkbox" id="register-check" name="recordar">
-							<label for="register-check"> Recordar !</label>
-						</div>
-						<div class="two">
-							<label><a href="#">Terminos & Condiciones </a></label>
-						</div>
+				<div class="two-col">
+					<div class="one">
+						<input type="checkbox" id="register-check" name="recordar">
+						<label for="register-check"> Recordar !</label>
 					</div>
+					<div class="two">
+						<label><a href="#">Terminos & Condiciones </a></label>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<script src="../JS/Functions.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>
