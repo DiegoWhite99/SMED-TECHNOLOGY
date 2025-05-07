@@ -309,7 +309,7 @@ textarea {
 }
 
 button {
-  background-color: #ff6600;
+  background-color: #e65c00;
   color: white;
   padding: 10px;
   border: none;
@@ -430,11 +430,11 @@ footer {
 /*carrusel */
 .brand-carousel {
   width: 100%;
-  background-color: #ffffffa4;
   padding: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .carousel-container {
@@ -491,7 +491,7 @@ footer {
 /* proyectos */
 .proyectos {
   text-align: center;
-  padding: 50px 20px;
+  padding: 50px 40px;
   background-color: #f8f8f8;
 }
 
@@ -506,6 +506,7 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-bottom: 30px;
 }
 
 .galeria a {
@@ -557,6 +558,7 @@ footer {
 #tittle_fundadores {
   color: #0969e7;
   font-size: 35px;
+  margin-bottom: 25px;
 }
 
 .fundador {
@@ -592,14 +594,14 @@ footer {
   display: inline-block;
   margin-top: 10px;
   padding: 5px 10px;
-  background-color: #ff7f00;
+  background-color: #03297a;
   color: white;
   text-decoration: none;
   border-radius: 5px;
 }
 
 .fundador a:hover {
-  background-color: #e06b00;
+  background-color: #03297a;
 }
 
 /* contactanos */
