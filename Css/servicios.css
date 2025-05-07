@@ -348,7 +348,7 @@ body {
 
 .card {
   display: flex;
-  align-items: star;
+  align-items: start;
   padding: 20px;
   background: rgba(17, 17, 17, 0.486); /* Negro translúcido */
   border-radius: 70px;
