@@ -206,7 +206,7 @@ p {
   align-items: center;
   justify-content: space-between;
   padding: 80px;
-  background-color: rgba(0, 0, 0, 0.884);
+  background-color: #000;
   /* Fondo oscuro */
   color: white;
   font-size: 20PX;
