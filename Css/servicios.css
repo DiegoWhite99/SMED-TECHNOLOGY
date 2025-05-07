@@ -336,19 +336,19 @@ body {
   background: rgba(17, 17, 17, 0.486);
   padding: 60px 30px;
   border-radius: 30px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 30px rgba(240, 236, 236, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card-container {
   display: flex;
-  flex-direction: row-reverse;
-  gap: 10px;
+  flex-direction: row;
+  gap: 148px;
 }
 
 .card {
   display: flex;
-  align-items: start;
+  align-items: star;
   padding: 20px;
   background: rgba(17, 17, 17, 0.486); /* Negro translúcido */
   border-radius: 70px;
@@ -365,7 +365,7 @@ body {
 
 
 .card-icon {
-  padding: 10px;
+  padding: 20px;
   border-radius: 50%;
   border: 2px solid #e0e0e0;
   background-color: #ffffff;
@@ -404,8 +404,10 @@ body {
 /*SECTION FINAL*/
 
 .section-servicio-flujo {
+  margin-top: 30px;
   padding: 80px 20px;
   text-align: center;
+  border-radius: 30px;
   background-color: #111;
   color: rgba(255, 255, 255, 0.9);
 }
