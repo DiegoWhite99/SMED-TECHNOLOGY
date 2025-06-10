@@ -104,7 +104,7 @@ body {
 
 .hero_campaign {
   position: relative;
-  margin-top: 60px;
+  margin-top: 10px;
   max-width: 100%;
   border-radius: 24px;
   overflow: hidden;
@@ -116,7 +116,7 @@ body {
   width: 100%;
   max-width: 950px;
   border-radius: 24px;
-  object-fit: cover;
+  object-fit:fill;
 }
 
 /* Tarjeta de texto encima de la imagen */
