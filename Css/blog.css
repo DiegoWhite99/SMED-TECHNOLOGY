@@ -8,6 +8,20 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+/* Ajuste global */
+html {
+  font-size: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Imágenes siempre adaptables */
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 html,
 body {
@@ -670,4 +684,157 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background: linear-gradient(45deg, #ff4500, #ff7f50);
   transform: scale(1.05);
+}
+
+
+/* Teléfonos (máx 576px) */
+@media (max-width: 576px) {
+
+  /* NAV */
+  .nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-button {
+    margin-top: 10px;
+  }
+
+  /* HERO */
+  .hero {
+    height: auto;
+    padding: 4rem 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* ABOUT */
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  /* SERVICES */
+  .services {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .services-image {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  /* CARRUSEL */
+  .carousel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* PROYECTOS */
+  .galeria {
+    grid-template-columns: 1fr;
+  }
+
+  /* FUNDADORES */
+  .fundadores-container {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  /* CONTACTO */
+  .contacto-container form {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* FOOTER */
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+}
+
+
+/* Tablets (577px – 991px) */
+@media (min-width: 577px) and (max-width: 991px) {
+
+  /* NAV */
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  /* HERO */
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  /* ABOUT */
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* SERVICES */
+  .services {
+    flex-direction: column;
+  }
+
+  /* PROYECTOS */
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  /* FUNDADORES */
+  .fundadores-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Escritorios grandes (992px en adelante) */
+@media (min-width: 992px) {
+
+  .about-container,
+  .services {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem;
+  }
+
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .fundadores-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+  }
 }
