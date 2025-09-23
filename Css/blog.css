@@ -113,7 +113,7 @@ html, body {
 
 .about-image {
     flex-shrink: 0;
-    margin-left: 0;
+    margin-left: 100px;
     align-self: flex-start;
 }
 
@@ -160,11 +160,68 @@ html, body {
     color: black;
     border-radius: 10px;
 }
+/* ===== SECCIÓN SERVICIOS ===== */
+.services {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px;
+    background-color: #000;
+    color: white;
+    font-size: 20px;
+}
 
+.services-content {
+    max-width: 650px;
+}
+
+.services h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.service-item {
+    margin-bottom: 20px;
+}
+
+.service-item h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease-in-out;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.service-item p {
+    font-size: 20px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease-in-out;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #ffffff98;
+}
+
+.service-item #title3-services:hover {  
+    color: white;
+}
+
+.service-item #txt-services:hover {
+    background-color: rgba(240, 240, 240, 0.658);
+    color: rgb(0, 0, 0);
+}
+
+.services-image img {
+    max-width: 1000px;
+    height: 460px;
+    border-radius: 20px;
+    display: block;
+    margin-right: 150px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
 /* ===== CARRUSEL DE MARCAS ===== */
 .brand-carousel {
     width: 100%;
-    padding: 20px 0;
+    padding: 30px ;
     display: flex;
     justify-content: center;
     align-items: center;
