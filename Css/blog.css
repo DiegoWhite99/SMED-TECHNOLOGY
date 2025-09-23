@@ -13,7 +13,6 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
     background-image: url(../images/S-M-E-D.webp);
 }
 
@@ -43,7 +42,7 @@ html, body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow: hidden;
+    
 }
 
 .hero-bg {
@@ -166,13 +165,16 @@ html, body {
     align-items: center;
     justify-content: space-between;
     padding: 80px;
+    margin-bottom:0px;
     background-color: #000;
     color: white;
     font-size: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .services-content {
-    max-width: 650px;
+    max-width: 60%;
 }
 
 .services h2 {
@@ -186,7 +188,7 @@ html, body {
 
 .service-item h3 {
     font-size: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     transition: background-color 0.3s ease-in-out;
     padding: 5px 10px;
     border-radius: 10px;
@@ -216,121 +218,64 @@ html, body {
     border-radius: 20px;
     display: block;
     margin-right: 150px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 15px rgb(0, 0, 0);
 }
+
+
+
 /* ===== CARRUSEL DE MARCAS ===== */
 .brand-carousel {
-    width: 100%;
-    padding: 30px ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+  width: 100%;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  background: #111; /* opcional */
 }
 
-.carousel-container {
-    width: 80%;
-    overflow: hidden;
-    position: relative;
+.brand-carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
-.carousel {
-    display: flex;
-    animation: scroll 25s linear infinite;
-    width: 109%;
+.brand-track {
+  display: flex;
+  animation: scroll 25s linear infinite;
+  min-height: 100px; /* asegura que no colapse */
 }
 
-.carousel-item {
-    flex: 0 0 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.brand-slide {
+  flex: 0 0 auto;
+  padding: 0 30px;
 }
 
-.carousel-item img {
-    width: 150px;
-    height: auto;
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.185));
+.brand-slide img {
+  height: 60px;
+  object-fit: contain;
+  display: block;
 }
 
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-/* ===== SECCIÓN SERVICIOS ===== */
-.services {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 80px;
-    background-color: #000;
-    color: white;
-    font-size: 20px;
-}
-
-.services-content {
-    max-width: 650px;
-}
-
-.services h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.service-item {
-    margin-bottom: 20px;
-}
-
-.service-item h3 {
-    font-size: 20px;
-    margin-bottom: 5px;
-    transition: background-color 0.3s ease-in-out;
-    padding: 5px 10px;
-    border-radius: 10px;
-}
-
-.service-item p {
-    font-size: 20px;
-    margin-bottom: 5px;
-    transition: background-color 0.3s ease-in-out;
-    padding: 5px 10px;
-    border-radius: 10px;
-    color: #ffffff98;
-}
-
-.service-item #title3-services:hover {  
-    color: white;
-}
-
-.service-item #txt-services:hover {
-    background-color: rgba(240, 240, 240, 0.658);
-    color: rgb(0, 0, 0);
-}
-
-.services-image img {
-    max-width: 1000px;
-    height: 460px;
-    border-radius: 20px;
-    display: block;
-    margin-right: 150px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ===== SECCIÓN PROYECTOS ===== */
 .proyectos {
     text-align: center;
-    padding: 50px 40px;
+    padding: 1px 1px;
     background-color: #f8f8f8;
 }
 
 .proyectos h2 {
-    font-size: 2em;
-    color: #fffbfb;
+    font-size: 2.5em;
+    color: #0969e7;
     margin-bottom: 20px;
 }
 
@@ -616,5 +561,14 @@ footer {
     
     .footer-container div {
         margin: 20px 0;
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
     }
 }
