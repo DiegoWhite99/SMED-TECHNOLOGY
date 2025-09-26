@@ -1,106 +1,51 @@
-/**
- * Event listener que se ejecuta cuando el DOM está completamente cargado.
- * Verifica si existe un parámetro 'nombre' en la URL y muestra un mensaje
- * de bienvenida personalizado al usuario en el elemento con id 'mensaje-cliente'.
- * 
- * @event DOMContentLoaded
- * @listens DOMContentLoaded
- * @returns {void}
- */
-window.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const nombre = params.get("nombre");
-  if (nombre) {
-    const mensaje = document.getElementById("mensaje-cliente");
-    mensaje.textContent = `Bienvenido ${nombre} a tu servicio de mantenimiento.`;
-  }
-});
+// supportAdmin.js
 
-// document.getElementById('ingresar-btn').addEventListener('click', function(event) {
-//   document.getElementById("ocultar").style.display = "none";
-//   const nombre = document.getElementById('cliente-nombre').value.trim();
-//   const mensaje = document.getElementById('mensaje-cliente');
-//   const contenedor = document.getElementById('timeline-container');
+// Estados posibles
+const estados = ["Recepción", "Reparación", "Entregado"];
 
-//   if (nombre !== "") {
-//     mensaje.textContent = `Bienvenido ${nombre} a tu servicio de mantenimiento`;
-//     contenedor.classList.remove('hidden');
-//     document.getElementById('form-etapa1').classList.remove('hidden');
-//   } else {
-//     alert('Por favor ingresa tu nombre.');
-//   }
-// });
+// Cargar casos almacenados en localStorage
+function cargarCasosAdmin() {
+  const casos = JSON.parse(localStorage.getItem("casos")) || [];
+  const tabla = document.getElementById("tablaCasosAdmin");
+  tabla.innerHTML = "";
 
+  casos.forEach(caso => {
+    const fila = document.createElement("tr");
 
-// document.getElementById('descargar-pdf').addEventListener('click', () => {
-//   const element = document.getElementById('formulario-equipo');
+    fila.innerHTML = `
+      <td>${caso.id}</td>
+      <td>${caso.correo}</td>
+      <td>${caso.tipo}</td>
+      <td>${caso.marca}</td>
+      <td>${caso.serial}</td>
+      <td><strong>${caso.estado}</strong></td>
+      <td>
+        <button onclick="cambiarEstado(${caso.id})">➡️ Siguiente</button>
+      </td>
+    `;
 
-//   const opt = {
-//     margin: 0.5,
-//     filename: 'hoja-de-vida-dispositivo.pdf',
-//     image: { type: 'jpeg', quality: 0.98 },
-//     html2canvas: { scale: 2 },
-//     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-//   };
-
-//   html2pdf().set(opt).from(element).save();
-// });
-
-
-
-document.getElementById("descargar-pdf").addEventListener("click", async function () {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-
-  // Obtener los valores del formulario
-  const nombrePersona = document.getElementById("nombre-persona").value;
-  const documento = document.getElementById("documento").value;
-  const tipoDispositivo = document.getElementById("tipo-dispositivo").value;
-  const nombreEquipo = document.getElementById("nombre-equipo").value;
-  const marca = document.getElementById("marca").value;
-  const serial = document.getElementById("serial").value;
-  const estado = document.getElementById("estado").value;
-  const diagnostico = document.getElementById("diagnostico").value;
-  const autorizo = document.getElementById("autorizo-datos").checked ? "Sí" : "No";
-  const procedimiento = document.getElementById("acepto-procedimiento").checked ? "Sí" : "No";
-  const foto = document.getElementById("foto").files[0];
-
-  // Encabezado
-  doc.setFontSize(16);
-  doc.text("Hoja de Vida del Dispositivo", 20, 20);
-
-  // Tabla de datos
-  doc.autoTable({
-    startY: 30,
-    head: [["Campo", "Valor"]],
-    body: [
-      ["Nombre del cliente", nombrePersona],
-      ["Documento", documento],
-      ["Tipo de dispositivo", tipoDispositivo],
-      ["Nombre del equipo", nombreEquipo],
-      ["Marca", marca],
-      ["Serial", serial],
-      ["Estado", estado],
-      ["Primer diagnóstico", diagnostico],
-      ["Autorización de datos", autorizo],
-      ["Conformidad con procedimiento", procedimiento],
-    ],
-    styles: { fontSize: 10 }
+    tabla.appendChild(fila);
   });
+}
 
-  // Si hay una imagen, la agregamos
-  if (foto) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const imgData = e.target.result;
-      doc.addPage();
-      doc.setFontSize(14);
-      doc.text("Registro Fotográfico", 20, 20);
-      doc.addImage(imgData, "JPEG", 20, 30, 160, 120); // Ajusta tamaño si hace falta
-      doc.save("hoja-de-vida.pdf");
-    };
-    reader.readAsDataURL(foto);
-  } else {
-    doc.save("hoja-de-vida.pdf");
+// Cambiar estado del caso
+function cambiarEstado(id) {
+  let casos = JSON.parse(localStorage.getItem("casos")) || [];
+  let caso = casos.find(c => c.id === id);
+
+  if (caso) {
+    let index = estados.indexOf(caso.estado);
+    if (index < estados.length - 1) {
+      caso.estado = estados[index + 1]; // Avanzar al siguiente estado
+    } else {
+      alert("✅ El caso ya está en estado final: Entregado");
+    }
   }
-});
+
+  // Guardar cambios en localStorage
+  localStorage.setItem("casos", JSON.stringify(casos));
+  cargarCasosAdmin();
+}
+
+// Inicializar
+document.addEventListener("DOMContentLoaded", cargarCasosAdmin);

@@ -1,138 +1,102 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smed Support</title>
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <link rel="icon" href="/icons/icon_principal.webp" type="image/png" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../Css/nav.css" />
-  <link rel="stylesheet" href="../Css/support_user.css" />
+  <title>Smed Support - Registro</title>
+  <link rel="stylesheet" href="/Css/support_user.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" href="/icons/icon_principal.webp" type="image/png">
+  <link rel="stylesheet" href="../Css/blog.css">
+  <link rel="stylesheet" href="../Css/nav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
-  <nav class="nav">
-    <div class="nav-logo">
-      <p>Smed Support </p>
-    </div>
-    <div class="nav-menu" id="navMenu">
-      <ul>
 
-        <li><a href="blog.html" class="link">¿Quienes somos?</a></li>
-        <li><a href="servicios.html" class="link">Servicios</a></li>
-        <li><a href="tienda.html" class="link">Tienda</a></li>
-        <li><a href="experiencias.html" class="link">Blog</a></li>
-      </ul>
-    </div>
-    <div class="nav-button">
-      <button class="btn white-btn" id="loginbtn" onclick="location.href='login.html';">
-        Inicio
-      </button>
-    </div>
-  </nav>
-
-  <main>
-    <section class="smed-support-hero">
-      <div class="hero-content">
-        <h1 class="hero-title"> Hola usuario Bievenido a <span>SMED SUPPORT</span></h1>
-        <p class="hero-subtitle">Aquí tus dispositivos tienen</p>
-        <p class="hero-subtitle-bold">una segunda oportunidad ✨</p>
-
-
-        <div id="timeline-container" class="timeline-container">
-          <h2 class="timeline-title" id="mensaje-cliente">
-            Inicia Proceso De Registro
-          </h2>
-
-          <div class="timeline">
-            <div class="timeline-step active" id="step1">
-              <div class="step-icon">
-                <i class="fas fa-clipboard-list"></i>
-              </div>
-              <p>Recepción</p>
-            </div>
-            <div class="timeline-step" id="step2">
-              <div class="step-icon"><i class="fas fa-tools"></i></div>
-              <p>Reparación</p>
-            </div>
-            <div class="timeline-step" id="step3">
-              <div class="step-icon"><i class="fas fa-box-open"></i></div>
-              <p>Entrega</p>
-            </div>
-          </div>
-
-          <div id="form-etapa1" class="form-section">
-            <p><strong>Datos del proceso </strong></p>
-            <form id="formulario-equipo">
-              <h3>Proceso ID:</h3>
-
-              <div class="form-row">
-                <div class="form-floating mb-3">
-                  <div id="nombre-persona" class="form-control" readonly>user@example.com</div>
-                  <label for="floatingInput">Correo</label>
-                </div>
-                <div class="form-floating">
-                  <div id="documento" class="form-control" readonly>10293883</div>
-                  <label for="floatingInput">Documento</label>
-                </div>
-              </div>
-
-              <div class="form-floating">
-                <div id="tipo-dispositivo" class="form-control" readonly>Laptop</div>
-                <label for="tipo-dispositivo">Tipo de dispositivo</label>
-              </div>
-
-              <div class="form-row">
-                <div class="form-floating mb-3">
-                  <div id="Marca" class="form-control" readonly>Marca Acer Nitroxxxx</div>
-                  <label for="floatingInput">Marca</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <div id="serial" class="form-control"  readonly>10Pfjoe</div>
-                  <label for="floatingInput">Serial</label>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-floating">
-                  <div id="estado" class="form-control"  readonly>En reparacion</div>
-                  <label for="estado">Estado del equipo</label>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="formFileMultiple" class="form-label">Registro fotográfico</label>
-                <div id="foto" class="form-control"  readonly>
-                  <img src="/images/productos/ssd.webp" alt="regitro fotografico">
-                </div>
-              </div>
-              <div class="form-floating" style="margin-top: 1rem">
-                <div id="diagnostico" class="form-control" style="height: 150px; overflow-y: auto;" readonly>
-                  Diagnostico del equipo del proceso nombrado id: 129jouw se registra fallo de la board por falta de uso
-                </div>
-                <label for="floatingTextarea">Diagnóstico</label>
-              </div>
-              <div class="button_Next"> 
-                <button class="btn-Next btn-Next1">
-                  <span>Click!</span>
-                  <span>Read More</span>
-                </button>
-
-              </div>
-            </form>
-          </div>
-        </div>
+<div class="wrapper">
+    <!-- NAVBAR -->
+    <nav class="nav">
+      <div class="nav-logo">
+        <p>Smed Technology</p>
       </div>
-    </section>
+      <div class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="blog.html" class="link">¿Quienes somos?</a></li>
+          <li><a href="servicios.html" class="link">Servicios</a></li>
+          <li><a href="tienda.html" class="link">Tienda</a></li>
+          <li><a href="experiencias.html" class="link">Experiencias</a></li>
+        </ul>
+      </div>
+      <div class="nav-button">
+        <button class="btn btn-outline-light" id="loginbtn"
+          onclick="location.href='../html/login.html';">Ingresar</button>
+      </div>
+      <div class="nav-menu-btn">
+        <i class="bx bx-menu" onclick="MyMenuFuction()"></i>
+      </div>
+    </nav>
+
+  <!-- HERO SECTION -->
+  <main class="smed-support-hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Bienvenido a <span>SMED SUPPORT</span></h1>
+      <p class="hero-subtitle">Registra tu equipo de forma fácil</p>
+
+      <!-- Selección de tipo de registro -->
+      <div class="opciones-registro">
+        <button onclick="mostrarFormulario('cliente')" class="ingresar-btn">Soy Cliente</button>
+        <button onclick="mostrarFormulario('asistente')" class="ingresar-btn">Soy Asistente</button>
+      </div>
+
+      <!-- Formulario Cliente -->
+      <form id="formCliente" class="hidden">
+        <h3>Registro Cliente</h3>
+        <input type="email" class="nombre-input" id="correoCliente" placeholder="Correo" required />
+        <input type="text" class="nombre-input" id="docCliente" placeholder="Documento" required />
+        <select class="form-select" id="tipoCliente" required>
+          <option value="">-- Tipo de dispositivo --</option>
+          <option>PC</option>
+          <option>Laptop</option>
+          <option>Móvil</option>
+        </select>
+        <textarea class="form-control" id="descCliente" placeholder="Describe el problema" rows="3"></textarea>
+        <button type="button" class="ingresar-btn" onclick="registrarCaso('cliente')">Registrar</button>
+      </form>
+
+      <!-- Login Asistente -->
+      <form id="formLoginAsistente" class="hidden">
+        <h3>Login de Asistente</h3>
+        <input type="text" id="userAsistente" class="nombre-input" placeholder="Usuario" required />
+        <input type="password" id="passAsistente" class="nombre-input" placeholder="Contraseña" required />
+        <button type="button" class="ingresar-btn" onclick="loginAsistente()">Ingresar</button>
+        <p id="loginError" class="error-msg hidden">Usuario o contraseña incorrectos</p>
+      </form>
+
+      <!-- Formulario Asistente -->
+      <form id="formAsistente" class="hidden">
+        <h3>Registro en Laboratorio</h3>
+        <input type="email" class="nombre-input" id="correoAsistente" placeholder="Correo" required />
+        <input type="text" class="nombre-input" id="docAsistente" placeholder="Documento" required />
+        <select class="form-select" id="tipoAsistente" required>
+          <option value="">-- Tipo de dispositivo --</option>
+          <option>PC</option>
+          <option>Laptop</option>
+          <option>Móvil</option>
+        </select>
+        <input type="text" class="nombre-input" id="marca" placeholder="Marca" />
+        <input type="text" class="nombre-input" id="serial" placeholder="Serial" />
+        <textarea class="form-control" id="descAsistente" placeholder="Diagnóstico inicial" rows="3"></textarea>
+        <button type="button" class="ingresar-btn" onclick="registrarCaso('asistente')">Registrar</button>
+      </form>
+
+      <!-- Resultado del registro -->
+      <div id="resultado" class="hidden"></div>
+    </div>
   </main>
+</div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <script src="/JS/supporUsser.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="module" src="../JS/support.js"></script>
 </body>
-
 </html>

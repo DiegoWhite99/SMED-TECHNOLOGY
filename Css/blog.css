@@ -104,32 +104,31 @@ html, body {
 
 .about-container {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    padding: 20px;
-    flex-direction: row;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 120px;
 }
 
 .about-image {
-    flex-shrink: 0;
-    margin-left: 100px;
-    align-self: flex-start;
+ flex: 1 1 300px; /* ocupa espacio mínimo de 300px, flexible */
+ max-width: 500px;
 }
 
 .about-image img {
-    width: 430%;
-    max-width: 800px;
-    height: 400px;
-    border-radius: 20px;
+    width: 100%;
+    height: 350px;
+    border-radius: 50px 10px;
     display: block;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 15px rgba(255, 255, 254, 0.425);
 }
 
 .about-text {
-    font-size: 20px;
-    color: white;
+    flex: 2 1 400px; /* ocupa más espacio que la imagen */
     max-width: 700px;
-    margin-right: 50px;
+    color: white;
+    font-size: 20px;
 }
 
 .about-text h2 {
@@ -242,17 +241,17 @@ html, body {
 
 .brand-track {
   display: flex;
-  animation: scroll 25s linear infinite;
+  animation: scroll 30s linear infinite;
   min-height: 100px; /* asegura que no colapse */
 }
 
 .brand-slide {
   flex: 0 0 auto;
-  padding: 0 30px;
+  padding: 0 200px;
 }
 
 .brand-slide img {
-  height: 60px;
+  height: 70px;
   object-fit: contain;
   display: block;
 }
@@ -554,6 +553,7 @@ footer {
 
 /* ===== MEDIA QUERIES (RESPONSIVO) ===== */
 @media (max-width: 768px) {
+    
     .footer-container {
         flex-direction: column;
         text-align: center;
@@ -571,4 +571,132 @@ footer {
     100% {
         transform: translateX(-100%);
     }
+}
+
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets (pantallas medianas: ≤ 1024px) */
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .about-container,
+  .services {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .about-image,
+  .services-image {
+    margin: 20px auto;
+  }
+
+  .about-image img,
+  .services-image img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+  }
+
+  .services-content {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .brand-slide {
+    padding: 0 100px;
+  }
+}
+
+/* Móviles (pantallas pequeñas: ≤ 768px) */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 60px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .about-text {
+    margin: 20px auto;
+    font-size: 16px;
+  }
+
+  .services {
+    padding: 40px 20px;
+    font-size: 18px;
+  }
+
+  .services-image img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .brand-slide {
+    padding: 0 50px;
+  }
+
+  .proyectos h2 {
+    font-size: 2rem;
+  }
+
+  .proyecto {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .fundadores-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Extra pequeños (≤ 480px) */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .cta .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .about-text {
+    font-size: 14px;
+  }
+
+  .service-item h3 {
+    font-size: 18px;
+  }
+
+  .service-item p {
+    font-size: 14px;
+  }
+
+  .brand-slide {
+    padding: 0 30px;
+  }
+
+  .proyectos h2 {
+    font-size: 1.8rem;
+  }
+
+  #tittle_fundadores {
+    font-size: 28px;
+  }
 }

@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
-
+/* ===== RESET GENERAL ===== */
 * {
   margin: 0;
   padding: 0;
@@ -8,247 +6,100 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* ===== ESTILO GENERAL ===== */
 body {
-  background-image: url(../images/S-M-E-D.webp);
-  color: #fff;
-}
-
-.smed-support-hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  text-align: center;
-  background-color: #0f172a;
-  color: #fff;
-  padding: 2rem;
-}
-
-.hero-content {
-  margin-top: 45px;
-  max-width: 800px;
-  width: 100%;
-}
-
-.hero-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero-title span {
-  color: #38bdf8;
-}
-
-.hero-subtitle .hero-subtitle-bold {
-  font-size: x-large;
-  color: #cbd5e1;
-  margin-bottom: 2rem;
-}
-
-.hero-subtitle-bold {
-  font-weight: 650;
-}
-
-/* ==========================
-   Formulario
-============================= */
-.form-check .form-check-input {
-  float: none;
-}
-
-.form-section {
-  background-color: #E3DAC9;
-  padding: 1rem;
-  border-radius: 10px;
-  margin-top: 1rem;
-}
-
-.form-floating {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.form-floating>div {
-  flex: 1;
-}
-
-.form-floating label {
-  color: #38bdf8;
-}
-
-.btn-primary {
-  background-color: #38bdf8;
-  color: #0f172a;
-}
-
-.btn-primary:hover {
-  background-color: #0ea5e9;
-  color: #0f172a;
-}
-
-.form-control {
-  background-color: #334155;
-  color: white;
-}
-
-.form-select {
-  background-color: #334155;
-  color: white;
-  border: 1px solid #ced4da;
-}
-
-input[type="file"].form-control {
-  background-color: #334155;
-  border: 1px solid #ced4da;
-}
-
-label[for="floatingInput"] {
-  color: #38bdf8;
-}
-/* ==========================
-   Input de nombre del cliente
-============================= */
-.nombre-input {
-  padding: 0.8rem;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: none;
-  margin-bottom: 1rem;
-  width: 100%;
-  max-width: 400px;
-  background-color: #1e293b;
-  color: #e2e8f0;
-  outline: none;
-}
-
-.nombre-input::placeholder {
-  color: #94a3b8;
-}
-
-/* ==========================
-   Botón ingresar
-============================= */
-.ingresar-btn {
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  background-color: #38bdf8;
-  color: #0f172a;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.ingresar-btn:hover {
-  background-color: #0ea5e9;
-}
-
-/* ==========================
-   Contenedor de Timeline
-============================= */
-.timeline-container {
-  margin-top: 2rem;
-  background-color: #1e293b;
-  padding: 2rem;
-  border-radius: 12px;
-  color: #e2e8f0;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #334155;
-}
-
-.timeline-title {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: #38bdf8;
-  font-weight: 600;
-}
-
-/* Timeline visual */
-.timeline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  border-top: 2px solid #38bdf8;
-  border-bottom: 2px solid #38bdf8;
-  padding: 1rem 0;
-}
-
-.timeline-step {
-  flex: 1;
-  text-align: center;
-  color: #cbd5e1;
-  transition: color 0.3s ease;
-}
-
-.timeline-step.active {
-  color: #38bdf8;
-}
-
-.step-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-/* ==========================
-   Formulario oculto para Etapa 1
-============================= */
-.form-section {
-  background-color: #0f172a;
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid #334155;
-  margin-top: 1rem;
-  color: #8e949c;
-}
-
-/* ==========================
-   Utilidad para ocultar
-============================= */
-.hidden {
-  display: none;
-}
-
-form {
-  background-color: #1e293b;
-  padding: 2rem;
-  border-radius: 12px;
-  color: #fff;
-  max-width: 900px;
-  margin: 2rem auto 0 auto;
-  /* box-shadow: 0 0 10px rgba(0,0,0,0.5); */
-}
-
-form h3 {
-  margin-bottom: 1.5rem;
-  color: #38bdf8;
-}
-
-.form-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  gap: 1rem;
-}
-
-.form-row div {
-  flex: 1;
+  background: #0d0d0d;
+  color: #f1f1f1;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
-input, select {
-  padding: 0.7rem;
+header.header {
+  background: linear-gradient(90deg, #1e1e2f, #111122);
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #00d4ff;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #00d4ff;
+}
+
+.container {
+  flex: 1;
+  padding: 30px;
+}
+
+/* ===== SECCIÓN CASOS ===== */
+.casos-admin h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #00d4ff;
+}
+
+.tabla-container {
+  background: #1a1a2e;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+thead {
+  background: #111122;
+}
+
+thead th {
+  padding: 12px;
+  font-size: 0.95rem;
+  color: #00d4ff;
+}
+
+tbody tr {
+  border-bottom: 1px solid #2c2c3e;
+}
+
+tbody td {
+  padding: 12px;
+  font-size: 0.9rem;
+}
+
+tbody tr:hover {
+  background: #22223a;
+}
+
+/* ===== BOTONES ===== */
+button {
+  padding: 8px 15px;
   border: none;
   border-radius: 8px;
-  margin-top: 0.5rem;
-  background-color: #334155;
-  color: #fff;
+  background: #00d4ff;
+  color: #0d0d0d;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-input::placeholder {
-  color: #94a3b8;
+button:hover {
+  background: #00aacc;
+  transform: scale(1.05);
+}
+
+/* ===== FOOTER ===== */
+footer.footer {
+  background: #111122;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.85rem;
+  color: #888;
+  border-top: 2px solid #00d4ff;
 }
