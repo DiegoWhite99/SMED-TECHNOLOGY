@@ -431,7 +431,6 @@ html, body {
 .mision_tittle:hover,
 .vision_tittle:hover {
   color: #0066ff;
-  text-decoration:underline;
   transform: translateY(-3px);
   letter-spacing: 1.5px;
   text-shadow: 0 0 8px rgba(0, 102, 255, 0.4);
@@ -453,7 +452,21 @@ html, body {
   #vison_mison {
     flex-direction: column;
   }
+  .body_mision,
+  .body_vison{
+    text-align: center;
+  }
+
+.mision:hover,
+.vision:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 255, 0.25),
+    0 0 35px rgba(255, 255, 255, 0.7) inset;
+    border-radius: 50px 10px;
 }
+}
+
 /* ===== SECCIÓN CONTACTO ===== */
 #contacto {
     text-align: center;
@@ -635,6 +648,16 @@ footer {
     .footer-container div {
         margin: 20px 0;
     }
+
+    .footer-links h3 {
+    text-align: center;
+}
+
+    .footer-links ul {
+    display: flex;
+    flex-direction: column; /* que los <li> queden en columna */
+    align-items: center;    /* centra horizontal */
+    text-align: center;     /* centra el texto dentro de los <li> */
 }
 
 @keyframes scroll {
@@ -644,6 +667,7 @@ footer {
     100% {
         transform: translateX(-100%);
     }
+}
 }
 
 
@@ -682,6 +706,8 @@ footer {
   .brand-slide {
     padding: 0 100px;
   }
+
+  
 }
 
 /* Móviles (pantallas pequeñas: ≤ 768px) */
@@ -729,9 +755,11 @@ footer {
   }
 
   .fundadores-container {
-    flex-direction: column;
+    flex-direction: center;
     gap: 20px;
   }
+
+   
 }
 
 /* Extra pequeños (≤ 480px) */
@@ -772,4 +800,5 @@ footer {
   #tittle_fundadores {
     font-size: 28px;
   }
+   
 }
