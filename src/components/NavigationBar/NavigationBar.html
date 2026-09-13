@@ -1,60 +1,89 @@
-<header>
-  <nav class="navbar-smed">
-    <div class="nav-logo">
-      <a href="/nosotros" class="nav-brand">
-        <img src="/src/assets/images/SmedOfficial.webp" alt="Logo SMED Technology" id="logo_smed" />
-        <div class="nav-brand-text notranslate" translate="no">
+<header class="site-header">
+  <nav class="navbar-smed" aria-label="Principal">
+    <div class="nav-inner">
+      <a href="/nosotros" class="nav-brand" aria-label="SMED Technology">
+        <img src="/src/assets/images/SmedOfficial.webp" alt="" id="logo_smed" />
+        <span class="nav-brand-text notranslate" translate="no">
           <span>SMED</span>
           <p>Technology</p>
-        </div>
+        </span>
       </a>
-    </div>
-    <div class="nav-menu" id="navMenu">
-      <ul>
-        <li><a href="/nosotros" class="link">Nosotros</a></li>
-        <li class="has-submenu">
-          <div class="nav-link-group">
-            <a href="/servicios" class="link">Servicios</a>
-            <button class="submenu-toggle" type="button" aria-label="Mostrar subservicios" aria-expanded="false">
-              <i class='bx bx-chevron-down'></i>
+
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li class="has-submenu">
+            <button class="nav-item submenu-toggle" type="button" aria-expanded="false">
+              <span data-i18n="nav.services">Servicios</span><i class="bx bx-chevron-down"></i>
             </button>
-          </div>
-          <ul class="submenu">
-            <li><a href="/desarrollo" class="sublink" data-i18n="nav.sub.dev">Desarrollo</a></li>
-            <li><a href="/redes" class="sublink" data-i18n="nav.sub.networks">Redes & Infraestructura</a></li>
-            <li><a href="/cloud" class="sublink" data-i18n="nav.sub.cloud">Cloud</a></li>
-            <li><a href="/soporte" class="sublink" data-i18n="nav.sub.support">Soporte</a></li>
-            <li><a href="/asesorias" class="sublink" data-i18n="nav.sub.advisory">Asesorías</a></li>
-          </ul>
-        </li>
-        <li><a href="https://blog.smedtech.com.co/" class="link" target="_blank" rel="noopener" data-i18n="nav.blog">Blog</a></li>
-        <!-- <li><a href="/tienda" class="link">Tienda</a></li>
-        <li>
-          <a href="/experiencias" class="link">Experiencias</a>
-        </li> -->
-      </ul>
-    </div>
-    <div class="nav-button">
-      <a class="btn" href="/asesorias#sl-contacto" data-i18n="nav.cta">Hablemos</a>
-    </div>
-    <!-- Botones de login y registro -->
-    <div id="BotonesSesion"></div>
-    <!-- Barra Buscar -->
-    <div id="Buscar"></div>
-    <!-- Botón de cambio de idioma -->
-    <button class="lang-toggle" id="langToggle" aria-label="Change language">
-      <i class="bx bx-globe"></i>
-      <span id="langLabel">EN</span>
-    </button>
-    <!-- Botón de cambio de tema -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-      <i class="bx bx-moon" id="themeIcon"></i>
-    </button>
-    <!-- Boton de menu desplegable para móviles -->
-    <div class="botonHamburgesa" id="botonHamburgesa">
-      <span></span>
-      <span></span>
-      <span></span>
+            <div class="submenu mega">
+              <div class="mega-inner">
+                <div class="mega-main">
+                  <p class="mega-kicker" data-i18n="nav.mega.services">Líneas de servicio</p>
+                  <ul class="mega-grid">
+                    <li><a class="sublink" href="/desarrollo"><span class="mega-icon"><i class="bx bx-code-alt"></i></span><span class="mega-text"><strong data-i18n="nav.sub.dev">Desarrollo</strong><small data-i18n="nav.desc.dev">Aplicaciones web y software a medida.</small></span></a></li>
+                    <li><a class="sublink" href="/redes"><span class="mega-icon"><i class="bx bx-network-chart"></i></span><span class="mega-text"><strong data-i18n="nav.sub.networks">Redes &amp; Infraestructura</strong><small data-i18n="nav.desc.networks">Conectividad, servidores e infraestructura.</small></span></a></li>
+                    <li><a class="sublink" href="/cloud"><span class="mega-icon"><i class="bx bx-cloud"></i></span><span class="mega-text"><strong data-i18n="nav.sub.cloud">Cloud</strong><small data-i18n="nav.desc.cloud">Entornos cloud pensados para la continuidad.</small></span></a></li>
+                    <li><a class="sublink" href="/soporte"><span class="mega-icon"><i class="bx bx-wrench"></i></span><span class="mega-text"><strong data-i18n="nav.sub.support">Soporte</strong><small data-i18n="nav.desc.support">Diagnóstico, mantenimiento y soporte remoto.</small></span></a></li>
+                    <li><a class="sublink" href="/asesorias"><span class="mega-icon"><i class="bx bx-conversation"></i></span><span class="mega-text"><strong data-i18n="nav.sub.advisory">Asesorías</strong><small data-i18n="nav.desc.advisory">Acompañamiento en decisiones técnicas.</small></span></a></li>
+                  </ul>
+                  <a class="mega-all" href="/servicios"><span data-i18n="nav.allServices">Ver todos los servicios</span> <i class="bx bx-right-arrow-alt"></i></a>
+                </div>
+                <a class="mega-feature" href="/nosotros#trabajo">
+                  <img src="/src/assets/images/projects/smed-bakery.png" alt="" loading="lazy" />
+                  <span class="mega-feature-tag" data-i18n="work.status">En producción</span>
+                  <strong>SMED Bakery</strong>
+                  <small data-i18n="nav.feature.bakery">Plataforma para digitalizar panaderías.</small>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li class="has-submenu">
+            <button class="nav-item submenu-toggle" type="button" aria-expanded="false">
+              <span data-i18n="nav.company">Empresa</span><i class="bx bx-chevron-down"></i>
+            </button>
+            <div class="submenu mega">
+              <div class="mega-inner">
+                <div class="mega-main">
+                  <p class="mega-kicker" data-i18n="nav.company">Empresa</p>
+                  <ul class="mega-grid mega-grid--2">
+                    <li><a class="sublink" href="/nosotros"><span class="mega-icon"><i class="bx bx-buildings"></i></span><span class="mega-text"><strong data-i18n="nav.about">Nosotros</strong><small data-i18n="nav.desc.about">Quiénes somos y qué nos mueve.</small></span></a></li>
+                    <li><a class="sublink" href="/nosotros#trabajo"><span class="mega-icon"><i class="bx bx-rocket"></i></span><span class="mega-text"><strong data-i18n="work.kicker">Trabajo real</strong><small data-i18n="nav.desc.work">Productos que están en producción.</small></span></a></li>
+                    <li><a class="sublink" href="/nosotros#proceso"><span class="mega-icon"><i class="bx bx-git-branch"></i></span><span class="mega-text"><strong data-i18n="proc.kicker">Cómo trabajamos</strong><small data-i18n="nav.desc.process">Diagnóstico, arquitectura, construcción y operación.</small></span></a></li>
+                    <li><a class="sublink" href="/nosotros#fundadores"><span class="mega-icon"><i class="bx bx-group"></i></span><span class="mega-text"><strong data-i18n="founders.h2">Equipo fundador</strong><small data-i18n="nav.desc.team">Desarrollo, operación y estrategia.</small></span></a></li>
+                  </ul>
+                </div>
+                <a class="mega-feature mega-feature--cta" href="/asesorias#sl-contacto">
+                  <span class="mega-feature-tag" data-i18n="nav.contact">Contacto</span>
+                  <strong data-i18n="nav.feature.ctaTitle">Hablemos de tu proyecto</strong>
+                  <small data-i18n="nav.feature.ctaText">Te proponemos una ruta técnica clara, sin compromiso.</small>
+                  <span class="mega-feature-link"><span data-i18n="nav.cta">Hablemos</span> <i class="bx bx-right-arrow-alt"></i></span>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li><a class="nav-item link" href="https://blog.smedtech.com.co/" target="_blank" rel="noopener" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav-item link" href="/asesorias#sl-contacto" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+        <a class="nav-cta nav-cta--mobile" href="/asesorias#sl-contacto"><span data-i18n="nav.cta">Hablemos</span> <i class="bx bx-right-arrow-alt"></i></a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Login/tienda inyectan aquí sus botones y buscador -->
+        <div id="BotonesSesion"></div>
+        <div id="Buscar"></div>
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Change language">
+          <i class="bx bx-globe"></i><span id="langLabel">EN</span>
+        </button>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema">
+          <i class="bx bx-moon" id="themeIcon"></i>
+        </button>
+        <a class="nav-cta" href="/asesorias#sl-contacto"><span data-i18n="nav.cta">Hablemos</span> <i class="bx bx-right-arrow-alt"></i></a>
+        <button class="botonHamburgesa" id="botonHamburgesa" type="button" aria-label="Menú" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 </header>

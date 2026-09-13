@@ -41,19 +41,94 @@
 
     <!-- 1. Hero -->
     <section class="home-section hero" data-scene>
-      <div class="shell" data-reveal-group="140">
-        <span class="kicker" data-reveal>SMED Technology</span>
-        <h1 data-i18n="hero.h1" data-reveal>Tu operación tecnológica no debería depender de cinco proveedores distintos.</h1>
+      <canvas class="hero-ribbon" aria-hidden="true"></canvas>
+      <div class="hero-glow hero-glow--one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow--two" aria-hidden="true"></div>
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="hero-marquee-track">
+          <span data-i18n="hero.marquee">Software · Soporte · Redes · Cloud ·</span>
+          <span data-i18n="hero.marquee">Software · Soporte · Redes · Cloud ·</span>
+        </div>
+      </div>
+
+      <div class="shell hero-stage" data-reveal-group="120">
+        <span class="kicker" data-i18n="hero.kicker" data-reveal>Software · Soporte · Redes</span>
+
+        <div class="hero-title-wrap">
+          <h1 class="hero-title" data-reveal="lines">
+            <span class="h-line"><span data-i18n="hero.l1">Tu operación tecnológica</span></span>
+            <span class="h-line"><span data-i18n="hero.l2">no debería depender</span></span>
+            <span class="h-line h-line--inset"><span><span class="h-group" aria-hidden="true">(<span class="h-avatars"><img src="/src/assets/images/Team/thumb-silvio.webp" alt="" /><img src="/src/assets/images/Team/thumb-diego.webp" alt="" /><img src="/src/assets/images/Team/thumb-cristian.webp" alt="" /></span><span class="h-badge"><img src="/src/assets/images/SmedOfficial.webp" alt="" /></span>)</span> <span data-i18n="hero.l3">de cinco</span></span></span>
+            <span class="h-line"><span data-i18n="hero.l4">proveedores distintos.</span></span>
+          </h1>
+          <p class="hero-note" data-i18n="hero.note" data-reveal>Desarrollo, soporte e infraestructura en un solo equipo, del diagnóstico a la operación.</p>
+          <div class="hero-orbit" aria-hidden="true" data-reveal>
+            <svg viewBox="0 0 120 120">
+              <defs><path id="heroOrbitPath" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" /></defs>
+              <text><textPath href="#heroOrbitPath" data-i18n="hero.badge">SMED Technology · Desde 2023 · Bogotá ·</textPath></text>
+            </svg>
+            <img src="/src/assets/images/SmedOfficial.webp" alt="" />
+          </div>
+        </div>
+
         <div class="hero-row" data-reveal>
-          <p class="hero-lead" data-i18n="hero.p">Reunimos desarrollo de software, soporte técnico e infraestructura de redes en un mismo equipo, para que dejes de coordinar entre proveedores y empieces a construir con continuidad.</p>
           <div class="hero-actions">
             <a href="/servicios" class="btn-smed btn-smed-primary" data-i18n="hero.cta1">Conoce nuestros servicios</a>
             <a href="#fundadores" class="btn-smed btn-smed-secondary" data-i18n="hero.cta2">Conoce al equipo</a>
           </div>
+          <p class="hero-tagline"><span class="hero-dot"></span><span data-i18n-html="hero.tagline">Un solo equipo: <strong>desarrollo, soporte y redes.</strong></span></p>
         </div>
-        <figure class="hero-media" data-reveal="tilt">
-          <img src="/src/assets/images/team_SMED.jpeg" alt="Equipo de SMED Technology en reunión de trabajo" />
-        </figure>
+
+        <div class="hero-bottom">
+          <div class="hero-col hero-col--left" data-reveal-group="120">
+            <div class="h-card h-card--profile" data-reveal="float">
+              <img src="/src/assets/images/Team/thumb-diego.webp" alt="Diego Castelblanco" />
+              <div class="h-profile-text">
+                <strong>Diego Castelblanco</strong>
+                <span data-i18n="founders.diego.cargo">CEO — Gerente de Desarrollo</span>
+              </div>
+              <a class="h-icon-btn" href="https://www.linkedin.com/in/diegowhite99/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+            </div>
+            <div class="h-card-pair">
+              <a class="h-card h-card--mini" href="#trabajo" data-reveal="float">
+                <span class="h-chip h-chip--strong"><i class="bx bx-store"></i> SMED Bakery</span>
+                <span class="h-card-text" data-i18n="work.bakery.sector">Sector: panaderías y food service</span>
+                <span class="h-status mono" data-i18n="work.status">En producción</span>
+              </a>
+              <a class="h-card h-card--mini" href="#trabajo" data-reveal="float">
+                <span class="h-chip h-chip--strong"><i class="bx bx-dumbbell"></i> SMED Sports</span>
+                <span class="h-card-text" data-i18n="work.sports.sector">Sector: gimnasios y centros deportivos</span>
+                <span class="h-status mono" data-i18n="work.status">En producción</span>
+              </a>
+            </div>
+            <div class="hero-social" data-reveal>
+              <a href="https://www.facebook.com/profile.php?id=61558691450269" target="_blank" rel="noopener" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://x.com/Smed_Technology" target="_blank" rel="noopener" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.514l-5.106-6.694-5.828 6.694H2.42l7.723-8.835L1.254 2.25h6.554l4.882 6.467 5.634-6.467zM17.15 18.75h1.828L6.122 4.069H4.231l12.919 14.681z"/></svg></a>
+              <a href="https://www.instagram.com/smed_technology/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.tiktok.com/@smedtechnology" target="_blank" rel="noopener" aria-label="TikTok"><i class="bx bxl-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="hero-col hero-col--right" data-reveal-group="120">
+            <nav class="hero-index" data-reveal>
+              <a href="#capacidades"><span data-i18n="cap.kicker">Capacidades</span><em class="mono">/ 01</em><span class="h-dots"><i></i><i></i><i></i></span><i class="bx bx-right-arrow-alt"></i></a>
+              <a href="#trabajo"><span data-i18n="work.kicker">Trabajo real</span><em class="mono">/ 02</em><span class="h-dots"><i></i><i></i><i></i></span><i class="bx bx-right-arrow-alt"></i></a>
+              <a href="#fundadores"><span data-i18n="founders.h2">Equipo fundador</span><em class="mono">/ 03</em><span class="h-dots"><i></i><i></i><i></i></span><i class="bx bx-right-arrow-alt"></i></a>
+            </nav>
+            <div class="h-card" data-reveal="float">
+              <div class="h-card-head"><span class="h-card-icon"><i class="bx bx-code-alt"></i></span><strong>SMED Software</strong></div>
+              <p data-i18n="hero.card1.p">Aplicaciones web y software a medida, del diseño de la arquitectura al despliegue.</p>
+              <div class="h-chips"><span class="h-chip">Web</span><span class="h-chip">SaaS</span><span class="h-chip">APIs</span></div>
+            </div>
+            <div class="h-card" data-reveal="float">
+              <div class="h-card-head"><span class="h-card-icon"><i class="bx bx-network-chart"></i></span><strong data-i18n="hero.card2.title">Soporte y redes</strong></div>
+              <p data-i18n="hero.card2.p">Mantenimiento, conectividad y cloud para que tu operación no se detenga.</p>
+              <div class="h-chips"><span class="h-chip" data-i18n="cap.support.chip3">Soporte remoto</span><span class="h-chip" data-i18n="cap.net.chip1">Redes</span><span class="h-chip">Cloud</span></div>
+            </div>
+          </div>
+        </div>
+
+        <a class="hero-more" href="#capacidades" data-reveal><span data-i18n="hero.more">Descubre más</span><i class="bx bx-chevron-down"></i></a>
       </div>
     </section>
 
@@ -364,6 +439,9 @@
 
     <!-- 8. CTA final -->
     <section class="home-section cta-band" data-scene>
+      <div class="cta-video" aria-hidden="true">
+        <video class="cta-video-el" muted loop playsinline preload="none" data-src="/src/assets/video/video_smed.mp4"></video>
+      </div>
       <div class="shell cta-inner" data-reveal-group="140">
         <div class="cta-copy" data-reveal>
           <h2 data-i18n="cta.h2">¿Listo para dejar de coordinar proveedores y empezar a construir?</h2>
@@ -386,6 +464,8 @@
   <script src="/src/scripts/i18n.js"></script>
   <script src="/src/scripts/scrollScenes.js" defer></script>
   <script src="/src/scripts/homeMotion.js" defer></script>
+  <script src="/src/scripts/heroRibbon.js" defer></script>
+  <script src="/src/scripts/bgVideo.js" defer></script>
   <script>
     // Aplicar idioma guardado antes de que carguen los componentes
     if (window.SMED_I18N) window.SMED_I18N.initLang();

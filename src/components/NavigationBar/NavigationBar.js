@@ -1,27 +1,13 @@
-﻿// permite mostrar la barra de navegacion
+// Barra de navegación compartida: megamenús (hover en escritorio, clic en
+// móvil y teclado), menú móvil, idioma y tema.
 export default class NavigationBar extends HTMLElement {
   async connectedCallback() {
-    // Cargar el HTML
-    const resp = await fetch(
-      "/src/components/NavigationBar/NavigationBar.html"
-    );
-    const html = await resp.text();
-    this.innerHTML = html;
+    const resp = await fetch("/src/components/NavigationBar/NavigationBar.html");
+    this.innerHTML = await resp.text();
 
-    // Detectar si se pidió modo login
     const esPaginaLogin = this.hasAttribute("login");
     const esPaginaTienda = this.hasAttribute("buscar");
-
-    // Contenedor dentro del HTML cargado
     const Contenedor = this.querySelector("#BotonesSesion");
-
-    // Ocultar el botón "Inicio" si estamos en la página de login
-    if (esPaginaLogin || esPaginaTienda) {
-      const ContenedorBotonInicio = this.querySelector(
-        "#ContenedorBotonInicio"
-      );
-      if (ContenedorBotonInicio) ContenedorBotonInicio.style.display = "none";
-    }
 
     if (esPaginaLogin && Contenedor) {
       Contenedor.innerHTML = `
@@ -42,98 +28,100 @@ export default class NavigationBar extends HTMLElement {
             <input type="text" class="form-control me-2" placeholder="Buscar productos">
             <button class="search-button">
               <i class="fas fa-search"></i>
-            </button> 
+            </button>
           </div>`;
     }
 
-    // Boton de menu desplegable
-    const botonHamburgesa = document.getElementById("botonHamburgesa");
-    const navMenu = document.getElementById("navMenu");
+    // ── Menú y megamenús ──
+    const navbar = this.querySelector(".navbar-smed");
+    const botonHamburgesa = this.querySelector("#botonHamburgesa");
+    const navMenu = this.querySelector("#navMenu");
+    const submenus = [...this.querySelectorAll(".has-submenu")];
 
-    // Toggle del menú y animación del botón
+    const closeSubmenus = (except) => {
+      submenus.forEach((item) => {
+        if (item === except) return;
+        item.classList.remove("submenu-open");
+        const toggle = item.querySelector(".submenu-toggle");
+        if (toggle) toggle.setAttribute("aria-expanded", "false");
+      });
+    };
+
+    const setMenuOpen = (open) => {
+      navMenu.classList.toggle("show", open);
+      botonHamburgesa.classList.toggle("active", open);
+      botonHamburgesa.setAttribute("aria-expanded", String(open));
+      document.documentElement.classList.toggle("nav-open", open);
+      if (!open) closeSubmenus();
+    };
+
     botonHamburgesa.addEventListener("click", () => {
-      navMenu.classList.toggle("show");
-      botonHamburgesa.classList.toggle("active");
+      setMenuOpen(!navMenu.classList.contains("show"));
     });
 
-    // Cerrar el menú al hacer clic en cualquier enlace
-    const links = navMenu.querySelectorAll(".link");
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("show");
-        botonHamburgesa.classList.remove("active");
-      });
-    });
-
-    const submenuToggle = navMenu.querySelector(".submenu-toggle");
-    const submenuParent = navMenu.querySelector(".has-submenu");
-    const sublinks = navMenu.querySelectorAll(".sublink");
-
-    if (submenuToggle && submenuParent) {
-      submenuToggle.addEventListener("click", (event) => {
+    submenus.forEach((item) => {
+      const toggle = item.querySelector(".submenu-toggle");
+      toggle.addEventListener("click", (event) => {
         event.preventDefault();
-        event.stopPropagation();
-        submenuParent.classList.toggle("submenu-open");
-        const isExpanded = submenuParent.classList.contains("submenu-open");
-        submenuToggle.setAttribute("aria-expanded", String(isExpanded));
+        const open = !item.classList.contains("submenu-open");
+        closeSubmenus(item);
+        item.classList.toggle("submenu-open", open);
+        toggle.setAttribute("aria-expanded", String(open));
       });
-    }
+    });
 
-    sublinks.forEach((link) => {
+    // Blur after navigating so :focus-within doesn't keep a panel open on same-page anchors
+    navMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        navMenu.classList.remove("show");
-        botonHamburgesa.classList.remove("active");
-        if (submenuParent && submenuToggle) {
-          submenuParent.classList.remove("submenu-open");
-          submenuToggle.setAttribute("aria-expanded", "false");
+        setMenuOpen(false);
+        if (document.activeElement) document.activeElement.blur();
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!this.contains(event.target)) closeSubmenus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    });
+
+    const onScroll = () => navbar.classList.toggle("is-scrolled", window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // ── Idioma ──
+    // The page's initLang runs before this HTML exists, so translate the nav here
+    const langLabel = this.querySelector("#langLabel");
+    const translateNav = (lang) => {
+      const t = window.SMED_I18N && window.SMED_I18N.translations[lang];
+      if (t) {
+        this.querySelectorAll("[data-i18n]").forEach((el) => {
+          const value = t[el.dataset.i18n];
+          if (value !== undefined) el.textContent = value;
+        });
+      }
+      if (langLabel) langLabel.textContent = lang === "es" ? "EN" : "ES";
+    };
+
+    translateNav(localStorage.getItem("smed-lang") || "es");
+    document.addEventListener("smed:langchange", (e) => translateNav(e.detail.lang));
+
+    const langToggle = this.querySelector("#langToggle");
+    if (langToggle) {
+      langToggle.addEventListener("click", () => {
+        const current = localStorage.getItem("smed-lang") || "es";
+        const next = current === "es" ? "en" : "es";
+        if (window.SMED_I18N) {
+          window.SMED_I18N.applyLang(next);
+        } else {
+          localStorage.setItem("smed-lang", next);
+          translateNav(next);
         }
       });
-    });
-
-    // ── Language toggle ──
-    const langToggle = this.querySelector("#langToggle");
-    const langLabel = this.querySelector("#langLabel");
-
-    const navKeys = {
-      about:   this.querySelector('a[href="/src/pages/AboutUs.html"].link'),
-      services: this.querySelector('a[href="/src/pages/Services.html"].link'),
-      dev:     this.querySelector('a[href="/src/pages/Desarrollo.html"]'),
-      networks: this.querySelector('a[href="/src/pages/Redes.html"].sublink:first-of-type'),
-      cloud:   this.querySelector('a[href="/src/pages/Cloud.html"]'),
-      support: this.querySelector('a[href="/src/pages/Soporte.html"]'),
-      advisory: this.querySelector('a[href="/src/pages/Asesorias.html"]'),
-    };
-
-    const applyNavLang = (lang) => {
-      if (!window.SMED_I18N) return;
-      const t = window.SMED_I18N.translations[lang];
-      if (!t) return;
-      if (navKeys.about)    navKeys.about.textContent    = t['nav.about'];
-      if (navKeys.services) navKeys.services.textContent = t['nav.services'];
-      if (navKeys.dev)      navKeys.dev.textContent      = t['nav.sub.dev'];
-      if (navKeys.cloud)    navKeys.cloud.textContent    = t['nav.sub.cloud'];
-      if (navKeys.support)  navKeys.support.textContent  = t['nav.sub.support'];
-      if (navKeys.advisory) navKeys.advisory.textContent = t['nav.sub.advisory'];
-      const redesLink = this.querySelector('a[href="/src/pages/Redes.html"].sublink');
-      if (redesLink) redesLink.textContent = t['nav.sub.networks'];
-      if (langLabel) langLabel.textContent = lang === 'es' ? 'EN' : 'ES';
-    };
-
-    const savedLang = localStorage.getItem('smed-lang') || 'es';
-    applyNavLang(savedLang);
-
-    if (langToggle) {
-      langToggle.addEventListener('click', () => {
-        const current = localStorage.getItem('smed-lang') || 'es';
-        const next = current === 'es' ? 'en' : 'es';
-        if (window.SMED_I18N) window.SMED_I18N.applyLang(next);
-        applyNavLang(next);
-      });
     }
 
-    document.addEventListener('smed:langchange', (e) => applyNavLang(e.detail.lang));
-
-    // ── Theme toggle ──
+    // ── Tema ──
     const themeToggle = this.querySelector("#themeToggle");
     const themeIcon = this.querySelector("#themeIcon");
 
@@ -145,9 +133,7 @@ export default class NavigationBar extends HTMLElement {
       }
     };
 
-    // Aplicar tema guardado (por defecto: claro)
-    const savedTheme = localStorage.getItem("smed-theme") || "light";
-    applyTheme(savedTheme);
+    applyTheme(localStorage.getItem("smed-theme") || "light");
 
     if (themeToggle) {
       themeToggle.addEventListener("click", () => {
@@ -155,7 +141,6 @@ export default class NavigationBar extends HTMLElement {
         applyTheme(current === "light" ? "dark" : "light");
       });
     }
-
   }
 }
 
