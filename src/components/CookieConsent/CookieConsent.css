@@ -1,0 +1,438 @@
+/* Cookie notice (bottom-left card, clear of the WhatsApp button) and the
+   preferences dialog. Follows the site theme through html[data-theme]. */
+cookie-consent {
+  --cc-bg: #ffffff;
+  --cc-text: #0e1726;
+  --cc-muted: #56627a;
+  --cc-line: rgba(14, 23, 38, 0.1);
+  --cc-track: rgba(14, 23, 38, 0.18);
+  --cc-accent: #0f52be;
+  --cc-soft: rgba(15, 82, 190, 0.1);
+  --cc-ink: #0e1726;
+  --cc-on-ink: #ffffff;
+  --cc-on-accent: #ffffff;
+  --cc-shadow: 0 30px 70px rgba(8, 27, 59, 0.22);
+  --cc-ease: cubic-bezier(0.22, 1.15, 0.36, 1);
+  font-family: 'Inter', sans-serif;
+}
+
+[data-theme="dark"] cookie-consent {
+  --cc-bg: #0f1a2e;
+  --cc-text: #eef3fb;
+  --cc-muted: #9aa8c0;
+  --cc-line: rgba(238, 243, 251, 0.12);
+  --cc-track: rgba(238, 243, 251, 0.2);
+  --cc-accent: #6ea5ff;
+  --cc-soft: rgba(110, 165, 255, 0.14);
+  --cc-ink: #ffffff;
+  --cc-on-ink: #0e1726;
+  --cc-on-accent: #06122b;
+  --cc-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+
+cookie-consent :is(h2, p, ul) {
+  margin: 0;
+}
+
+html.cc-lock {
+  overflow: hidden;
+}
+
+/* ── Banner ── */
+.cc-banner {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: min(440px, calc(100vw - 2.5rem));
+  padding: 1.4rem;
+  border: 1px solid var(--cc-line);
+  border-radius: 24px;
+  background: var(--cc-bg);
+  color: var(--cc-text);
+  box-shadow: var(--cc-shadow);
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 0.35s ease, transform 0.5s var(--cc-ease);
+}
+
+.cc-banner.is-open {
+  opacity: 1;
+  transform: none;
+}
+
+.cc-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cc-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--cc-soft);
+  color: var(--cc-accent);
+  font-size: 1.5rem;
+}
+
+.cc-banner.is-open .cc-icon i {
+  animation: cc-wobble 1.2s var(--cc-ease) 0.3s both;
+}
+
+@keyframes cc-wobble {
+  0% { transform: rotate(-25deg) scale(0.6); }
+  60% { transform: rotate(8deg) scale(1.05); }
+  100% { transform: none; }
+}
+
+.cc-kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cc-accent);
+}
+
+/* Element + class so page heading rules (e.g. .svc-page h2) can't enlarge it */
+cookie-consent h2.cc-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-text);
+}
+
+.cc-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--cc-muted);
+}
+
+.cc-link {
+  width: fit-content;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cc-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--cc-line);
+}
+
+.cc-link:hover {
+  color: var(--cc-accent);
+  text-decoration-color: currentColor;
+}
+
+/* ── Buttons ── */
+.cc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.cc-btn {
+  height: 44px;
+  padding: 0 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--cc-text);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cc-btn:hover {
+  transform: translateY(-1px);
+}
+
+.cc-btn:focus-visible,
+.cc-close:focus-visible,
+.cc-link:focus-visible {
+  outline: 2px solid var(--cc-accent);
+  outline-offset: 2px;
+}
+
+.cc-btn--primary {
+  background: var(--cc-ink);
+  color: var(--cc-on-ink);
+}
+
+.cc-btn--primary:hover {
+  background: var(--cc-accent);
+  color: var(--cc-on-accent);
+}
+
+.cc-btn--ghost {
+  border-color: var(--cc-line);
+}
+
+.cc-btn--ghost:hover {
+  border-color: var(--cc-accent);
+  color: var(--cc-accent);
+}
+
+.cc-btn--text {
+  padding: 0 0.5rem;
+  color: var(--cc-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cc-btn--text:hover {
+  color: var(--cc-text);
+}
+
+/* ── Preferences dialog ── */
+.cc-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.cc-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 12, 24, 0.55);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cc-dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: min(560px, 100%);
+  max-height: calc(100vh - 2.5rem);
+  overflow-y: auto;
+  padding: 1.6rem;
+  border: 1px solid var(--cc-line);
+  border-radius: 26px;
+  background: var(--cc-bg);
+  color: var(--cc-text);
+  box-shadow: var(--cc-shadow);
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  transition: opacity 0.3s ease, transform 0.45s var(--cc-ease);
+}
+
+.cc-dialog:focus {
+  outline: none;
+}
+
+.cc-modal.is-open .cc-backdrop {
+  opacity: 1;
+}
+
+.cc-modal.is-open .cc-dialog {
+  opacity: 1;
+  transform: none;
+}
+
+.cc-dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cc-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--cc-line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cc-text);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.cc-close:hover {
+  border-color: var(--cc-accent);
+  color: var(--cc-accent);
+}
+
+.cc-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--cc-line);
+}
+
+.cc-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.cc-row-text strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.cc-row-text span {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--cc-muted);
+}
+
+.cc-always {
+  flex-shrink: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cc-accent);
+}
+
+/* Switch: the real checkbox sits invisibly on top so clicks and keys work */
+.cc-switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 46px;
+  height: 26px;
+}
+
+.cc-switch input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.cc-switch span {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--cc-track);
+  transition: background 0.2s ease;
+}
+
+.cc-switch span::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s var(--cc-ease);
+}
+
+.cc-switch input:checked + span {
+  background: var(--cc-accent);
+}
+
+.cc-switch input:checked + span::after {
+  transform: translateX(20px);
+}
+
+.cc-switch input:focus-visible + span {
+  outline: 2px solid var(--cc-accent);
+  outline-offset: 2px;
+}
+
+/* Footer link that reopens the preferences */
+.footer-cookie-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.footer-cookie-btn:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Mobile: full-width sheet ── */
+@media (max-width: 560px) {
+  .cc-banner {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: auto;
+    padding: 1.2rem;
+    border-radius: 20px;
+  }
+
+  .cc-banner .cc-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cc-banner .cc-btn--text {
+    grid-column: 1 / -1;
+  }
+
+  .cc-modal {
+    align-items: flex-end;
+    padding: 0.75rem;
+  }
+
+  .cc-dialog {
+    padding: 1.3rem;
+    border-radius: 22px;
+  }
+
+  .cc-dialog .cc-actions .cc-btn {
+    flex: 1 1 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-banner,
+  .cc-dialog,
+  .cc-backdrop,
+  .cc-switch span,
+  .cc-switch span::after {
+    transition: none;
+  }
+
+  .cc-banner.is-open .cc-icon i {
+    animation: none;
+  }
+}

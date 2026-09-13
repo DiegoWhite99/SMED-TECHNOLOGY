@@ -121,6 +121,18 @@ Bogotá D.C - 2025
 
 ## Registro de cambios
 
+### v2.0.0 — 2026-09-13
+
+**Rediseño de Servicios, intro en parallax, modo oscuro y aviso de cookies.**
+
+- **Servicios (`/servicios`):** nuevo diseño con infografía de nodos (Desarrollo, Cloud, Redes, Soporte, Asesorías y Guard), cifras verificables (se retiró "50+ clientes satisfechos"), divisiones, proyectos en producción y futuros, misión, espacio, protocolo, formulario (mismo backend) y cierre.
+- **Intro en parallax (`parallaxIntro.js`):** capas que se mueven a distinta velocidad al hacer scroll, con el humo azul de SMED y el logo como luna. El título pasa detrás del humo (`smed-smoke-front.webp`).
+- **Modo oscuro:** el botón de tema ahora funciona en Servicios y en el nav, y el tema se aplica antes del primer pintado. El home queda fijo en claro (`data-theme-lock`) y no muestra el botón.
+- **Cookies:** aviso con "Aceptar todo", "Solo necesarias" y "Configurar" (Necesarias, Analítica, Información de SMED). La decisión se guarda en la cookie `smed_consent` (180 días) y se consulta con `window.SMED_CONSENT`; todo script opcional debe revisarla antes de cargarse. Enlace "Preferencias de cookies" en el footer.
+- **Habeas Data:** nueva sección "10. Cookies y tecnologías similares"; versión vigente desde septiembre de 2026.
+- **Loader:** se eliminó la pantalla de carga del home (`loader.js`).
+- **Cache-busting:** `?v=2.0.0` en todos los assets, en los fetch de componentes, en los imports de `BaseComponents.js` y en el footer.
+
 ### v1.6.0 — 2026-09-13
 
 **Rediseño del home (`/nosotros`) y del nav/footer compartidos por todas las páginas.**

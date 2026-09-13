@@ -2,7 +2,7 @@
 // móvil y teclado), menú móvil, idioma y tema.
 export default class NavigationBar extends HTMLElement {
   async connectedCallback() {
-    const resp = await fetch("/src/components/NavigationBar/NavigationBar.html?v=1.6.0");
+    const resp = await fetch("/src/components/NavigationBar/NavigationBar.html?v=2.0.0");
     this.innerHTML = await resp.text();
 
     const esPaginaLogin = this.hasAttribute("login");
@@ -132,6 +132,15 @@ export default class NavigationBar extends HTMLElement {
         themeIcon.className = theme === "light" ? "bx bx-sun" : "bx bx-moon";
       }
     };
+
+    // Pages with <html data-theme-lock="..."> (the home's white → blue journey)
+    // keep a fixed theme: no toggle, and the saved preference is left untouched
+    const lockedTheme = document.documentElement.dataset.themeLock;
+    if (lockedTheme) {
+      document.documentElement.setAttribute("data-theme", lockedTheme);
+      if (themeToggle) themeToggle.remove();
+      return;
+    }
 
     applyTheme(localStorage.getItem("smed-theme") || "light");
 

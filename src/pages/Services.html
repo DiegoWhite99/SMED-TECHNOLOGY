@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="es">
 
@@ -13,458 +13,427 @@
   <meta property="og:description" content="Soporte, redes, desarrollo y cloud. Soluciones tecnológicas profesionales para empresas y profesionales." />
   <meta property="og:type" content="website" />
   <title>Servicios | SMED Technology</title>
+  <script>
+    // Apply the saved theme before first paint; the nav applies it again once loaded
+    try { document.documentElement.setAttribute('data-theme', localStorage.getItem('smed-theme') || 'light'); } catch (e) {}
+
+    // Hide [data-reveal] content before first paint so it can float in; homeMotion.js
+    // sets __smedMotion, and if it never loads the content is shown again.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      document.documentElement.classList.add('motion-ready');
+      setTimeout(function () {
+        if (!window.__smedMotion) document.documentElement.classList.remove('motion-ready');
+      }, 2500);
+    }
+  </script>
 
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <link rel="icon" href="/src/assets/icons/SmedOfficial.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="/src/styles/Services.css?v=1.6.0">
-  <link rel="stylesheet" href="/src/components/NavigationBar/NavigationBar.css?v=1.6.0">
-  <link rel="stylesheet" href="/src/components/Footer/Footer.css?v=1.6.0">
-  <link rel="stylesheet" href="/src/components/WhatsApp/WhatsApp.css?v=1.6.0">
-  <link rel="stylesheet" href="/src/components/Chatbot/Chatbot.css?v=1.6.0">
-  <link rel="stylesheet" href="/src/styles/Typography.css?v=1.6.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
-
+  <link rel="stylesheet" href="/src/styles/Services.css?v=2.0.0">
+  <link rel="stylesheet" href="/src/components/NavigationBar/NavigationBar.css?v=2.0.0">
+  <link rel="stylesheet" href="/src/components/Footer/Footer.css?v=2.0.0">
+  <link rel="stylesheet" href="/src/components/WhatsApp/WhatsApp.css?v=2.0.0">
+  <link rel="stylesheet" href="/src/components/Chatbot/Chatbot.css?v=2.0.0">
+  <link rel="stylesheet" href="/src/styles/Typography.css?v=2.0.0">
 </head>
 
-<body>
+<body class="svc-page">
   <nav-bar></nav-bar>
-  <div class="wrapper">
-    <main>
-      <section class="principal_section">
-        <div class="tittle_principal">
-          <h1 id="tittle1" data-i18n="svc.hero.h1">LA TECNOLOGÍA EN TUS MANOS</h1>
-          <h2 id="tittle1-2" data-i18n="svc.hero.h2">A TU ALCANCE</h2>
-          <p class="hero-desc" data-i18n="svc.hero.desc">Diseñamos soluciones tecnológicas a medida: soporte, redes, desarrollo y cloud. Acompañamiento real, resultados concretos.</p>
-          <div class="hero-ctas">
-            <a href="#hero-carousel2" class="btn-hero-primary" data-i18n="svc.hero.cta1">Explorar servicios</a>
-            <a href="/nosotros#fundadores" class="btn-hero-secondary" data-i18n="svc.hero.cta2">Conoce al equipo</a>
+
+  <main>
+
+    <!-- ══ INTRO: capas en parallax (parallaxIntro.js). El humo frontal es el
+         mismo fondo recortado por brillo, así el título queda detrás del humo ══ -->
+    <section class="svc-intro" data-scene aria-label="SMED Servicios">
+      <div class="svc-intro-layers" data-parallax-layers>
+        <img class="svc-intro-img" data-parallax-layer="1" src="/src/assets/images/Smed.webp" alt="" />
+        <span class="svc-intro-glow" data-parallax-layer="2" aria-hidden="true"></span>
+        <div class="svc-intro-title" data-parallax-layer="3" data-reveal-group="160">
+          <p class="svc-intro-kicker mono" data-reveal data-i18n="svc2.intro.kicker">SMED Technology · Bogotá</p>
+          <p class="svc-intro-word" data-reveal>SMED</p>
+          <p class="svc-intro-word svc-intro-word--soft" data-reveal data-i18n="svc2.intro.word">Servicios</p>
+        </div>
+        <img class="svc-intro-img svc-intro-smoke" data-parallax-layer="1" src="/src/assets/images/smed-smoke-front.webp" alt="" />
+        <div class="svc-intro-moon" data-parallax-layer="2">
+          <span class="svc-intro-logo"><img src="/src/assets/images/SmedOfficial.webp" alt="SMED Technology" /></span>
+        </div>
+      </div>
+      <span class="svc-intro-fade" aria-hidden="true"></span>
+      <a class="svc-intro-scroll mono" href="#inicio-servicios"><span data-i18n="svc2.intro.scroll">Desliza</span> <i class="bx bx-down-arrow-alt"></i></a>
+    </section>
+
+    <!-- ══ HERO: titular + infografía de nodos ══ -->
+    <section class="svc-hero" id="inicio-servicios">
+      <div class="svc-shell svc-hero-grid">
+        <div class="svc-hero-copy" data-reveal-group="120">
+          <span class="svc-kicker" data-reveal><span data-i18n="svc2.kicker">Servicios · SMED Technology</span></span>
+          <h1 class="svc-hero-title" data-reveal>
+            <span data-i18n="svc2.hero.l1">La tecnología en tus manos,</span>
+            <span class="svc-hero-title-soft" data-i18n="svc2.hero.l2">a tu alcance.</span>
+          </h1>
+          <p class="svc-hero-desc" data-i18n="svc.hero.desc" data-reveal>Diseñamos soluciones tecnológicas a medida: soporte, redes, desarrollo y cloud. Acompañamiento real, resultados concretos.</p>
+          <div class="svc-hero-ctas" data-reveal>
+            <a href="#lineas" class="svc-btn svc-btn--dark"><span data-i18n="svc.hero.cta1">Explorar servicios</span> <i class="bx bx-right-arrow-alt"></i></a>
+            <a href="/nosotros#fundadores" class="svc-btn svc-btn--ghost" data-i18n="svc.hero.cta2">Conoce al equipo</a>
           </div>
-          <!-- Nueva sección de íconos -->
-          <div class="services_section">
-            <div class="service_item" onclick="location.href='/asesorias';">
-              <span class="corner-tl"></span>
-              <span class="corner-br"></span>
-              <img src="/src/assets/icons/Query.svg" alt="Formacion">
-              <p data-i18n="svc.item.advisory">Asesorías</p>
-            </div>
-            <div class="service_item" onclick="location.href='/soporte';">
-              <span class="corner-tl"></span>
-              <span class="corner-br"></span>
-              <img src="/src/assets/icons/TechSupport.svg" alt="Soporte">
-              <p data-i18n="svc.item.support">Soporte</p>
-            </div>
-            <div class="service_item" onclick="location.href='/redes';">
-              <span class="corner-tl"></span>
-              <span class="corner-br"></span>
-              <img src="/src/assets/icons/GlobalNetwork.svg" alt="Redes">
-              <p data-i18n="svc.item.networks">Redes</p>
-            </div>
-            <div class="service_item" onclick="location.href='/cloud';">
-              <span class="corner-tl"></span>
-              <span class="corner-br"></span>
-              <img src="/src/assets/icons/CloudNetwork.svg" alt="Cloud">
-              <p data-i18n="svc.item.cloud">Cloud</p>
-            </div>
-            <div class="service_item" onclick="location.href='/desarrollo';">
-              <span class="corner-tl"></span>
-              <span class="corner-br"></span>
-              <img src="/src/assets/icons/Programming.svg" alt="Desarrollo">
-              <p data-i18n="svc.item.dev">Desarrollo</p>
-            </div>
+        </div>
+
+        <div class="nodes" data-reveal>
+          <svg class="node-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path data-to="dev" pathLength="1" d="M50 50 C 44 44, 33 34, 27 26" />
+            <path data-to="cloud" pathLength="1" d="M50 50 C 56 44, 67 34, 73 26" />
+            <path data-to="net" pathLength="1" d="M50 50 C 38 50, 26 52, 15 52" />
+            <path data-to="support" pathLength="1" d="M50 50 C 62 50, 74 52, 85 52" />
+            <path data-to="advisory" pathLength="1" d="M50 50 C 47 58, 40 70, 35 78" />
+            <path data-to="guard" pathLength="1" d="M50 50 C 53 58, 60 70, 65 78" />
+            <path data-to="dev" pathLength="1" d="M50 9 C 44 12, 34 18, 27 26" />
+            <path data-to="cloud" pathLength="1" d="M50 9 C 56 12, 66 18, 73 26" />
+            <path data-to="advisory" pathLength="1" d="M50 93 C 45 89, 39 84, 35 78" />
+            <path data-to="guard" pathLength="1" d="M50 93 C 55 89, 61 84, 65 78" />
+            <circle class="node-pulse" r="0.9"><animateMotion dur="3.2s" repeatCount="indefinite" path="M50 50 C 44 44, 33 34, 27 26" /></circle>
+            <circle class="node-pulse" r="0.9"><animateMotion dur="3.8s" begin="0.8s" repeatCount="indefinite" path="M50 50 C 62 50, 74 52, 85 52" /></circle>
+            <circle class="node-pulse" r="0.9"><animateMotion dur="3.5s" begin="1.6s" repeatCount="indefinite" path="M50 50 C 47 58, 40 70, 35 78" /></circle>
+            <circle class="node-pulse" r="0.9"><animateMotion dur="4.1s" begin="0.4s" repeatCount="indefinite" path="M50 50 C 56 44, 67 34, 73 26" /></circle>
+          </svg>
+
+          <span class="node node--core" style="--x:50;--y:50;--d:0"><img src="/src/assets/images/SmedOfficial.webp" alt="SMED Technology" /></span>
+          <a class="node node--a" data-node="dev" href="/desarrollo" style="--x:27;--y:26;--d:1"><i class="bx bx-code-alt"></i><span data-i18n="svc.item.dev">Desarrollo</span></a>
+          <a class="node node--b" data-node="cloud" href="/cloud" style="--x:73;--y:26;--d:2"><i class="bx bx-cloud"></i><span data-i18n="svc.item.cloud">Cloud</span></a>
+          <a class="node node--c" data-node="net" href="/redes" style="--x:15;--y:52;--d:3"><i class="bx bx-network-chart"></i><span data-i18n="svc.item.networks">Redes</span></a>
+          <a class="node node--d" data-node="support" href="/soporte" style="--x:85;--y:52;--d:4"><i class="bx bx-wrench"></i><span data-i18n="svc.item.support">Soporte</span></a>
+          <a class="node node--e" data-node="advisory" href="/asesorias" style="--x:35;--y:78;--d:5"><i class="bx bx-conversation"></i><span data-i18n="svc.item.advisory">Asesorías</span></a>
+          <span class="node node--f" data-node="guard" style="--x:65;--y:78;--d:6"><i class="bx bx-cctv"></i><span>Guard</span></span>
+          <span class="node node--dot" style="--x:50;--y:9;--d:7" aria-hidden="true"><i class="bx bx-lock-alt"></i></span>
+          <span class="node node--dot" style="--x:50;--y:93;--d:8" aria-hidden="true"><i class="bx bx-chip"></i></span>
+          <span class="node-spark" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="svc-shell svc-pills" data-reveal>
+        <p class="svc-pills-title" data-i18n="svc2.pills.title">Servicios especializados</p>
+        <div class="svc-pills-row">
+          <a class="svc-pill" href="/desarrollo"><i class="bx bx-code-alt"></i><span data-i18n="svc.item.dev">Desarrollo</span></a>
+          <a class="svc-pill" href="/redes"><i class="bx bx-network-chart"></i><span data-i18n="svc.item.networks">Redes</span></a>
+          <a class="svc-pill" href="/cloud"><i class="bx bx-cloud"></i><span data-i18n="svc.item.cloud">Cloud</span></a>
+          <a class="svc-pill" href="/soporte"><i class="bx bx-wrench"></i><span data-i18n="svc.item.support">Soporte</span></a>
+          <a class="svc-pill" href="/asesorias"><i class="bx bx-conversation"></i><span data-i18n="svc.item.advisory">Asesorías</span></a>
+        </div>
+        <a class="svc-pills-more" href="#lineas" data-i18n="svc2.pills.more">Ver las divisiones</a>
+      </div>
+    </section>
+
+    <!-- ══ BANDA: cifras + divisiones ══ -->
+    <div class="svc-band">
+      <section class="svc-stats">
+        <div class="svc-shell svc-stats-grid" data-reveal-group="140">
+          <div class="svc-stat" data-reveal>
+            <p class="svc-stat-num"><span class="mono" data-count="5">5</span> <em data-i18n="svc2.stat1.unit">servicios</em></p>
+            <p class="svc-stat-label mono" data-i18n="svc.stat3">Servicios especializados</p>
+          </div>
+          <div class="svc-stat" data-reveal>
+            <p class="svc-stat-num"><span class="mono" data-count="4">4</span> <em data-i18n="svc2.stat2.unit">divisiones</em></p>
+            <p class="svc-stat-label mono" data-i18n="svc2.stat2.label">Support, Dev, Net y Guard</p>
+          </div>
+          <div class="svc-stat" data-reveal>
+            <p class="svc-stat-num"><span class="mono" data-count="2023" data-from="2000">2023</span> <em data-i18n="svc2.stat3.unit">→ hoy</em></p>
+            <p class="svc-stat-label mono" data-i18n="svc2.stat3.label">Operando de forma continua</p>
+          </div>
+          <div class="svc-stat" data-reveal>
+            <p class="svc-stat-num"><span class="mono" data-count="2">2</span> <em data-i18n="svc2.stat4.unit">en vivo</em></p>
+            <p class="svc-stat-label mono" data-i18n="svc2.stat4.label">Plataformas en producción</p>
           </div>
         </div>
       </section>
 
-      <!-- Stats bar -->
-      <section class="stats-bar">
-        <div class="stat-item">
-          <span class="stat-num" data-target="50">0</span><span class="stat-plus">+</span>
-          <p class="stat-label" data-i18n="svc.stat1">Clientes satisfechos</p>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-num" data-target="2">0</span>
-          <p class="stat-label" data-i18n="svc.stat2">Años de experiencia</p>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-num" data-target="5">0</span>
-          <p class="stat-label" data-i18n="svc.stat3">Servicios especializados</p>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-num" data-target="100">0</span><span class="stat-plus">%</span>
-          <p class="stat-label" data-i18n="svc.stat4">Compromiso con el cliente</p>
-        </div>
-      </section>
-
-      <!--section2 Carrusel-->
-      <section id="hero-carousel2">
-        <p class="carousel-kicker" data-i18n="svc.carousel.kicker">LÍNEAS DE SERVICIO</p>
-        <h2 class="carousel-title" data-i18n="svc.carousel.title">Ecosistema SMED</h2>
-        <p class="carousel-subtitle" data-i18n="svc.carousel.subtitle">Cada división está especializada en un área clave de la tecnología, trabajando como un sistema integrado.</p>
-        <div class="carousel-shell">
-          <button class="carousel-nav carousel-nav-prev" type="button" aria-label="Anterior">
-            <i class='bx bx-chevron-left'></i>
-          </button>
-
-          <div class="carousel-viewport">
-            <div class="carousel-track">
-              <div class="smed-carousel-item">
-                <span class="card-badge" data-i18n="svc.badge.support">SOPORTE</span>
-                <img src="/src/assets/images/it.png" alt="SMED SUPPORT">
-                <h3>SMED SUPPORT</h3>
-                <p data-i18n="svc.smed.support.p">Soporte, continuidad y acompañamiento tecnológico, con enfoque profesional preventivo y humano.</p>
-              </div>
-
-              <div class="smed-carousel-item">
-                <span class="card-badge" data-i18n="svc.badge.dev">DESARROLLO</span>
-                <img src="/src/assets/images/web.png" alt="SMED DEV">
-                <h3>SMED DEV</h3>
-                <p data-i18n="svc.smed.dev.p">Desarrollo de software y soluciones tecnológicas a medida, orientadas a eficiencia, escalabilidad y crecimiento empresarial.</p>
-              </div>
-
-              <div class="smed-carousel-item">
-                <span class="card-badge" data-i18n="svc.badge.networks">REDES</span>
-                <img src="/src/assets/images/conexion-de-red.png" alt="SMED NET">
-                <h3>SMED NET</h3>
-                <p data-i18n="svc.smed.net.p">Redes, infraestructura, diseño e implementación de soluciones tecnológicas. Conectividad segura, escalable y confiable.</p>
-              </div>
-
-              <div class="smed-carousel-item">
-                <span class="card-badge" data-i18n="svc.badge.security">SEGURIDAD</span>
-                <img src="/src/assets/images/vigilancia.png" alt="SMED GUARD">
-                <h3>SMED GUARD</h3>
-                <p data-i18n="svc.smed.guard.p">Diseño e implementación de sistemas de videovigilancia y circuitos cerrados orientados a la protección y el control.</p>
-              </div>
+      <section class="svc-section svc-divisions" id="lineas">
+        <div class="svc-shell">
+          <div class="svc-head" data-reveal-group="120">
+            <div class="svc-head-main" data-reveal>
+              <span class="svc-kicker"><span class="svc-k-num mono">02</span> / <span data-i18n="svc.carousel.kicker">LÍNEAS DE SERVICIO</span></span>
+              <h2 data-i18n="svc2.div.h2">Cuatro divisiones. Un solo equipo. Cero proveedores extra.</h2>
+            </div>
+            <div class="svc-head-meta mono" data-reveal>
+              <span>SMED Support · Dev · Net · Guard</span>
+              <span>Bogotá, Colombia</span>
+              <span data-i18n="svc2.div.since">Desde 2023</span>
             </div>
           </div>
 
-          <button class="carousel-nav carousel-nav-next" type="button" aria-label="Siguiente">
-            <i class='bx bx-chevron-right'></i>
-          </button>
-        </div>
-
-        <!-- Indicador de posición -->
-        <div class="carousel-dots" id="carouselDots">
-          <span class="cdot active"></span>
-          <span class="cdot"></span>
-          <span class="cdot"></span>
-          <span class="cdot"></span>
+          <div class="div-grid" data-reveal-group="120">
+            <article class="div-card div-card--1" data-reveal="float">
+              <span class="div-index mono">01 — Support</span>
+              <h3>SMED Support</h3>
+              <p data-i18n="svc.smed.support.p">Soporte, continuidad y acompañamiento tecnológico, con enfoque profesional preventivo y humano.</p>
+              <a class="div-icon" href="/soporte" aria-label="Soporte"><i class="bx bx-wrench"></i></a>
+            </article>
+            <article class="div-card div-card--2" data-reveal="float">
+              <span class="div-index mono">02 — Dev</span>
+              <h3>SMED Dev</h3>
+              <p data-i18n="svc.smed.dev.p">Desarrollo de software y soluciones tecnológicas a medida, orientadas a eficiencia, escalabilidad y crecimiento empresarial.</p>
+              <a class="div-icon" href="/desarrollo" aria-label="Desarrollo"><i class="bx bx-code-alt"></i></a>
+            </article>
+            <article class="div-card div-card--3" data-reveal="float">
+              <span class="div-index mono">03 — Net</span>
+              <h3>SMED Net</h3>
+              <p data-i18n="svc.smed.net.p">Redes, infraestructura, diseño e implementación de soluciones tecnológicas. Conectividad segura, escalable y confiable.</p>
+              <a class="div-icon" href="/redes" aria-label="Redes"><i class="bx bx-network-chart"></i></a>
+            </article>
+            <article class="div-card div-card--4" data-reveal="float">
+              <span class="div-index mono">04 — Guard</span>
+              <h3>SMED Guard</h3>
+              <p data-i18n="svc.smed.guard.p">Diseño e implementación de sistemas de videovigilancia y circuitos cerrados orientados a la protección y el control.</p>
+              <span class="div-icon" aria-hidden="true"><i class="bx bx-cctv"></i></span>
+            </article>
+          </div>
         </div>
       </section>
+    </div>
 
+    <!-- ══ PROYECTOS EN PRODUCCIÓN ══ -->
+    <section class="svc-section svc-live" id="proyectos-live">
+      <div class="svc-shell">
+        <div class="svc-head" data-reveal-group="120">
+          <div class="svc-head-main" data-reveal>
+            <span class="svc-kicker"><span class="svc-k-num mono">03</span> / <span data-i18n="svc.live.kicker">EN PRODUCCIÓN</span></span>
+            <h2 data-i18n="svc.live.title">Proyectos en Producción</h2>
+          </div>
+          <p class="svc-head-text" data-i18n="svc.live.subtitle" data-reveal>Plataformas reales que hemos diseñado, desarrollado y desplegado. Tecnología SMED funcionando hoy.</p>
+        </div>
 
-      <!--proyectos en producción -->
-      <section class="proyectos-live-section" id="proyectos-live">
-        <p class="futuros-kicker live-kicker" data-i18n="svc.live.kicker">EN PRODUCCIÓN</p>
-        <h2 class="slider-title" data-i18n="svc.live.title">Proyectos en Producción</h2>
-        <p class="futuros-subtitle" data-i18n="svc.live.subtitle">Plataformas reales que hemos diseñado, desarrollado y desplegado. Tecnología SMED funcionando hoy.</p>
-
-        <div class="live-grid">
-
-          <article class="live-card live-card--bakery">
+        <div class="live-grid" data-reveal-group="140">
+          <article class="live-card" data-reveal="float">
             <a class="live-media" href="https://bakery.smedtech.com.co/" target="_blank" rel="noopener">
-              <span class="live-badge"><span class="live-dot"></span><span data-i18n="svc.live.badge">EN VIVO</span></span>
+              <span class="live-bar"><span></span><span></span><span></span><em class="mono">bakery.smedtech.com.co</em></span>
               <img src="/src/assets/images/projects/smed-bakery.png" alt="SMED Bakery — plataforma de gestión para panaderías" loading="lazy" />
             </a>
-            <div class="live-content">
-              <h3 class="live-titulo">SMED BAKERY</h3>
+            <div class="live-body">
               <div class="live-meta">
+                <span class="live-badge mono"><span data-i18n="svc.live.badge">EN VIVO</span></span>
                 <span class="live-tag" data-i18n="svc.live.bakery.tag">Gestión de panaderías</span>
-                <span class="live-brand"><i class='bx bx-code-alt'></i> SMED Software</span>
+                <span class="live-brand mono">SMED Software</span>
               </div>
-              <p class="live-descripcion" data-i18n="svc.live.bakery.p">Plataforma todo-en-uno para digitalizar panaderías: menú por QR, control de pedidos y mesas, inventario y análisis de ventas con inteligencia artificial.</p>
-              <a class="live-btn" href="https://bakery.smedtech.com.co/" target="_blank" rel="noopener">
-                <span data-i18n="svc.live.visit">Visitar sitio</span><i class='bx bx-right-arrow-alt'></i>
-              </a>
+              <h3>SMED Bakery</h3>
+              <p data-i18n="svc.live.bakery.p">Plataforma todo-en-uno para digitalizar panaderías: menú por QR, control de pedidos y mesas, inventario y análisis de ventas con inteligencia artificial.</p>
+              <a class="svc-link" href="https://bakery.smedtech.com.co/" target="_blank" rel="noopener"><span data-i18n="svc.live.visit">Visitar sitio</span> <i class="bx bx-right-arrow-alt"></i></a>
             </div>
           </article>
-
-          <article class="live-card live-card--sports">
+          <article class="live-card" data-reveal="float">
             <a class="live-media" href="https://betagym.smedtech.com.co/" target="_blank" rel="noopener">
-              <span class="live-badge"><span class="live-dot"></span><span data-i18n="svc.live.badge">EN VIVO</span></span>
+              <span class="live-bar"><span></span><span></span><span></span><em class="mono">betagym.smedtech.com.co</em></span>
               <img src="/src/assets/images/projects/smed-sports.png" alt="SMED Sports — plataforma de gestión para gimnasios" loading="lazy" />
             </a>
-            <div class="live-content">
-              <h3 class="live-titulo">SMED SPORTS</h3>
+            <div class="live-body">
               <div class="live-meta">
+                <span class="live-badge mono"><span data-i18n="svc.live.badge">EN VIVO</span></span>
                 <span class="live-tag" data-i18n="svc.live.sports.tag">Gestión de gimnasios</span>
-                <span class="live-brand"><i class='bx bx-code-alt'></i> SMED Software</span>
+                <span class="live-brand mono">SMED Software</span>
               </div>
-              <p class="live-descripcion" data-i18n="svc.live.sports.p">Plataforma para gimnasios y centros deportivos: gestión de membresías, rutinas, control de asistencia y seguimiento de resultados, todo en una experiencia moderna.</p>
-              <a class="live-btn" href="https://betagym.smedtech.com.co/" target="_blank" rel="noopener">
-                <span data-i18n="svc.live.visit">Visitar sitio</span><i class='bx bx-right-arrow-alt'></i>
-              </a>
+              <h3>SMED Sports</h3>
+              <p data-i18n="svc.live.sports.p">Plataforma para gimnasios y centros deportivos: gestión de membresías, rutinas, control de asistencia y seguimiento de resultados, todo en una experiencia moderna.</p>
+              <a class="svc-link" href="https://betagym.smedtech.com.co/" target="_blank" rel="noopener"><span data-i18n="svc.live.visit">Visitar sitio</span> <i class="bx bx-right-arrow-alt"></i></a>
             </div>
           </article>
-
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!--proyectos futuros -->
-      <section class="futuros-proyectos-section">
-          <p class="futuros-kicker" data-i18n="svc.projects.kicker">PRÓXIMAMENTE</p>
-          <h2 class="slider-title" data-i18n="svc.projects.title">Futuros Proyectos</h2>
-          <p class="futuros-subtitle" data-i18n="svc.projects.subtitle">Iniciativas en desarrollo que amplían el ecosistema SMED hacia nuevos horizontes tecnológicos.</p>
-
-          <div class="proyectos-grid">
-
-            <div class="proyecto-card">
-              <span class="proyecto-badge">PRÓXIMAMENTE</span>
-              <div class="proyecto-inner">
-                <div class="proyecto-img-wrap">
-                  <img src="/src/assets/images/campaign/smed_academy.svg" alt="SMED Academy" />
-                </div>
-                <div class="proyecto-content">
-                  <h3 class="proyecto-titulo">SMED ACADEMY</h3>
-                  <p class="proyecto-descripcion" data-i18n="svc.academy.p">Alianza estratégica con Elvecr para integrar infraestructura robusta en plataformas educativas Moodle. Entornos de aprendizaje modernos adaptados a la formación tecnológica actual.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="proyecto-card">
-              <span class="proyecto-badge">PRÓXIMAMENTE</span>
-              <div class="proyecto-inner">
-                <div class="proyecto-img-wrap">
-                  <img src="/src/assets/images/campaign/smed_home.svg" alt="SMED Home" />
-                </div>
-                <div class="proyecto-content">
-                  <h3 class="proyecto-titulo">SMED HOME</h3>
-                  <p class="proyecto-descripcion" data-i18n="svc.home.p">Automatización doméstica inteligente para iluminación, seguridad y dispositivos conectados. Eficiencia energética y soporte personalizado para el hogar moderno.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="proyecto-card proyecto-card--agro">
-              <span class="proyecto-badge proyecto-badge--new">NUEVO</span>
-              <div class="proyecto-inner">
-                <div class="proyecto-img-wrap agro-icon-wrap">
-                  <i class='bx bxs-leaf'></i>
-                </div>
-                <div class="proyecto-content">
-                  <h3 class="proyecto-titulo">SMED AGRO</h3>
-                  <p class="proyecto-descripcion" data-i18n="svc.agro.p">Automatización de cultivos y campo mediante IA. Sensores inteligentes, análisis predictivo y control de riego para optimizar la producción agrícola con tecnología de punta.</p>
-                </div>
-              </div>
-            </div>
-
+    <!-- ══ FUTUROS PROYECTOS ══ -->
+    <section class="svc-section svc-future">
+      <div class="svc-shell">
+        <div class="svc-head" data-reveal-group="120">
+          <div class="svc-head-main" data-reveal>
+            <span class="svc-kicker"><span class="svc-k-num mono">04</span> / <span data-i18n="svc.projects.kicker">PRÓXIMAMENTE</span></span>
+            <h2 data-i18n="svc.projects.title">Futuros Proyectos</h2>
           </div>
+          <p class="svc-head-text" data-i18n="svc.projects.subtitle" data-reveal>Iniciativas en desarrollo que amplían el ecosistema SMED hacia nuevos horizontes tecnológicos.</p>
+        </div>
 
-        <!--Nuestras cualidades-->
-        <section class="section-cualidades" id="secCualidades">
-          <p class="cualidades-kicker" data-i18n="svc.qual.kicker">¿POR QUÉ ELEGIRNOS?</p>
-          <h2 class="our_cualitestittle" data-i18n="svc.qual.title">Nuestras Cualidades</h2>
-          <div class="card-container">
+        <div class="future-grid" data-reveal-group="120">
+          <article class="future-card" data-reveal="float">
+            <div class="future-media"><img src="/src/assets/images/campaign/smed_academy.svg" alt="SMED Academy" loading="lazy" /></div>
+            <span class="future-badge mono">PRÓXIMAMENTE</span>
+            <h3>SMED Academy</h3>
+            <p data-i18n="svc.academy.p">Alianza estratégica con Elvecr para integrar infraestructura robusta en plataformas educativas Moodle. Entornos de aprendizaje modernos adaptados a la formación tecnológica actual.</p>
+          </article>
+          <article class="future-card" data-reveal="float">
+            <div class="future-media"><img src="/src/assets/images/campaign/smed_home.svg" alt="SMED Home" loading="lazy" /></div>
+            <span class="future-badge mono">PRÓXIMAMENTE</span>
+            <h3>SMED Home</h3>
+            <p data-i18n="svc.home.p">Automatización doméstica inteligente para iluminación, seguridad y dispositivos conectados. Eficiencia energética y soporte personalizado para el hogar moderno.</p>
+          </article>
+          <article class="future-card future-card--new" data-reveal="float">
+            <div class="future-media future-media--icon"><i class="bx bxs-leaf"></i></div>
+            <span class="future-badge future-badge--new mono">NUEVO</span>
+            <h3>SMED Agro</h3>
+            <p data-i18n="svc.agro.p">Automatización de cultivos y campo mediante IA. Sensores inteligentes, análisis predictivo y control de riego para optimizar la producción agrícola con tecnología de punta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <div class="card card--green">
-              <span class="card-num">01</span>
-              <div class="card-icon-wrap card-icon-wrap--green">
-                <img src="/src/assets/icons/HelpDesk.svg" alt="Soporte" class="icon-img">
-              </div>
-              <div class="card-title green" data-i18n="svc.qual.card1.title">Soporte Personalizado</div>
-              <div class="card-text" data-i18n="svc.qual.card1.text">Asistencia técnica y acompañamiento adaptado a las necesidades reales de cada cliente.</div>
-            </div>
+    <!-- ══ CITA: misión ══ -->
+    <section class="svc-section svc-quote">
+      <div class="svc-shell svc-quote-inner" data-reveal>
+        <span class="svc-quote-mark" aria-hidden="true">“</span>
+        <blockquote data-i18n="mv.mission.p">En SMED acompañamos a empresas y profesionales colombianos con tecnología accesible, resolviendo cualquier reto técnico con confianza y eficacia, sin importar el tamaño del cliente.</blockquote>
+        <p class="svc-quote-by mono">— <span data-i18n="svc2.quote.by">Misión de SMED Technology</span></p>
+      </div>
+    </section>
 
-            <div class="card card--blue">
-              <span class="card-num">02</span>
-              <div class="card-icon-wrap card-icon-wrap--blue">
-                <img src="/src/assets/icons/SmedSecurity.svg" alt="Seguridad" class="icon-img">
-              </div>
-              <div class="card-title blue" data-i18n="svc.qual.card2.title">Seguridad Garantizada</div>
-              <div class="card-text" data-i18n="svc.qual.card2.text">Protocolos actualizados y buenas prácticas para proteger tu información y sistemas.</div>
-            </div>
-
-            <div class="card card--orange">
-              <span class="card-num">03</span>
-              <div class="card-icon-wrap card-icon-wrap--orange">
-                <img src="/src/assets/icons/Knowledge.svg" alt="Conocimiento" class="icon-img">
-              </div>
-              <div class="card-title orange" data-i18n="svc.qual.card3.title">Conocimiento Aplicado</div>
-              <div class="card-text" data-i18n="svc.qual.card3.text">Soluciones construidas sobre experiencia real, no solo teoría.</div>
-            </div>
-
+    <!-- ══ NUESTRO ESPACIO + CUALIDADES ══ -->
+    <section class="svc-section svc-space">
+      <div class="svc-shell svc-space-grid">
+        <figure class="svc-space-media" data-reveal="float">
+          <img src="/src/assets/images/laboratorio.png" alt="Laboratorio SMED Technology" loading="lazy" />
+        </figure>
+        <div class="svc-space-body" data-reveal-group="120">
+          <span class="svc-kicker" data-reveal><span class="svc-k-num mono">05</span> / <span data-i18n="svc.lab.kicker">NUESTRO ESPACIO</span></span>
+          <h2 data-i18n="svc.lab.title" data-reveal>En SMED trabajamos para darte lo mejor</h2>
+          <p class="svc-space-desc" data-i18n="svc.lab.desc" data-reveal>Cada solución que entregamos nace de un equipo comprometido, herramientas actualizadas y un ambiente de trabajo pensado para la excelencia técnica. No improvisamos — preparamos, analizamos y ejecutamos con precisión.</p>
+          <div class="svc-space-tags" data-reveal>
+            <span><i class="bx bx-check"></i><span data-i18n="svc.lab.tag1"> Equipos certificados</span></span>
+            <span><i class="bx bx-check"></i><span data-i18n="svc.lab.tag2"> Ambiente profesional</span></span>
+            <span><i class="bx bx-check"></i><span data-i18n="svc.lab.tag3"> Diagnóstico especializado</span></span>
           </div>
-        </section>
+          <p class="svc-space-sub mono" data-i18n="svc.qual.kicker" data-reveal>¿POR QUÉ ELEGIRNOS?</p>
+          <ul class="svc-quals">
+            <li data-reveal><span class="mono">01</span><div><strong data-i18n="svc.qual.card1.title">Soporte Personalizado</strong><p data-i18n="svc.qual.card1.text">Asistencia técnica y acompañamiento adaptado a las necesidades reales de cada cliente.</p></div></li>
+            <li data-reveal><span class="mono">02</span><div><strong data-i18n="svc.qual.card2.title">Seguridad Garantizada</strong><p data-i18n="svc.qual.card2.text">Protocolos actualizados y buenas prácticas para proteger tu información y sistemas.</p></div></li>
+            <li data-reveal><span class="mono">03</span><div><strong data-i18n="svc.qual.card3.title">Conocimiento Aplicado</strong><p data-i18n="svc.qual.card3.text">Soluciones construidas sobre experiencia real, no solo teoría.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-        <!-- Sección laboratorio -->
-        <section class="section-lab">
-          <div class="lab-img-wrap">
-            <img src="/src/assets/images/laboratorio.png" alt="Laboratorio SMED Technology" class="lab-img" />
-            <div class="lab-img-overlay"></div>
+    <!-- ══ PROTOCOLO SMED (FinalSection.js añade .show y el sonido) ══ -->
+    <section class="svc-section svc-steps">
+      <div class="svc-shell">
+        <div class="svc-head" data-reveal-group="120">
+          <div class="svc-head-main" data-reveal>
+            <span class="svc-kicker"><span class="svc-k-num mono">06</span> / <span data-i18n="svc.steps.kicker">PROTOCOLO SMED</span></span>
+            <h2 data-i18n="svc.steps.title">¿Cómo funciona nuestro servicio?</h2>
           </div>
-          <div class="lab-content">
-            <p class="lab-kicker" data-i18n="svc.lab.kicker">NUESTRO ESPACIO</p>
-            <h2 class="lab-title" data-i18n="svc.lab.title">En SMED trabajamos para darte lo mejor</h2>
-            <p class="lab-desc" data-i18n="svc.lab.desc">Cada solución que entregamos nace de un equipo comprometido, herramientas actualizadas y un ambiente de trabajo pensado para la excelencia técnica. No improvisamos — preparamos, analizamos y ejecutamos con precisión.</p>
-            <div class="lab-tags">
-              <span class="lab-tag"><i class='bx bx-check-circle'></i><span data-i18n="svc.lab.tag1"> Equipos certificados</span></span>
-              <span class="lab-tag"><i class='bx bx-check-circle'></i><span data-i18n="svc.lab.tag2"> Ambiente profesional</span></span>
-              <span class="lab-tag"><i class='bx bx-check-circle'></i><span data-i18n="svc.lab.tag3"> Diagnóstico especializado</span></span>
-            </div>
-          </div>
-        </section>
+        </div>
+        <ol class="step-container">
+          <li class="step">
+            <span class="step-num mono">01</span>
+            <span class="step-icon"><i class="bx bx-calendar-check"></i></span>
+            <h3 data-i18n="svc.step1.title">Agenda tu cita</h3>
+            <p data-i18n="svc.step1.desc">Cuéntanos tu problema y coordinamos una visita o reunión virtual sin compromiso.</p>
+          </li>
+          <li class="step">
+            <span class="step-num mono">02</span>
+            <span class="step-icon"><i class="bx bx-search-alt"></i></span>
+            <h3 data-i18n="svc.step2.title">Diagnóstico técnico</h3>
+            <p data-i18n="svc.step2.desc">Analizamos tu equipo o proyecto con precisión para identificar la raíz del problema.</p>
+          </li>
+          <li class="step">
+            <span class="step-num mono">03</span>
+            <span class="step-icon"><i class="bx bx-wrench"></i></span>
+            <h3 data-i18n="svc.step3.title">Solución y ejecución</h3>
+            <p data-i18n="svc.step3.desc">Aplicamos la solución con rapidez, calidad y total transparencia contigo.</p>
+          </li>
+          <li class="step">
+            <span class="step-num mono">04</span>
+            <span class="step-icon"><i class="bx bx-shield-quarter"></i></span>
+            <h3 data-i18n="svc.step4.title">Entrega + soporte</h3>
+            <p data-i18n="svc.step4.desc">Te entregamos el resultado y seguimos disponibles con soporte post-servicio.</p>
+          </li>
+        </ol>
+        <audio id="pop-sound" src="/src/assets/audio/pop-6.mp3" preload="auto"></audio>
+      </div>
+    </section>
 
-        <!--section final: cómo funciona-->
-        <section class="section-servicio-flujo">
-          <p class="proceso-kicker" data-i18n="svc.steps.kicker">PROTOCOLO SMED</p>
-          <h2 class="title-servicio" data-i18n="svc.steps.title">¿Cómo funciona nuestro servicio?</h2>
-          <div class="step-container">
-            <div class="step">
-              <div class="step-num">01</div>
-              <div class="step-icon-wrap">
-                <i class='bx bx-calendar-check'></i>
-              </div>
-              <h3 class="step-title" data-i18n="svc.step1.title">Agenda tu cita</h3>
-              <p class="step-desc" data-i18n="svc.step1.desc">Cuéntanos tu problema y coordinamos una visita o reunión virtual sin compromiso.</p>
-            </div>
-            <div class="step-connector"><span></span><i class='bx bx-chevron-right step-arrow'></i></div>
-            <div class="step">
-              <div class="step-num">02</div>
-              <div class="step-icon-wrap">
-                <i class='bx bx-search-alt'></i>
-              </div>
-              <h3 class="step-title" data-i18n="svc.step2.title">Diagnóstico técnico</h3>
-              <p class="step-desc" data-i18n="svc.step2.desc">Analizamos tu equipo o proyecto con precisión para identificar la raíz del problema.</p>
-            </div>
-            <div class="step-connector"><span></span><i class='bx bx-chevron-right step-arrow'></i></div>
-            <div class="step">
-              <div class="step-num">03</div>
-              <div class="step-icon-wrap">
-                <i class='bx bx-wrench'></i>
-              </div>
-              <h3 class="step-title" data-i18n="svc.step3.title">Solución y ejecución</h3>
-              <p class="step-desc" data-i18n="svc.step3.desc">Aplicamos la solución con rapidez, calidad y total transparencia contigo.</p>
-            </div>
-            <div class="step-connector"><span></span><i class='bx bx-chevron-right step-arrow'></i></div>
-            <div class="step">
-              <div class="step-num">04</div>
-              <div class="step-icon-wrap">
-                <i class='bx bx-shield-quarter'></i>
-              </div>
-              <h3 class="step-title" data-i18n="svc.step4.title">Entrega + soporte</h3>
-              <p class="step-desc" data-i18n="svc.step4.desc">Te entregamos el resultado y seguimos disponibles con soporte post-servicio.</p>
-            </div>
+    <!-- ══ FORMULARIO ══ -->
+    <section class="svc-section svc-contact" id="contacto">
+      <div class="svc-shell svc-contact-grid">
+        <div class="svc-contact-copy" data-reveal-group="120">
+          <span class="svc-kicker" data-reveal><span class="svc-k-num mono">07</span> / <span data-i18n="svc.form.kicker">AGENDA TU CONSULTA</span></span>
+          <h2 data-i18n="svc.form.title" data-reveal>Hablemos de tu proyecto</h2>
+          <p class="svc-contact-sub" data-i18n="svc.form.subtitle" data-reveal>Cuéntanos qué necesitas y te respondemos en menos de 24 horas.</p>
+          <p class="svc-contact-alt mono" data-i18n="svc2.form.alt" data-reveal>O escríbenos directamente</p>
+          <div class="svc-contact-links" data-reveal>
+            <a href="https://wa.me/573024462007?text=Hola%20SMED%20Technology%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> +57 302 4462007</a>
+            <a href="mailto:contacto@smedtech.com.co"><i class="bx bx-envelope"></i> contacto@smedtech.com.co</a>
           </div>
-          <audio id="pop-sound" src="/src/assets/audio/pop-6.mp3" preload="auto"></audio>
-        </section>
+        </div>
 
-        <!-- Formulario de contacto -->
-        <section class="section-contacto" id="contacto">
-          <div class="contacto-glow"></div>
-          <p class="contacto-kicker" data-i18n="svc.form.kicker">AGENDA TU CONSULTA</p>
-          <h2 class="contacto-title" data-i18n="svc.form.title">Hablemos de tu proyecto</h2>
-          <p class="contacto-subtitle" data-i18n="svc.form.subtitle">Cuéntanos qué necesitas y te respondemos en menos de 24 horas.</p>
-          <form class="form-tech" action="/backend/form/FormContact.php" method="POST">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="f-nombre" data-i18n="svc.form.name">Nombre</label>
-                <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre completo" required />
-              </div>
-              <div class="form-group">
-                <label for="f-email" data-i18n="svc.form.email">Correo electrónico</label>
-                <input type="email" id="f-email" name="email" placeholder="tu@correo.com" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="f-telefono" data-i18n="svc.form.phone">Teléfono</label>
-                <input type="tel" id="f-telefono" name="telefono" placeholder="+57 xxx xxx xxxx" />
-              </div>
-              <div class="form-group">
-                <label for="f-servicio" data-i18n="svc.form.service">Servicio de interés</label>
-                <select id="f-servicio" name="servicio" required>
-                  <option value="" disabled selected data-i18n="svc.form.select">Selecciona un servicio</option>
-                  <option value="soporte_tecnico" data-i18n="svc.form.opt1">Soporte técnico</option>
-                  <option value="asesorias" data-i18n="svc.form.opt2">Asesorías</option>
-                  <option value="desarrollo_web" data-i18n="svc.form.opt3">Desarrollo web</option>
-                  <option value="redes" data-i18n="svc.form.opt4">Redes e infraestructura</option>
-                  <option value="cloud" data-i18n="svc.form.opt5">Cloud</option>
-                  <option value="otros" data-i18n="svc.form.opt6">Otros</option>
-                </select>
-              </div>
+        <form class="form-tech" action="/backend/form/FormContact.php" method="POST" data-reveal="float">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-nombre" data-i18n="svc.form.name">Nombre</label>
+              <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre completo" required />
             </div>
             <div class="form-group">
-              <label for="f-mensaje" data-i18n="svc.form.message">Mensaje</label>
-              <textarea id="f-mensaje" name="mensaje" rows="4" placeholder="Cuéntanos brevemente tu necesidad..." required></textarea>
+              <label for="f-email" data-i18n="svc.form.email">Correo electrónico</label>
+              <input type="email" id="f-email" name="email" placeholder="tu@correo.com" required />
             </div>
-            <button type="submit" class="form-submit">
-              <i class='bx bx-send'></i><span data-i18n="svc.form.submit"> Enviar solicitud</span>
-            </button>
-          </form>
-        </section>
-
-        <!-- CTA final -->
-        <section class="section-cta-final">
-          <div class="cta-glow"></div>
-          <p class="cta-kicker" data-i18n="svc.cta.kicker">DAR EL SIGUIENTE PASO</p>
-          <h2 class="cta-title" data-i18n-html="svc.cta.title">¿Listo para transformar<br>tu tecnología?</h2>
-          <p class="cta-desc" data-i18n="svc.cta.desc">Hablemos de tu proyecto. Sin compromisos, sin tecnicismos. Solo soluciones reales.</p>
-          <div class="cta-actions">
-            <a href="/asesorias" class="cta-btn-primary">
-              <i class='bx bx-headphone'></i><span data-i18n="svc.cta.btn1"> Solicitar asesoría</span>
-            </a>
           </div>
-        </section>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-telefono" data-i18n="svc.form.phone">Teléfono</label>
+              <input type="tel" id="f-telefono" name="telefono" placeholder="+57 xxx xxx xxxx" />
+            </div>
+            <div class="form-group">
+              <label for="f-servicio" data-i18n="svc.form.service">Servicio de interés</label>
+              <select id="f-servicio" name="servicio" required>
+                <option value="" disabled selected data-i18n="svc.form.select">Selecciona un servicio</option>
+                <option value="soporte_tecnico" data-i18n="svc.form.opt1">Soporte técnico</option>
+                <option value="asesorias" data-i18n="svc.form.opt2">Asesorías</option>
+                <option value="desarrollo_web" data-i18n="svc.form.opt3">Desarrollo web</option>
+                <option value="redes" data-i18n="svc.form.opt4">Redes e infraestructura</option>
+                <option value="cloud" data-i18n="svc.form.opt5">Cloud</option>
+                <option value="otros" data-i18n="svc.form.opt6">Otros</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-mensaje" data-i18n="svc.form.message">Mensaje</label>
+            <textarea id="f-mensaje" name="mensaje" rows="4" placeholder="Cuéntanos brevemente tu necesidad..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <i class="bx bx-send"></i><span data-i18n="svc.form.submit"> Enviar solicitud</span>
+          </button>
+        </form>
+      </div>
+    </section>
 
-    </main>
-  </div>
+    <!-- ══ CTA FINAL ══ -->
+    <section class="svc-section svc-cta">
+      <div class="svc-shell">
+        <div class="svc-cta-card" data-reveal="float">
+          <span class="svc-cta-glow" aria-hidden="true"></span>
+          <p class="svc-cta-kicker mono" data-i18n="svc.cta.kicker">DAR EL SIGUIENTE PASO</p>
+          <h2 data-i18n-html="svc.cta.title">¿Listo para transformar<br><span class="accent">tu tecnología?</span></h2>
+          <p class="svc-cta-desc" data-i18n="svc.cta.desc">Hablemos de tu proyecto. Sin compromisos, sin tecnicismos. Solo soluciones reales.</p>
+          <a href="/asesorias" class="svc-btn svc-btn--light"><i class="bx bx-headphone"></i><span data-i18n="svc.cta.btn1"> Solicitar asesoría</span></a>
+        </div>
+      </div>
+    </section>
 
-  <!--Pie de pagina-->  
+  </main>
+
   <footer-page></footer-page>
-
-  <!--Boton de whatsapp-->
   <whatsapp-container></whatsapp-container>
   <chatbot-container></chatbot-container>
 
-  <!-- Contenedor para particles.js -->
-  <div id="particles-js"></div>
-  <script>
-    // Animación de entrada para cards de cualidades
-    const cardObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.querySelectorAll('.card').forEach(c => c.classList.add('visible'));
-        cardObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.2 });
-    const secCual = document.getElementById('secCualidades');
-    if (secCual) cardObserver.observe(secCual);
-
-    // Contador animado de stats
-    const counters = document.querySelectorAll('.stat-num');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = +el.dataset.target;
-        const duration = 1600;
-        const step = target / (duration / 16);
-        let current = 0;
-        const tick = () => {
-          current = Math.min(current + step, target);
-          el.textContent = Math.floor(current);
-          if (current < target) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-        observer.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(c => observer.observe(c));
-  </script>
-  <script src="/src/scripts/i18n.js?v=1.6.0"></script>
+  <script src="/src/scripts/i18n.js?v=2.0.0"></script>
   <script>
     if (window.SMED_I18N) window.SMED_I18N.initLang();
+
+    // Highlight the connections of the node under the pointer
+    document.querySelectorAll('.nodes [data-node]').forEach((node) => {
+      const links = document.querySelectorAll('.node-links [data-to="' + node.dataset.node + '"]');
+      node.addEventListener('mouseenter', () => links.forEach((l) => l.classList.add('is-hot')));
+      node.addEventListener('mouseleave', () => links.forEach((l) => l.classList.remove('is-hot')));
+    });
   </script>
-  <script src="/src/scripts/Particles.js?v=1.6.0"></script>
-  <script src="/src/scripts/ParticlesConfig.js?v=1.6.0"></script>
-  <script src="/src/scripts/servicioscorusel.js?v=1.6.0"></script>
+  <script src="/src/scripts/homeMotion.js?v=2.0.0" defer></script>
+  <script src="/src/scripts/parallaxIntro.js?v=2.0.0" defer></script>
   <script src="/backend/form/FormHandler.js"></script>
-  <script src="/src/utils/FinalSection.js?v=1.6.0"></script>
-  <script type="module" src="/src/components/BaseComponents.js?v=1.6.0" defer></script>
+  <script src="/src/utils/FinalSection.js?v=2.0.0"></script>
+  <script type="module" src="/src/components/BaseComponents.js?v=2.0.0" defer></script>
 </body>
 
 </html>

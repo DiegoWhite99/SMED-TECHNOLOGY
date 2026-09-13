@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-/* Shared header: white bar, mega menus and a dark CTA. It stays light in both
-   site themes; the theme toggle only affects page content. */
+/* Shared header: white bar, mega menus and a dark CTA. The dark theme
+   (html[data-theme="dark"], set by the toggle) swaps the same tokens below. */
 .site-header {
   --nav-bg: #ffffff;
   --nav-text: #0e1726;
@@ -527,6 +527,67 @@ html.nav-open {
 .search-button i {
   font-size: 18px;
   color: var(--nav-muted);
+}
+
+/* ── Dark theme ── */
+[data-theme="dark"] .site-header {
+  --nav-bg: #0a1120;
+  --nav-text: #eef3fb;
+  --nav-muted: #9aa8c0;
+  --nav-line: rgba(238, 243, 251, 0.1);
+  --nav-accent: #6ea5ff;
+}
+
+[data-theme="dark"] .navbar-smed.is-scrolled {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .nav-item:hover,
+[data-theme="dark"] .has-submenu.submenu-open > .nav-item,
+[data-theme="dark"] .has-submenu:hover > .nav-item {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .submenu {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .sublink:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .mega-icon {
+  background: rgba(110, 165, 255, 0.12);
+}
+
+[data-theme="dark"] .sublink:hover .mega-icon {
+  color: #06122b;
+}
+
+[data-theme="dark"] .mega-feature {
+  background: #121c31;
+}
+
+[data-theme="dark"] .mega-feature--cta {
+  background: #16284d;
+}
+
+[data-theme="dark"] .nav-cta,
+[data-theme="dark"] #BotonesSesion .btn.white-btn {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #0e1726;
+}
+
+[data-theme="dark"] .nav-cta:hover {
+  background: var(--nav-accent);
+  color: #06122b;
+}
+
+/* The logo is black on transparent; a white disc keeps it readable */
+[data-theme="dark"] #logo_smed {
+  border-radius: 50%;
+  background: #ffffff;
 }
 
 /* ── Mobile ── */

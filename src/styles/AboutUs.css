@@ -26,8 +26,8 @@
   --tone-speed: 0.45s;
 }
 
-/* The home keeps the same white → deep-blue journey in both site themes;
-   the theme toggle only restyles the shared nav and footer on this page. */
+/* The home always keeps the white → deep-blue journey: AboutUs.html locks the
+   light theme (data-theme-lock) and the nav hides the theme toggle here. */
 
 /* ── Paleta de scroll (scrollScenes.js): blanco → azul semi oscuro → azul muy oscuro ── */
 .hero { --scene-bg: #ffffff; }
