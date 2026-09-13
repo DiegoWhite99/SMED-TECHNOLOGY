@@ -51,6 +51,10 @@ const translations = {
     'proc.p': 'Las mismas cuatro etapas en cada proyecto, para que siempre sepas en qué punto estamos.',
     'why.p': 'Lo que puedes verificar sobre SMED hoy.',
     'founders.p': 'Tres perfiles complementarios: desarrollo, operación y estrategia.',
+    'cap.panel.check1': 'Diagnóstico', 'cap.panel.check2': 'Mantenimiento', 'cap.panel.check3': 'Seguimiento',
+    'work.visit': 'Visitar sitio', 'work.line': 'Construido por SMED Software',
+    'work.bakery.f1': 'Menú por QR', 'work.bakery.f2': 'Pedidos y mesas', 'work.bakery.f3': 'Inventario', 'work.bakery.f4': 'Análisis de ventas',
+    'work.sports.f1': 'Membresías', 'work.sports.f2': 'Rutinas', 'work.sports.f3': 'Asistencia', 'work.sports.f4': 'Seguimiento de resultados',
     // Services page
     'svc.hero.h1': 'LA TECNOLOGÍA EN TUS MANOS', 'svc.hero.h2': 'A TU ALCANCE',
     'svc.hero.desc': 'Diseñamos soluciones tecnológicas a medida: soporte, redes, desarrollo y cloud. Acompañamiento real, resultados concretos.',
@@ -151,6 +155,10 @@ const translations = {
     'proc.p': 'The same four stages on every project, so you always know where things stand.',
     'why.p': 'What you can verify about SMED today.',
     'founders.p': 'Three complementary profiles: development, operations and strategy.',
+    'cap.panel.check1': 'Diagnosis', 'cap.panel.check2': 'Maintenance', 'cap.panel.check3': 'Follow-up',
+    'work.visit': 'Visit site', 'work.line': 'Built by SMED Software',
+    'work.bakery.f1': 'QR menu', 'work.bakery.f2': 'Orders & tables', 'work.bakery.f3': 'Inventory', 'work.bakery.f4': 'Sales analytics',
+    'work.sports.f1': 'Memberships', 'work.sports.f2': 'Routines', 'work.sports.f3': 'Attendance', 'work.sports.f4': 'Progress tracking',
     // Services page
     'svc.hero.h1': 'TECHNOLOGY IN YOUR HANDS', 'svc.hero.h2': 'WITHIN YOUR REACH',
     'svc.hero.desc': 'We design tailored tech solutions: support, networks, development and cloud. Real accompaniment, concrete results.',

@@ -19,30 +19,38 @@
   };
 
   const measure = () => {
+    const blend = Math.min(window.innerHeight * 0.6, 480);
     stops = sections.map((section) => ({
       top: section.getBoundingClientRect().top + window.scrollY,
+      height: section.offsetHeight,
       color: parseColor(getComputedStyle(section).getPropertyValue('--scene-bg')),
     }));
+    // Half-width of the blend zone at each section's top edge; capped at half of
+    // both neighbours so zones never overlap inside short sections
+    stops.forEach((stop, i) => {
+      stop.half = i === 0 ? 0 : Math.min(blend, stop.height / 2, stops[i - 1].height / 2);
+    });
   };
 
   const update = () => {
     ticking = false;
     const y = window.scrollY + window.innerHeight / 2;
-    const blend = Math.min(window.innerHeight * 0.3, 220);
 
     let i = stops.length - 1;
     while (i > 0 && stops[i].top > y) i--;
 
-    let from = stops[i].color;
+    const cur = stops[i];
+    const next = stops[i + 1];
+    let from = cur.color;
     let to = from;
     let t = 0;
-    if (i > 0 && y - stops[i].top < blend) {
+    if (i > 0 && y - cur.top < cur.half) {
       from = stops[i - 1].color;
-      to = stops[i].color;
-      t = 0.5 + (y - stops[i].top) / (2 * blend);
-    } else if (i < stops.length - 1 && stops[i + 1].top - y < blend) {
-      to = stops[i + 1].color;
-      t = 0.5 - (stops[i + 1].top - y) / (2 * blend);
+      t = 0.5 + (y - cur.top) / (2 * cur.half);
+      to = cur.color;
+    } else if (next && next.top - y < next.half) {
+      to = next.color;
+      t = 0.5 - (next.top - y) / (2 * next.half);
     }
 
     const ease = t * t * (3 - 2 * t);

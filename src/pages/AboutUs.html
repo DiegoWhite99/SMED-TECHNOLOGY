@@ -10,6 +10,16 @@
   <meta name="author" content="Diego White" />
   <meta name="robots" content="index, follow" />
   <title>Smed | Nosotros</title>
+  <script>
+    // Hide [data-reveal] content before first paint so it can float in; homeMotion.js
+    // sets __smedMotion, and if it never loads the content is shown again.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      document.documentElement.classList.add('motion-ready');
+      setTimeout(function () {
+        if (!window.__smedMotion) document.documentElement.classList.remove('motion-ready');
+      }, 2500);
+    }
+  </script>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="icon" href="/src/assets/icons/SmedOfficial.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/src/styles/AboutUs.css" />
@@ -31,36 +41,36 @@
 
     <!-- 1. Hero -->
     <section class="home-section hero" data-scene>
-      <div class="shell">
-        <span class="kicker">SMED Technology</span>
-        <h1 data-i18n="hero.h1">Tu operación tecnológica no debería depender de cinco proveedores distintos.</h1>
-        <div class="hero-row">
+      <div class="shell" data-reveal-group="140">
+        <span class="kicker" data-reveal>SMED Technology</span>
+        <h1 data-i18n="hero.h1" data-reveal>Tu operación tecnológica no debería depender de cinco proveedores distintos.</h1>
+        <div class="hero-row" data-reveal>
           <p class="hero-lead" data-i18n="hero.p">Reunimos desarrollo de software, soporte técnico e infraestructura de redes en un mismo equipo, para que dejes de coordinar entre proveedores y empieces a construir con continuidad.</p>
           <div class="hero-actions">
             <a href="/servicios" class="btn-smed btn-smed-primary" data-i18n="hero.cta1">Conoce nuestros servicios</a>
             <a href="#fundadores" class="btn-smed btn-smed-secondary" data-i18n="hero.cta2">Conoce al equipo</a>
           </div>
         </div>
-        <figure class="hero-media">
+        <figure class="hero-media" data-reveal="tilt">
           <img src="/src/assets/images/team_SMED.jpeg" alt="Equipo de SMED Technology en reunión de trabajo" />
         </figure>
       </div>
     </section>
 
     <!-- Tecnologías -->
-    <section class="home-section logo-strip" data-scene>
+    <section class="home-section logo-strip">
       <div class="shell">
-        <p class="logo-strip-label mono" data-i18n="logos.label">Tecnologías y plataformas con las que trabajamos</p>
-        <div class="logo-row">
-          <img src="/src/assets/icons/AwsLogo.svg" alt="AWS" loading="lazy" />
-          <img src="/src/assets/icons/MicrosoftLogo.svg" alt="Microsoft" loading="lazy" />
-          <img src="/src/assets/icons/GoogleLogo.svg" alt="Google" loading="lazy" />
-          <img src="/src/assets/icons/CiscoLogo.svg" alt="Cisco" loading="lazy" />
-          <img src="/src/assets/icons/NvidiaLogo.svg" alt="NVIDIA" loading="lazy" />
-          <img src="/src/assets/icons/OpenAILogo.svg" alt="OpenAI" loading="lazy" />
-          <img src="/src/assets/icons/ClaudeLogo.svg" alt="Claude" loading="lazy" />
-          <img src="/src/assets/icons/AsusLogo.svg" alt="Asus" loading="lazy" />
-          <img src="/src/assets/icons/AcerLogo.svg" alt="Acer" loading="lazy" />
+        <p class="logo-strip-label mono" data-i18n="logos.label" data-reveal>Tecnologías y plataformas con las que trabajamos</p>
+        <div class="logo-row" data-reveal-group="70">
+          <img src="/src/assets/icons/AwsLogo.svg" alt="AWS" loading="lazy" data-reveal />
+          <img src="/src/assets/icons/MicrosoftLogo.svg" alt="Microsoft" loading="lazy" data-reveal />
+          <img src="/src/assets/icons/GoogleLogo.svg" alt="Google" loading="lazy" data-reveal />
+          <img src="/src/assets/icons/CiscoLogo.svg" alt="Cisco" loading="lazy" data-reveal />
+          <img src="/src/assets/icons/NvidiaLogo.svg" alt="NVIDIA" loading="lazy" data-reveal />
+          <img src="/src/assets/icons/OpenAILogo.svg" alt="OpenAI" loading="lazy" data-reveal />
+          <img src="/src/assets/icons/ClaudeLogo.svg" alt="Claude" loading="lazy" data-reveal />
+          <img src="/src/assets/icons/AsusLogo.svg" alt="Asus" loading="lazy" data-reveal />
+          <img src="/src/assets/icons/AcerLogo.svg" alt="Acer" loading="lazy" data-reveal />
         </div>
       </div>
     </section>
@@ -68,14 +78,50 @@
     <!-- 2. Capacidades -->
     <section class="home-section capacidades" id="capacidades" data-scene>
       <div class="shell cap-layout">
-        <div class="cap-aside">
-          <span class="kicker" data-i18n="cap.kicker">Capacidades</span>
-          <h2 data-i18n="cap.h2">Tres líneas de servicio, un mismo equipo</h2>
-          <p data-i18n="cap.intro">Desarrollo, soporte e infraestructura bajo una misma dirección técnica. Un solo equipo responde por todo el ciclo.</p>
-          <img src="/src/assets/images/Services.webp" alt="Equipo de SMED revisando código en sala de reuniones" loading="lazy" />
+        <div class="cap-aside" data-reveal-group="140">
+          <span class="kicker" data-i18n="cap.kicker" data-reveal>Capacidades</span>
+          <h2 data-i18n="cap.h2" data-reveal>Tres líneas de servicio, un mismo equipo</h2>
+          <p data-i18n="cap.intro" data-reveal>Desarrollo, soporte e infraestructura bajo una misma dirección técnica. Un solo equipo responde por todo el ciclo.</p>
+          <div class="cap-visual" data-reveal="float">
+            <img class="cap-photo" src="/src/assets/images/diego_cristian.webp" alt="Diego Castelblanco y Cristian Roncancio trabajando en la oficina de SMED" loading="lazy" />
+            <div class="float-panel panel-net" aria-hidden="true">
+              <p class="panel-title mono">SMED Net</p>
+              <svg viewBox="0 0 220 110" role="presentation">
+                <line class="link" x1="30" y1="55" x2="95" y2="22" />
+                <line class="link" x1="30" y1="55" x2="95" y2="88" />
+                <line class="link" x1="95" y1="22" x2="160" y2="30" />
+                <line class="link" x1="95" y1="88" x2="160" y2="80" />
+                <line class="link" x1="160" y1="30" x2="200" y2="55" />
+                <line class="link" x1="160" y1="80" x2="200" y2="55" />
+                <line class="link" x1="95" y1="22" x2="95" y2="88" />
+                <circle class="node node-core" cx="30" cy="55" r="7" />
+                <circle class="node" cx="95" cy="22" r="5" />
+                <circle class="node" cx="95" cy="88" r="5" />
+                <circle class="node" cx="160" cy="30" r="5" />
+                <circle class="node" cx="160" cy="80" r="5" />
+                <circle class="node node-core" cx="200" cy="55" r="6" />
+              </svg>
+            </div>
+            <div class="float-panel panel-check" aria-hidden="true">
+              <p class="panel-title mono">SMED Support</p>
+              <ul>
+                <li><i class="bx bx-check"></i><span data-i18n="cap.panel.check1">Diagnóstico</span></li>
+                <li><i class="bx bx-check"></i><span data-i18n="cap.panel.check2">Mantenimiento</span></li>
+                <li class="is-pending"><i class="bx bx-loader-alt"></i><span data-i18n="cap.panel.check3">Seguimiento</span></li>
+              </ul>
+            </div>
+            <div class="float-panel panel-code" aria-hidden="true">
+              <div class="panel-bar"><span></span><span></span><span></span><em class="mono">smed.config.ts</em></div>
+<pre class="mono"><span class="tk-k">const</span> smed = {
+  software: <span class="tk-s">'web · apis'</span>,
+  support:  <span class="tk-s">'soporte'</span>,
+  net:      <span class="tk-s">'redes · cloud'</span>,
+};</pre>
+            </div>
+          </div>
         </div>
-        <div class="cap-list">
-          <article class="cap-item">
+        <div class="cap-list" data-reveal-group="160">
+          <article class="cap-item" data-reveal="float">
             <span class="cap-index mono">01</span>
             <div class="cap-body">
               <h3 data-i18n="cap.software.h3">SMED Software</h3>
@@ -89,7 +135,7 @@
               <a class="cap-link" href="/desarrollo"><span data-i18n="cap.link.software">Ver desarrollo</span> <i class="bx bx-right-arrow-alt"></i></a>
             </div>
           </article>
-          <article class="cap-item">
+          <article class="cap-item" data-reveal="float">
             <span class="cap-index mono">02</span>
             <div class="cap-body">
               <h3 data-i18n="cap.support.h3">SMED Support</h3>
@@ -102,7 +148,7 @@
               <a class="cap-link" href="/soporte"><span data-i18n="cap.link.support">Ver soporte</span> <i class="bx bx-right-arrow-alt"></i></a>
             </div>
           </article>
-          <article class="cap-item">
+          <article class="cap-item" data-reveal="float">
             <span class="cap-index mono">03</span>
             <div class="cap-body">
               <h3 data-i18n="cap.net.h3">SMED Net</h3>
@@ -122,38 +168,66 @@
     <!-- 3. Trabajo real -->
     <section class="home-section trabajo" id="trabajo" data-scene>
       <div class="shell">
-        <div class="section-head">
-          <div class="section-head-title">
+        <div class="section-head" data-reveal-group="140">
+          <div class="section-head-title" data-reveal>
             <span class="kicker" data-i18n="work.kicker">Trabajo real</span>
             <h2 data-i18n="work.h2">Productos que construimos y que están en producción</h2>
           </div>
-          <p data-i18n="work.p">Plataformas reales que diseñamos, desarrollamos y desplegamos. Tecnología SMED funcionando hoy.</p>
+          <p data-i18n="work.p" data-reveal>Plataformas reales que diseñamos, desarrollamos y desplegamos. Tecnología SMED funcionando hoy.</p>
         </div>
         <div class="case-list">
-          <article class="case">
-            <div class="case-media">
-              <img src="/src/assets/images/projects/smed-bakery.png" alt="Captura de SMED Bakery" loading="lazy" />
+          <article class="case" data-reveal-group="120">
+            <div class="case-media" data-reveal="tilt">
+              <a class="browser" href="https://bakery.smedtech.com.co/" target="_blank" rel="noopener">
+                <div class="browser-bar"><span></span><span></span><span></span><em class="mono">bakery.smedtech.com.co</em></div>
+                <img src="/src/assets/images/projects/smed-bakery.png" alt="Captura de SMED Bakery" loading="lazy" />
+              </a>
             </div>
             <div class="case-body">
-              <div class="case-meta">
+              <span class="case-index mono" data-reveal>01</span>
+              <div class="case-meta" data-reveal>
                 <span class="case-status mono" data-i18n="work.status">En producción</span>
                 <span class="case-sector mono" data-i18n="work.bakery.sector">Sector: panaderías y food service</span>
               </div>
-              <h3>SMED Bakery</h3>
-              <p data-i18n="work.bakery.p">Plataforma todo-en-uno para digitalizar panaderías: menú por QR, control de pedidos y mesas, inventario y análisis de ventas.</p>
+              <h3 data-reveal>SMED Bakery</h3>
+              <p data-i18n="work.bakery.p" data-reveal>Plataforma todo-en-uno para digitalizar panaderías: menú por QR, control de pedidos y mesas, inventario y análisis de ventas.</p>
+              <ul class="case-features" data-reveal>
+                <li class="tech-chip" data-i18n="work.bakery.f1">Menú por QR</li>
+                <li class="tech-chip" data-i18n="work.bakery.f2">Pedidos y mesas</li>
+                <li class="tech-chip" data-i18n="work.bakery.f3">Inventario</li>
+                <li class="tech-chip" data-i18n="work.bakery.f4">Análisis de ventas</li>
+              </ul>
+              <div class="case-foot" data-reveal>
+                <span class="case-line mono" data-i18n="work.line">Construido por SMED Software</span>
+                <a class="cap-link" href="https://bakery.smedtech.com.co/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visitar sitio</span> <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
             </div>
           </article>
-          <article class="case case-reverse">
-            <div class="case-media">
-              <img src="/src/assets/images/projects/smed-sports.png" alt="Captura de SMED Sports" loading="lazy" />
+          <article class="case case-reverse" data-reveal-group="120">
+            <div class="case-media" data-reveal="tilt">
+              <a class="browser" href="https://betagym.smedtech.com.co/" target="_blank" rel="noopener">
+                <div class="browser-bar"><span></span><span></span><span></span><em class="mono">betagym.smedtech.com.co</em></div>
+                <img src="/src/assets/images/projects/smed-sports.png" alt="Captura de SMED Sports" loading="lazy" />
+              </a>
             </div>
             <div class="case-body">
-              <div class="case-meta">
+              <span class="case-index mono" data-reveal>02</span>
+              <div class="case-meta" data-reveal>
                 <span class="case-status mono" data-i18n="work.status">En producción</span>
                 <span class="case-sector mono" data-i18n="work.sports.sector">Sector: gimnasios y centros deportivos</span>
               </div>
-              <h3>SMED Sports</h3>
-              <p data-i18n="work.sports.p">Plataforma de gestión para gimnasios: membresías, rutinas, control de asistencia y seguimiento de resultados.</p>
+              <h3 data-reveal>SMED Sports</h3>
+              <p data-i18n="work.sports.p" data-reveal>Plataforma de gestión para gimnasios: membresías, rutinas, control de asistencia y seguimiento de resultados.</p>
+              <ul class="case-features" data-reveal>
+                <li class="tech-chip" data-i18n="work.sports.f1">Membresías</li>
+                <li class="tech-chip" data-i18n="work.sports.f2">Rutinas</li>
+                <li class="tech-chip" data-i18n="work.sports.f3">Asistencia</li>
+                <li class="tech-chip" data-i18n="work.sports.f4">Seguimiento de resultados</li>
+              </ul>
+              <div class="case-foot" data-reveal>
+                <span class="case-line mono" data-i18n="work.line">Construido por SMED Software</span>
+                <a class="cap-link" href="https://betagym.smedtech.com.co/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visitar sitio</span> <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
             </div>
           </article>
         </div>
@@ -163,30 +237,30 @@
     <!-- 4. Cómo trabajamos -->
     <section class="home-section proceso" id="proceso" data-scene>
       <div class="shell">
-        <div class="section-head">
-          <div class="section-head-title">
+        <div class="section-head" data-reveal-group="140">
+          <div class="section-head-title" data-reveal>
             <span class="kicker" data-i18n="proc.kicker">Cómo trabajamos</span>
             <h2 data-i18n="proc.h2">Un proceso claro, de principio a fin</h2>
           </div>
-          <p data-i18n="proc.p">Las mismas cuatro etapas en cada proyecto, para que siempre sepas en qué punto estamos.</p>
+          <p data-i18n="proc.p" data-reveal>Las mismas cuatro etapas en cada proyecto, para que siempre sepas en qué punto estamos.</p>
         </div>
-        <ol class="steps">
-          <li class="step">
+        <ol class="steps" data-reveal-group="150">
+          <li class="step" data-reveal="float">
             <span class="step-index mono">01</span>
             <h3 data-i18n="proc.s1.h3">Diagnóstico</h3>
             <p data-i18n="proc.s1.p">Entendemos el problema real antes de proponer una solución: infraestructura actual, restricciones y objetivos de negocio.</p>
           </li>
-          <li class="step">
+          <li class="step" data-reveal="float">
             <span class="step-index mono">02</span>
             <h3 data-i18n="proc.s2.h3">Arquitectura</h3>
             <p data-i18n="proc.s2.p">Diseñamos la solución técnica: stack, integraciones y plan de implementación, con foco en escalabilidad.</p>
           </li>
-          <li class="step">
+          <li class="step" data-reveal="float">
             <span class="step-index mono">03</span>
             <h3 data-i18n="proc.s3.h3">Construcción</h3>
             <p data-i18n="proc.s3.p">Desarrollamos e implementamos por iteraciones, con visibilidad del avance en cada etapa.</p>
           </li>
-          <li class="step">
+          <li class="step" data-reveal="float">
             <span class="step-index mono">04</span>
             <h3 data-i18n="proc.s4.h3">Operación</h3>
             <p data-i18n="proc.s4.p">Acompañamos la puesta en producción y damos soporte continuo para que la solución se sostenga en el tiempo.</p>
@@ -198,24 +272,27 @@
     <!-- 5. Por qué SMED -->
     <section class="home-section datos" id="por-que-smed" data-scene>
       <div class="shell">
-        <div class="section-head">
-          <div class="section-head-title">
+        <div class="section-head" data-reveal-group="140">
+          <div class="section-head-title" data-reveal>
             <span class="kicker" data-i18n="why.kicker">Por qué SMED</span>
             <h2 data-i18n="why.h2">Datos, no promesas</h2>
           </div>
-          <p data-i18n="why.p">Lo que puedes verificar sobre SMED hoy.</p>
+          <p data-i18n="why.p" data-reveal>Lo que puedes verificar sobre SMED hoy.</p>
         </div>
-        <div class="stats">
-          <div class="stat">
-            <span class="stat-number mono">3</span>
+        <div class="stats" data-reveal-group="160">
+          <div class="stat" data-reveal>
+            <span class="stat-number mono" data-count="3">3</span>
+            <span class="stat-bar"></span>
             <span class="stat-label" data-i18n="why.stat1">Líneas de servicio integradas: Software, Support y Net</span>
           </div>
-          <div class="stat">
-            <span class="stat-number mono">2023</span>
+          <div class="stat" data-reveal>
+            <span class="stat-number mono" data-count="2023" data-from="2000">2023</span>
+            <span class="stat-bar"></span>
             <span class="stat-label" data-i18n="why.stat2">Operando de forma continua desde este año</span>
           </div>
-          <div class="stat">
-            <span class="stat-number mono">100%</span>
+          <div class="stat" data-reveal>
+            <span class="stat-number mono" data-count="100" data-suffix="%">100%</span>
+            <span class="stat-bar"></span>
             <span class="stat-label" data-i18n="why.stat3">Propiedad intelectual transferible al cliente</span>
           </div>
         </div>
@@ -225,39 +302,45 @@
     <!-- 6. Equipo fundador -->
     <section class="home-section equipo" id="fundadores" data-scene>
       <div class="shell team-layout">
-        <figure class="team-photo">
-          <img src="/src/assets/images/team_smed.png" alt="Equipo fundador de SMED Technology" loading="lazy" />
+        <figure class="team-photo" data-reveal="float">
+          <img src="/src/assets/images/silvio-diego-cristian.webp" alt="Silvio Arévalo, Diego Castelblanco y Cristian Roncancio, fundadores de SMED Technology" loading="lazy" />
         </figure>
-        <div class="team-body">
-          <span class="kicker" data-i18n="founders.kicker">Liderazgo</span>
-          <h2 data-i18n="founders.h2">Equipo fundador</h2>
-          <p class="team-intro" data-i18n="founders.p">Tres perfiles complementarios: desarrollo, operación y estrategia.</p>
+        <div class="team-body" data-reveal-group="140">
+          <span class="kicker" data-i18n="founders.kicker" data-reveal>Liderazgo</span>
+          <h2 data-i18n="founders.h2" data-reveal>Equipo fundador</h2>
+          <p class="team-intro" data-i18n="founders.p" data-reveal>Tres perfiles complementarios: desarrollo, operación y estrategia.</p>
           <ul class="team-list">
-            <li class="team-member">
-              <img src="/src/assets/images/Team/Diego.jpeg" alt="Diego Castelblanco" loading="lazy" />
-              <div class="team-info">
-                <h3>Diego Castelblanco</h3>
-                <span class="team-role mono" data-i18n="founders.diego.cargo">CEO — Gerente de Desarrollo</span>
-                <p data-i18n="founders.diego.p">Desarrollo de software, integración de servicios y dirección técnica estratégica.</p>
-                <a href="https://www.linkedin.com/in/diegowhite99/" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a>
+            <li class="team-member" data-reveal="float">
+              <div class="team-card">
+                <img src="/src/assets/images/Team/Diego.jpeg" alt="Diego Castelblanco" loading="lazy" />
+                <div class="team-info">
+                  <h3>Diego Castelblanco</h3>
+                  <span class="team-role mono" data-i18n="founders.diego.cargo">CEO — Gerente de Desarrollo</span>
+                  <p data-i18n="founders.diego.p">Desarrollo de software, integración de servicios y dirección técnica estratégica.</p>
+                  <a href="https://www.linkedin.com/in/diegowhite99/" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a>
+                </div>
               </div>
             </li>
-            <li class="team-member">
-              <img src="/src/assets/images/Team/cristian.jpeg" alt="Cristian Roncancio" loading="lazy" />
-              <div class="team-info">
-                <h3>Cristian Roncancio</h3>
-                <span class="team-role mono" data-i18n="founders.cristian.cargo">COO — Gerente de Operaciones</span>
-                <p data-i18n="founders.cristian.p">Redes, infraestructura, operación del servicio y atención al cliente.</p>
-                <a href="https://www.linkedin.com/in/cristian-stiven-roncancio-villamil-46553a30a/?trk=people-guest_people_search-card&originalSubdomain=co" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a>
+            <li class="team-member" data-reveal="float">
+              <div class="team-card">
+                <img src="/src/assets/images/Team/cristian.jpeg" alt="Cristian Roncancio" loading="lazy" />
+                <div class="team-info">
+                  <h3>Cristian Roncancio</h3>
+                  <span class="team-role mono" data-i18n="founders.cristian.cargo">COO — Gerente de Operaciones</span>
+                  <p data-i18n="founders.cristian.p">Redes, infraestructura, operación del servicio y atención al cliente.</p>
+                  <a href="https://www.linkedin.com/in/cristian-stiven-roncancio-villamil-46553a30a/?trk=people-guest_people_search-card&originalSubdomain=co" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a>
+                </div>
               </div>
             </li>
-            <li class="team-member">
-              <img src="/src/assets/images/Team/Silvio.jpeg" alt="Silvio Arévalo" loading="lazy" />
-              <div class="team-info">
-                <h3>Silvio Arévalo</h3>
-                <span class="team-role mono" data-i18n="founders.silvio.cargo">CSO — Gerente de Estrategia</span>
-                <p data-i18n="founders.silvio.p">Estructuración del negocio, posicionamiento de marca y planificación financiera.</p>
-                <a href="https://www.linkedin.com/in/silvio-andres-arevalo-barreto-8a0933307/" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a>
+            <li class="team-member" data-reveal="float">
+              <div class="team-card">
+                <img src="/src/assets/images/Team/Silvio.jpeg" alt="Silvio Arévalo" loading="lazy" />
+                <div class="team-info">
+                  <h3>Silvio Arévalo</h3>
+                  <span class="team-role mono" data-i18n="founders.silvio.cargo">CSO — Gerente de Estrategia</span>
+                  <p data-i18n="founders.silvio.p">Estructuración del negocio, posicionamiento de marca y planificación financiera.</p>
+                  <a href="https://www.linkedin.com/in/silvio-andres-arevalo-barreto-8a0933307/" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a>
+                </div>
               </div>
             </li>
           </ul>
@@ -267,12 +350,12 @@
 
     <!-- 7. Identidad -->
     <section class="home-section identidad" id="identidad" data-scene>
-      <div class="shell identity-grid">
-        <div class="identity-block">
+      <div class="shell identity-grid" data-reveal-group="180">
+        <div class="identity-block" data-reveal>
           <span class="kicker" data-i18n="mv.mission.label">Misión</span>
           <p data-i18n="mv.mission.p">En SMED acompañamos a empresas y profesionales colombianos con tecnología accesible, resolviendo cualquier reto técnico con confianza y eficacia, sin importar el tamaño del cliente.</p>
         </div>
-        <div class="identity-block">
+        <div class="identity-block" data-reveal>
           <span class="kicker" data-i18n="mv.vision.label">Visión</span>
           <p data-i18n="mv.vision.p">Ser una de las empresas tecnológicas referentes de Latinoamérica para 2032, reconocida por su excelencia en servicio B2B y por un entorno laboral donde las personas quieren trabajar.</p>
         </div>
@@ -281,12 +364,12 @@
 
     <!-- 8. CTA final -->
     <section class="home-section cta-band" data-scene>
-      <div class="shell cta-inner">
-        <div class="cta-copy">
+      <div class="shell cta-inner" data-reveal-group="140">
+        <div class="cta-copy" data-reveal>
           <h2 data-i18n="cta.h2">¿Listo para dejar de coordinar proveedores y empezar a construir?</h2>
           <p data-i18n="cta.p">Cuéntanos qué necesitas y te proponemos una ruta técnica clara, sin compromiso.</p>
         </div>
-        <div class="cta-actions">
+        <div class="cta-actions" data-reveal>
           <a href="/asesorias#sl-contacto" class="btn-smed btn-smed-primary" data-i18n="cta.btn">Hablemos</a>
           <a href="https://wa.me/573024462007?text=Hola%20SMED%20Technology%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." class="btn-smed btn-smed-secondary" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> <span data-i18n="cta.whatsapp">Escríbenos por WhatsApp</span></a>
         </div>
@@ -302,6 +385,7 @@
   <script src="/src/scripts/loader.js"></script>
   <script src="/src/scripts/i18n.js"></script>
   <script src="/src/scripts/scrollScenes.js" defer></script>
+  <script src="/src/scripts/homeMotion.js" defer></script>
   <script>
     // Aplicar idioma guardado antes de que carguen los componentes
     if (window.SMED_I18N) window.SMED_I18N.initLang();
