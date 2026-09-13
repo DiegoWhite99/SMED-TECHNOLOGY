@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 body,
 p,
@@ -13,33 +13,20 @@ figcaption,
 blockquote,
 td,
 th,
-select {
-  font-family: 'Manrope', sans-serif;
-}
-
+select,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-.hero-subtitle,
-.section-kicker,
-.service-label,
-.nav-brand-text span,
+h6 {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Etiquetas técnicas, números y metadatos — nunca para texto largo */
+.kicker,
+.mono,
 .nav-brand-text p,
-.nav-logo p,
-.hero-badge,
-.carousel-title,
-.slider-title,
-.card-title,
-.vision_mision_tittle,
-.eslogan-title,
-.brand-copy-block span,
-.brand-copy-block strong,
-.trust-copy h2,
-.trust-card h3,
-.badge,
-.top {
-  font-family: Verdana, sans-serif !important;
+.nav-logo p {
+  font-family: 'IBM Plex Mono', monospace;
 }

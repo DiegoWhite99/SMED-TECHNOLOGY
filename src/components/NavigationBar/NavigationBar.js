@@ -145,8 +145,8 @@ export default class NavigationBar extends HTMLElement {
       }
     };
 
-    // Aplicar tema guardado
-    const savedTheme = localStorage.getItem("smed-theme") || "dark";
+    // Aplicar tema guardado (por defecto: claro)
+    const savedTheme = localStorage.getItem("smed-theme") || "light";
     applyTheme(savedTheme);
 
     if (themeToggle) {
