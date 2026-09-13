@@ -1,19 +1,25 @@
+/* Registered so the browser can interpolate them when the text tone flips */
+@property --text { syntax: '<color>'; inherits: true; initial-value: #0e1726; }
+@property --muted { syntax: '<color>'; inherits: true; initial-value: #526071; }
+@property --line { syntax: '<color>'; inherits: true; initial-value: rgba(14, 23, 38, 0.12); }
+@property --accent { syntax: '<color>'; inherits: true; initial-value: #0f52be; }
+@property --accent-soft { syntax: '<color>'; inherits: true; initial-value: rgba(15, 82, 190, 0.1); }
+@property --on-accent { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
+@property --surface { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
+/* Registered so getComputedStyle returns rgb() for scrollScenes.js */
+@property --scene-bg { syntax: '<color>'; inherits: false; initial-value: transparent; }
+
 :root {
-  --bg: #f5f7fa;
+  --bg: #ffffff;
   --surface: #ffffff;
   --text: #0e1726;
   --muted: #526071;
   --line: rgba(14, 23, 38, 0.12);
-  --line-soft: rgba(14, 23, 38, 0.07);
   --accent: #0f52be;
+  --accent-soft: rgba(15, 82, 190, 0.1);
   --on-accent: #ffffff;
-  --band: #081b3b;
-  --on-band: #f5f7fa;
-  --on-band-muted: rgba(245, 247, 250, 0.7);
-  --on-band-line: rgba(245, 247, 250, 0.14);
-  --band-accent: #7db0ff;
-  --cta-band: #0f52be;
   --nav-h: 100px;
+  --tone-speed: 0.45s;
 }
 
 [data-theme="dark"] {
@@ -22,10 +28,49 @@
   --text: #eef1f6;
   --muted: #9aa5b5;
   --line: rgba(255, 255, 255, 0.12);
-  --line-soft: rgba(255, 255, 255, 0.07);
   --accent: #7db0ff;
+  --accent-soft: rgba(125, 176, 255, 0.14);
   --on-accent: #0b0f17;
-  --band: #0f1d38;
+}
+
+/* ── Paleta de scroll (scrollScenes.js): blanco → azules cada vez más profundos ── */
+.hero { --scene-bg: #ffffff; }
+.logo-strip { --scene-bg: #f2f6fd; }
+.capacidades { --scene-bg: #dce8fa; }
+.trabajo { --scene-bg: #1f4fa3; }
+.proceso { --scene-bg: #173f88; }
+.datos { --scene-bg: #10306c; }
+.equipo { --scene-bg: #0b2552; }
+.identidad { --scene-bg: #081b3b; }
+
+[data-theme="dark"] .hero { --scene-bg: #0b0f17; }
+[data-theme="dark"] .logo-strip { --scene-bg: #0c121e; }
+[data-theme="dark"] .capacidades { --scene-bg: #0e1628; }
+[data-theme="dark"] .trabajo { --scene-bg: #111f3f; }
+[data-theme="dark"] .proceso { --scene-bg: #13264c; }
+[data-theme="dark"] .datos { --scene-bg: #142c5a; }
+[data-theme="dark"] .equipo { --scene-bg: #112552; }
+[data-theme="dark"] .identidad { --scene-bg: #0d1d44; }
+
+/* Brand blue close in both themes, with white buttons */
+.cta-band {
+  --scene-bg: #0f52be;
+  --muted: rgba(255, 255, 255, 0.84);
+  --line: rgba(255, 255, 255, 0.42);
+  --accent: #ffffff;
+  --accent-soft: rgba(255, 255, 255, 0.16);
+  --on-accent: #0f52be;
+}
+
+/* Light text once the scrolled background is dark */
+body[data-tone="dark"] {
+  --surface: rgba(255, 255, 255, 0.06);
+  --text: #f5f7fa;
+  --muted: rgba(245, 247, 250, 0.72);
+  --line: rgba(245, 247, 250, 0.16);
+  --accent: #a9cbff;
+  --accent-soft: rgba(169, 203, 255, 0.16);
+  --on-accent: #081b3b;
 }
 
 * {
@@ -36,12 +81,20 @@ html {
   scroll-behavior: smooth;
 }
 
-/* html body: beats Bootstrap's body rule, which loads after this file */
+/* html body: beats Bootstrap's body rule, which loads after this file.
+   --bg is written every scroll frame by scrollScenes.js, so it has no transition. */
 html body {
   margin: 0;
   color: var(--text);
   background: var(--bg);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    --text var(--tone-speed) ease,
+    --muted var(--tone-speed) ease,
+    --line var(--tone-speed) ease,
+    --accent var(--tone-speed) ease,
+    --accent-soft var(--tone-speed) ease,
+    --on-accent var(--tone-speed) ease,
+    --surface var(--tone-speed) ease;
 }
 
 main {
@@ -61,15 +114,6 @@ main {
   width: min(1200px, 100%);
   margin: 0 auto;
   padding: 0 2rem;
-}
-
-.band-dark {
-  background: var(--band);
-  color: var(--on-band);
-}
-
-.band-surface {
-  background: var(--surface);
 }
 
 .kicker {
@@ -119,18 +163,6 @@ main {
   max-width: 460px;
 }
 
-.band-dark .kicker {
-  color: var(--band-accent);
-}
-
-.band-dark h2 {
-  color: var(--on-band);
-}
-
-.band-dark .section-head > p {
-  color: var(--on-band-muted);
-}
-
 /* ── Buttons (own names: Bootstrap owns .btn / .btn-primary) ── */
 .btn-smed {
   display: inline-flex;
@@ -144,7 +176,7 @@ main {
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .btn-smed:hover {
@@ -157,14 +189,14 @@ main {
   line-height: 1;
 }
 
-.btn-smed-primary {
+.btn-smed-primary,
+.btn-smed-primary:hover {
   background: var(--accent);
   color: var(--on-accent);
 }
 
 .btn-smed-primary:hover {
-  color: var(--on-accent);
-  filter: brightness(0.92);
+  filter: brightness(0.94);
 }
 
 .btn-smed-secondary {
@@ -175,25 +207,6 @@ main {
 .btn-smed-secondary:hover {
   border-color: var(--accent);
   color: var(--accent);
-}
-
-.btn-smed-light {
-  background: #ffffff;
-  color: #0f52be;
-}
-
-.btn-smed-light:hover {
-  color: #0f52be;
-}
-
-.btn-smed-ghost-light {
-  border-color: rgba(255, 255, 255, 0.45);
-  color: #ffffff;
-}
-
-.btn-smed-ghost-light:hover {
-  border-color: #ffffff;
-  color: #ffffff;
 }
 
 /* ── 1. Hero ── */
@@ -281,16 +294,17 @@ main {
   max-width: 140px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0);
+  filter: brightness(0) invert(0);
   opacity: 0.45;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, filter var(--tone-speed) ease;
 }
 
 .logo-row img:hover {
   opacity: 0.85;
 }
 
-[data-theme="dark"] .logo-row img {
+[data-theme="dark"] .logo-row img,
+body[data-tone="dark"] .logo-row img {
   filter: brightness(0) invert(1);
   opacity: 0.5;
 }
@@ -400,7 +414,7 @@ main {
   text-decoration: none;
   border-bottom: 1px solid var(--line);
   padding-bottom: 2px;
-  transition: color 0.2s ease, border-color 0.2s ease, gap 0.2s ease;
+  transition: gap 0.2s ease;
 }
 
 .cap-link:hover {
@@ -435,7 +449,7 @@ main {
   width: 100%;
   display: block;
   border-radius: 14px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 30px 70px rgba(4, 12, 28, 0.35);
 }
 
 .case-body {
@@ -457,8 +471,8 @@ main {
   gap: 0.5rem;
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
-  background: rgba(125, 176, 255, 0.14);
-  color: var(--band-accent);
+  background: var(--accent-soft);
+  color: var(--accent);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -475,20 +489,20 @@ main {
 
 .case-sector {
   font-size: 0.78rem;
-  color: var(--on-band-muted);
+  color: var(--muted);
 }
 
 .case-body h3 {
   font-size: clamp(1.7rem, 2.8vw, 2.4rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--on-band);
+  color: var(--text);
 }
 
 .case-body p {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: var(--on-band-muted);
+  color: var(--muted);
 }
 
 /* ── 4. Cómo trabajamos ── */
@@ -532,7 +546,7 @@ main {
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--on-band-line);
+  border-top: 1px solid var(--line);
 }
 
 .stat {
@@ -544,7 +558,7 @@ main {
 
 .stat + .stat {
   padding-left: 2.5rem;
-  border-left: 1px solid var(--on-band-line);
+  border-left: 1px solid var(--line);
 }
 
 .stat-number {
@@ -552,13 +566,13 @@ main {
   font-weight: 500;
   line-height: 0.9;
   letter-spacing: -0.04em;
-  color: var(--on-band);
+  color: var(--text);
 }
 
 .stat-label {
   max-width: 260px;
   line-height: 1.55;
-  color: var(--on-band-muted);
+  color: var(--muted);
 }
 
 /* ── 6. Equipo fundador ── */
@@ -678,10 +692,6 @@ main {
 }
 
 /* ── 8. CTA final ── */
-.cta-band {
-  background: var(--cta-band);
-}
-
 .cta-inner {
   display: flex;
   flex-wrap: wrap;
@@ -700,13 +710,12 @@ main {
 .cta-band h2 {
   font-size: clamp(2.1rem, 4.4vw, 3.6rem);
   line-height: 1.05;
-  color: #ffffff;
 }
 
 .cta-copy p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--muted);
 }
 
 .cta-actions {
@@ -807,7 +816,7 @@ main {
   }
 
   .stat + .stat {
-    border-top: 1px solid var(--on-band-line);
+    border-top: 1px solid var(--line);
   }
 
   .identity-grid {
@@ -819,7 +828,7 @@ main {
   }
 
   .logo-row img {
-    height: 34px;
+    height: 26px;
   }
 
   .cap-item {

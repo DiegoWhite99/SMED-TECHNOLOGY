@@ -30,7 +30,7 @@
   <main>
 
     <!-- 1. Hero -->
-    <section class="home-section hero">
+    <section class="home-section hero" data-scene>
       <div class="shell">
         <span class="kicker">SMED Technology</span>
         <h1 data-i18n="hero.h1">Tu operación tecnológica no debería depender de cinco proveedores distintos.</h1>
@@ -48,7 +48,7 @@
     </section>
 
     <!-- Tecnologías -->
-    <section class="home-section logo-strip">
+    <section class="home-section logo-strip" data-scene>
       <div class="shell">
         <p class="logo-strip-label mono" data-i18n="logos.label">Tecnologías y plataformas con las que trabajamos</p>
         <div class="logo-row">
@@ -66,7 +66,7 @@
     </section>
 
     <!-- 2. Capacidades -->
-    <section class="home-section capacidades" id="capacidades">
+    <section class="home-section capacidades" id="capacidades" data-scene>
       <div class="shell cap-layout">
         <div class="cap-aside">
           <span class="kicker" data-i18n="cap.kicker">Capacidades</span>
@@ -120,7 +120,7 @@
     </section>
 
     <!-- 3. Trabajo real -->
-    <section class="home-section band-dark trabajo" id="trabajo">
+    <section class="home-section trabajo" id="trabajo" data-scene>
       <div class="shell">
         <div class="section-head">
           <div class="section-head-title">
@@ -161,7 +161,7 @@
     </section>
 
     <!-- 4. Cómo trabajamos -->
-    <section class="home-section proceso" id="proceso">
+    <section class="home-section proceso" id="proceso" data-scene>
       <div class="shell">
         <div class="section-head">
           <div class="section-head-title">
@@ -196,7 +196,7 @@
     </section>
 
     <!-- 5. Por qué SMED -->
-    <section class="home-section band-dark datos" id="por-que-smed">
+    <section class="home-section datos" id="por-que-smed" data-scene>
       <div class="shell">
         <div class="section-head">
           <div class="section-head-title">
@@ -223,7 +223,7 @@
     </section>
 
     <!-- 6. Equipo fundador -->
-    <section class="home-section equipo" id="fundadores">
+    <section class="home-section equipo" id="fundadores" data-scene>
       <div class="shell team-layout">
         <figure class="team-photo">
           <img src="/src/assets/images/team_smed.png" alt="Equipo fundador de SMED Technology" loading="lazy" />
@@ -266,7 +266,7 @@
     </section>
 
     <!-- 7. Identidad -->
-    <section class="home-section band-surface identidad" id="identidad">
+    <section class="home-section identidad" id="identidad" data-scene>
       <div class="shell identity-grid">
         <div class="identity-block">
           <span class="kicker" data-i18n="mv.mission.label">Misión</span>
@@ -280,15 +280,15 @@
     </section>
 
     <!-- 8. CTA final -->
-    <section class="home-section cta-band">
+    <section class="home-section cta-band" data-scene>
       <div class="shell cta-inner">
         <div class="cta-copy">
           <h2 data-i18n="cta.h2">¿Listo para dejar de coordinar proveedores y empezar a construir?</h2>
           <p data-i18n="cta.p">Cuéntanos qué necesitas y te proponemos una ruta técnica clara, sin compromiso.</p>
         </div>
         <div class="cta-actions">
-          <a href="/asesorias#sl-contacto" class="btn-smed btn-smed-light" data-i18n="cta.btn">Hablemos</a>
-          <a href="https://wa.me/573024462007?text=Hola%20SMED%20Technology%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." class="btn-smed btn-smed-ghost-light" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> <span data-i18n="cta.whatsapp">Escríbenos por WhatsApp</span></a>
+          <a href="/asesorias#sl-contacto" class="btn-smed btn-smed-primary" data-i18n="cta.btn">Hablemos</a>
+          <a href="https://wa.me/573024462007?text=Hola%20SMED%20Technology%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." class="btn-smed btn-smed-secondary" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> <span data-i18n="cta.whatsapp">Escríbenos por WhatsApp</span></a>
         </div>
       </div>
     </section>
@@ -301,6 +301,7 @@
 
   <script src="/src/scripts/loader.js"></script>
   <script src="/src/scripts/i18n.js"></script>
+  <script src="/src/scripts/scrollScenes.js" defer></script>
   <script>
     // Aplicar idioma guardado antes de que carguen los componentes
     if (window.SMED_I18N) window.SMED_I18N.initLang();
