@@ -116,3 +116,20 @@ Bogotá D.C - 2025
 ## Redes Sociales
 
 - [Instagram - SMED Technology](https://www.instagram.com/smed_technology/)
+
+---
+
+## Registro de cambios
+
+### v1.6.0 — 2026-09-13
+
+**Rediseño del home (`/nosotros`) y del nav/footer compartidos por todas las páginas.**
+
+- **Home:** nueva estructura inspirada en Netguru, Monterail y thoughtbot. Hero editorial con titular en mayúsculas, fotos de los fundadores dentro del texto y cinta 3D animada en canvas (`heroRibbon.js`); capacidades, trabajo real (SMED Bakery y SMED Sports con enlace a su sitio), proceso, datos con contadores, equipo fundador en tarjetas flotantes, misión/visión y cierre con el reel de SMED como video de fondo (`bgVideo.js`, carga diferida y filtro).
+- **Fondo ligado al scroll:** blanco en el hero y azules cada vez más oscuros hacia el final (`scrollScenes.js`). El home ya no depende del tema claro/oscuro guardado.
+- **Animaciones:** el contenido entra flotando y se asienta, y las cifras cuentan hasta su valor (`homeMotion.js`). Todo respeta "reducir movimiento".
+- **Nav:** barra blanca con megamenús (Servicios, Empresa), botón "Hablemos" y menú móvil con acordeones; se traduce al cargarse.
+- **Footer:** oscuro, con columnas, tecnologías y barra legal; se traduce al cargarse.
+- **Tipografía:** Inter para el texto e IBM Plex Mono para etiquetas y cifras.
+- **Chatbot:** desactivado temporalmente (mismo cambio que en `main`: el servidor n8n está caído).
+- **Cache-busting:** `?v=1.6.0` en todos los assets, en los fetch de componentes, en los imports de `BaseComponents.js` y en el footer.

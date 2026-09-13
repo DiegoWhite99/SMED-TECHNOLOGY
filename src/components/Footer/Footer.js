@@ -2,7 +2,7 @@
 // así que se traduce aquí al cargarse y en cada cambio de idioma.
 export default class Footer extends HTMLElement {
   async connectedCallback() {
-    const resp = await fetch("/src/components/Footer/Footer.html");
+    const resp = await fetch("/src/components/Footer/Footer.html?v=1.6.0");
     this.innerHTML = await resp.text();
 
     const translate = (lang) => {
