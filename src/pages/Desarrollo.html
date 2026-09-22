@@ -13,7 +13,7 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="icon" href="/src/assets/icons/SmedOfficial.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/src/styles/Foundation.css?v=2.1.0" />
-  <link rel="stylesheet" href="/src/styles/Dev.css?v=2.1.0" />
+  <link rel="stylesheet" href="/src/styles/Dev.css?v=2.3.0" />
   <link rel="stylesheet" href="/src/components/NavigationBar/NavigationBar.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/Footer/Footer.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/WhatsApp/WhatsApp.css?v=2.0.0" />
@@ -95,38 +95,109 @@
           <p data-reveal>Desde una landing hasta un sistema multiagente con IA. Construimos lo que tu negocio necesita para operar más inteligente.</p>
         </div>
 
-        <ol class="dev-list" data-reveal-group="90">
-          <li class="dev-row" data-reveal>
-            <span class="dev-row-num mono">01</span>
-            <h3 class="dev-row-title">Web Apps &amp; SaaS</h3>
-            <p class="dev-row-tags mono"><span>React</span><span>Next.js</span><span>Node</span><span>Arquitectura limpia</span></p>
-          </li>
-          <li class="dev-row" data-reveal>
-            <span class="dev-row-num mono">02</span>
-            <h3 class="dev-row-title">Inteligencia Artificial</h3>
-            <p class="dev-row-tags mono"><span>OpenAI</span><span>LangChain</span><span>Python</span><span>Visión</span></p>
-          </li>
-          <li class="dev-row" data-reveal>
-            <span class="dev-row-num mono">03</span>
-            <h3 class="dev-row-title">Automatización</h3>
-            <p class="dev-row-tags mono"><span>n8n</span><span>Python</span><span>Zapier API</span><span>Pipelines</span></p>
-          </li>
-          <li class="dev-row" data-reveal>
-            <span class="dev-row-num mono">04</span>
-            <h3 class="dev-row-title">Agentes Inteligentes</h3>
-            <p class="dev-row-tags mono"><span>LLM Agents</span><span>RAG</span><span>Tools</span><span>Autonomía</span></p>
-          </li>
-          <li class="dev-row" data-reveal>
-            <span class="dev-row-num mono">05</span>
-            <h3 class="dev-row-title">APIs &amp; Integraciones</h3>
-            <p class="dev-row-tags mono"><span>REST</span><span>GraphQL</span><span>Webhooks</span><span>ERP / CRM</span></p>
-          </li>
-          <li class="dev-row" data-reveal>
-            <span class="dev-row-num mono">06</span>
-            <h3 class="dev-row-title">Dashboards &amp; Analytics</h3>
-            <p class="dev-row-tags mono"><span>Charts.js</span><span>PowerBI</span><span>SQL</span><span>Tiempo real</span></p>
-          </li>
-        </ol>
+        <div class="dev-cards" data-reveal-group="120">
+
+          <article class="dev-card" data-reveal="float">
+            <div class="dev-card-media dev-media--a">
+              <div class="dev-win">
+                <div class="dev-win-bar"><i class="bx bx-window-alt"></i><span>bakery.smedtech.com.co</span><em aria-hidden="true"></em></div>
+                <div class="dev-win-body dev-win--shot">
+                  <img src="/src/assets/images/projects/smed-bakery.png" alt="SMED Bakery, plataforma web construida por SMED" loading="lazy" />
+                </div>
+              </div>
+            </div>
+            <h3 class="dev-card-title"><strong>Aplicaciones web y SaaS</strong> a medida</h3>
+            <p>Plataformas, paneles de control y productos con arquitectura limpia, pensados para crecer sin reescribirse.</p>
+            <p class="dev-card-tags mono"><span>React</span><span>Next.js</span><span>Node</span></p>
+          </article>
+
+          <article class="dev-card" data-reveal="float">
+            <div class="dev-card-media dev-media--b">
+              <div class="dev-win">
+                <div class="dev-win-bar"><i class="bx bx-brain"></i><span>Asistente con contexto</span><em aria-hidden="true"></em></div>
+                <div class="dev-win-body dev-win--chat" aria-hidden="true">
+                  <p class="dw-msg dw-msg--user">¿Cuántas ventas llevamos hoy?</p>
+                  <p class="dw-msg dw-msg--bot dw-typing"><i></i><i></i><i></i></p>
+                  <p class="dw-msg dw-msg--bot dw-answer">$127.450 en 8 pedidos. Un 12% sobre el martes pasado.</p>
+                </div>
+              </div>
+            </div>
+            <h3 class="dev-card-title"><strong>Inteligencia artificial</strong> conectada a tus datos</h3>
+            <p>Modelos que responden con el contexto de tu negocio, no con respuestas genéricas sacadas de internet.</p>
+            <p class="dev-card-tags mono"><span>OpenAI</span><span>LangChain</span><span>RAG</span></p>
+          </article>
+
+          <article class="dev-card" data-reveal="float">
+            <div class="dev-card-media dev-media--c">
+              <div class="dev-win">
+                <div class="dev-win-bar"><i class="bx bx-loader-circle"></i><span>Flujo automatizado</span><em aria-hidden="true"></em></div>
+                <div class="dev-win-body dev-win--flow" aria-hidden="true">
+                  <svg viewBox="0 0 320 150" role="presentation">
+                    <path class="dw-path" d="M40,75 C90,75 90,35 150,35 C210,35 210,115 280,115" />
+                    <path class="dw-path dw-path--live" d="M40,75 C90,75 90,35 150,35 C210,35 210,115 280,115" />
+                    <g class="dw-node"><circle cx="40" cy="75" r="13" /><text x="40" y="79">1</text></g>
+                    <g class="dw-node"><circle cx="150" cy="35" r="13" /><text x="150" y="39">2</text></g>
+                    <g class="dw-node dw-node--end"><circle cx="280" cy="115" r="13" /><text x="280" y="119">3</text></g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="dev-card-title"><strong>Automatización</strong> de procesos repetitivos</h3>
+            <p>Lo que hoy alguien hace a mano cada día pasa a ejecutarse solo, con registro de lo que ocurrió.</p>
+            <p class="dev-card-tags mono"><span>n8n</span><span>Python</span><span>Webhooks</span></p>
+          </article>
+
+          <article class="dev-card" data-reveal="float">
+            <div class="dev-card-media dev-media--d">
+              <div class="dev-win">
+                <div class="dev-win-bar"><i class="bx bx-bot"></i><span>Agente en ejecución</span><em aria-hidden="true"></em></div>
+                <div class="dev-win-body dev-win--steps" aria-hidden="true">
+                  <p class="dw-step"><i class="bx bx-check"></i> Leer el pedido entrante</p>
+                  <p class="dw-step"><i class="bx bx-check"></i> Consultar inventario</p>
+                  <p class="dw-step"><i class="bx bx-check"></i> Calcular la ruta de entrega</p>
+                  <p class="dw-step dw-step--run"><i class="bx bx-loader-alt"></i> Notificar al repartidor</p>
+                </div>
+              </div>
+            </div>
+            <h3 class="dev-card-title"><strong>Agentes</strong> que razonan y ejecutan</h3>
+            <p>Sistemas autónomos que encadenan pasos y usan herramientas para resolver tareas de principio a fin.</p>
+            <p class="dev-card-tags mono"><span>LLM Agents</span><span>Tools</span><span>Autonomía</span></p>
+          </article>
+
+          <article class="dev-card" data-reveal="float">
+            <div class="dev-card-media dev-media--e">
+              <div class="dev-win">
+                <div class="dev-win-bar"><i class="bx bx-transfer-alt"></i><span>api.smedtech.com.co</span><em aria-hidden="true"></em></div>
+                <div class="dev-win-body dev-win--code" aria-hidden="true">
+<pre class="mono"><span class="dw-m">POST</span> /v1/pedidos
+{
+  <span class="dw-k">"mesa"</span>: <span class="dw-n">12</span>,
+  <span class="dw-k">"items"</span>: <span class="dw-n">3</span>
+}
+<span class="dw-ok">201 Created</span>  <span class="dw-ms">42 ms</span></pre>
+                </div>
+              </div>
+            </div>
+            <h3 class="dev-card-title"><strong>APIs e integraciones</strong> entre tus sistemas</h3>
+            <p>Conectamos tu ERP, tu CRM y los servicios externos que ya usas para que dejen de vivir separados.</p>
+            <p class="dev-card-tags mono"><span>REST</span><span>GraphQL</span><span>ERP / CRM</span></p>
+          </article>
+
+          <article class="dev-card" data-reveal="float">
+            <div class="dev-card-media dev-media--f">
+              <div class="dev-win">
+                <div class="dev-win-bar"><i class="bx bx-line-chart"></i><span>betagym.smedtech.com.co</span><em aria-hidden="true"></em></div>
+                <div class="dev-win-body dev-win--shot">
+                  <img src="/src/assets/images/projects/smed-sports.png" alt="SMED Sports, plataforma web construida por SMED" loading="lazy" />
+                </div>
+              </div>
+            </div>
+            <h3 class="dev-card-title"><strong>Dashboards</strong> que se leen de un vistazo</h3>
+            <p>Métricas de negocio en tiempo real y reportes automáticos, sin exportar hojas de cálculo a mano.</p>
+            <p class="dev-card-tags mono"><span>Charts.js</span><span>PowerBI</span><span>SQL</span></p>
+          </article>
+
+        </div>
       </div>
     </section>
 
@@ -267,7 +338,66 @@
       </div>
     </section>
 
-    <!-- ══ 7. Formulario ══ -->
+    <!-- ══ 7. Equipo de desarrollo ══ -->
+    <section class="home-section dev-equipo" id="dev-equipo" data-scene>
+      <div class="shell">
+        <div class="section-head" data-reveal-group="140">
+          <div class="section-head-title" data-reveal>
+            <span class="kicker">Quién lo construye</span>
+            <h2>El equipo de desarrollo</h2>
+          </div>
+          <p data-reveal>Dos ingenieros de sistemas al frente del área. No subcontratamos: el código lo escribe quien te atiende.</p>
+        </div>
+
+        <div class="dev-team" data-reveal-group="150">
+          <article class="dev-person" data-reveal="float">
+            <figure class="dev-person-foto">
+              <img src="/src/assets/images/Team/Diego.webp" alt="Diego Fernando Castelblanco" loading="lazy" />
+            </figure>
+            <div class="dev-person-cuerpo">
+              <span class="dev-person-rol mono">Líder de desarrollo</span>
+              <h3>Diego Fernando Castelblanco</h3>
+              <p>Ingeniero de sistemas con más de tres años en desarrollo web frontend y backend, administración de sistemas Linux, bases de datos y automatización. Actualmente trabaja en robótica e IA aplicada con ROS&nbsp;2, visión por computador y agentes conversacionales integrados en plataformas robóticas.</p>
+              <ul class="dev-person-chips">
+                <li class="tech-chip">JavaScript</li>
+                <li class="tech-chip">Python</li>
+                <li class="tech-chip">Node.js</li>
+                <li class="tech-chip">Linux</li>
+                <li class="tech-chip">Docker</li>
+                <li class="tech-chip">ROS 2</li>
+              </ul>
+              <a class="cap-link" href="https://diegowhite99.netlify.app/" target="_blank" rel="noopener">
+                <span>Ver portafolio</span> <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="dev-person" data-reveal="float">
+            <figure class="dev-person-foto">
+              <img src="/src/assets/images/Team/Andrea_Ramirez.jpeg" alt="Andrea Paola Ramírez Torres" loading="lazy" />
+            </figure>
+            <div class="dev-person-cuerpo">
+              <span class="dev-person-rol mono">Desarrollo full stack e IA</span>
+              <h3>Andrea Paola Ramírez Torres</h3>
+              <p>Ingeniera de sistemas con cinco años de experiencia en aplicaciones full stack, integración de servicios en la nube y aseguramiento de calidad. Construye soluciones con IA aplicada a procesos reales y está cursando una especialización en ciberseguridad.</p>
+              <ul class="dev-person-chips">
+                <li class="tech-chip">Angular</li>
+                <li class="tech-chip">React</li>
+                <li class="tech-chip">TypeScript</li>
+                <li class="tech-chip">Firebase</li>
+                <li class="tech-chip">Google Cloud</li>
+                <li class="tech-chip">Testing ISTQB</li>
+              </ul>
+              <a class="cap-link" href="https://andrearamirez123.github.io/portafolio/" target="_blank" rel="noopener">
+                <span>Ver portafolio</span> <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 8. Formulario ══ -->
     <section class="home-section dev-form" id="dev-contacto" data-scene>
       <div class="shell dev-form-inner" data-reveal-group="130">
         <div class="dev-form-copy" data-reveal>

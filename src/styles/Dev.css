@@ -12,6 +12,7 @@
 .dev-stack    { --scene-bg: #1c3d7e; }
 .dev-metrics  { --scene-bg: #153164; }
 .dev-proceso  { --scene-bg: #0d2049; }
+.dev-equipo   { --scene-bg: #0a1a3c; }
 .dev-form     { --scene-bg: #06122b; }
 
 /* El cierre invierte los botones, como la banda final del home */
@@ -178,62 +179,248 @@
   translate: 3px -3px;
 }
 
-/* ══ 2. Capacidades: lista numerada ══ */
-.dev-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--line);
-}
-
-.dev-row {
+/* ══ 2. Capacidades: tarjetas con ventana ilustrada ══
+   Las ventanas son diagramas esquemáticos en CSS/SVG, no capturas de
+   producto: ilustran qué hace cada línea sin afirmar que sean pantallas
+   reales. Las animaciones arrancan con .is-in, que pone homeMotion.js.  */
+.dev-cards {
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 1.1fr);
-  align-items: baseline;
-  gap: 1rem 1.5rem;
-  padding: clamp(1.3rem, 2.4vw, 2rem) 0;
-  border-bottom: 1px solid var(--line);
-  transition: border-color 0.35s ease;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.6rem, 3vw, 2.6rem);
 }
 
-.dev-row:hover {
-  border-bottom-color: var(--accent);
-}
-
-.dev-row-num {
-  font-size: 0.82rem;
-  letter-spacing: 0.1em;
-  color: color-mix(in srgb, var(--accent) 75%, transparent);
-}
-
-.dev-row-title {
-  margin: 0;
-  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: var(--text);
-  transition: translate 0.4s var(--ease-float);
-}
-
-.dev-row:hover .dev-row-title {
-  translate: 8px 0;
-}
-
-/* Etiquetas separadas por barras, sin marcado extra */
-.dev-row-tags {
+.dev-card {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.75rem;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Fondo irisado bajo la ventana */
+.dev-card-media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 0.6rem;
+  padding: clamp(1.2rem, 3vw, 2.4rem);
+  border-radius: 22px;
+  overflow: hidden;
+  /* Seda azul de marca: un solo archivo compartido por las seis tarjetas,
+     con distinto encuadre y tono en cada una para que no se repitan. */
+  background: #0b1f4a url("/src/assets/images/Smed.webp") center / 160% no-repeat;
+}
+
+/* Veladura de seda: dos brillos cruzados sobre el degradado base */
+.dev-card-media::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(48% 40% at 28% 22%, rgba(120, 180, 255, 0.28), transparent 62%),
+    linear-gradient(180deg, transparent 35%, rgba(6, 16, 42, 0.55));
+}
+
+.dev-media--a { background-position: 18% 30%; }
+.dev-media--b { background-position: 72% 38%; filter: hue-rotate(-12deg); }
+.dev-media--c { background-position: 40% 70%; filter: hue-rotate(14deg); }
+.dev-media--d { background-position: 85% 20%; filter: hue-rotate(-22deg); }
+.dev-media--e { background-position: 10% 65%; filter: hue-rotate(8deg); }
+.dev-media--f { background-position: 58% 15%; filter: hue-rotate(-6deg); }
+
+/* La seda respira muy despacio: el encuadre se desplaza unos píxeles */
+@media (prefers-reduced-motion: no-preference) {
+  .dev-card-media { animation: dev-silk 26s ease-in-out infinite alternate; }
+  .dev-media--b { animation-delay: -5s; }
+  .dev-media--c { animation-delay: -10s; }
+  .dev-media--d { animation-delay: -15s; }
+  .dev-media--e { animation-delay: -20s; }
+  .dev-media--f { animation-delay: -3s; }
+}
+
+@keyframes dev-silk {
+  to { background-size: 178%; }
+}
+
+/* ── La ventana flotante ── */
+.dev-win {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 30px 60px -18px rgba(3, 10, 30, 0.55);
+}
+
+.dev-win-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid rgba(14, 23, 38, 0.1);
+  background: #f7f9fd;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #33415c;
+}
+
+.dev-win-bar i { font-size: 0.95rem; color: #2f6fd0; }
+.dev-win-bar span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Las dos marcas de la derecha: expandir y cerrar */
+.dev-win-bar em {
+  flex: none;
+  margin-left: auto;
+  width: 26px;
+  height: 8px;
+  background:
+    linear-gradient(currentColor, currentColor) 0 0 / 8px 1.5px no-repeat,
+    linear-gradient(currentColor, currentColor) 0 6.5px / 8px 1.5px no-repeat,
+    linear-gradient(currentColor, currentColor) 18px 3px / 8px 1.5px no-repeat;
+  opacity: 0.45;
+}
+
+.dev-win-body {
+  padding: 0.9rem;
+  min-height: 132px;
+  color: #0e1726;
+}
+
+/* ── Captura real de producto dentro de la ventana ── */
+.dev-win--shot { padding: 0; min-height: 0; }
+.dev-win--shot img { display: block; width: 100%; }
+
+/* ── a) Panel de control (sin uso: sustituido por captura real) ── */
+.dev-win--panel { display: flex; gap: 0.7rem; }
+
+.dw-side { display: flex; flex-direction: column; gap: 0.4rem; flex: none; width: 46px; }
+.dw-side i { height: 7px; border-radius: 3px; background: #e3eaf6; }
+.dw-side i:first-child { background: #2f6fd0; width: 80%; }
+
+.dw-main { flex: 1; display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.dw-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+.dw-tiles span { height: 26px; border-radius: 6px; background: #eef3fb; }
+
+.dw-bars { display: flex; align-items: flex-end; gap: 0.32rem; height: 62px; }
+.dw-bars b {
+  flex: 1;
+  height: 0;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(#5b95e4, #2f6fd0);
+  transition: height 0.9s var(--ease-float);
+}
+.is-in .dw-bars b { height: var(--h); }
+.dw-bars b:nth-child(2) { transition-delay: 0.08s; }
+.dw-bars b:nth-child(3) { transition-delay: 0.16s; }
+.dw-bars b:nth-child(4) { transition-delay: 0.24s; }
+.dw-bars b:nth-child(5) { transition-delay: 0.32s; }
+.dw-bars b:nth-child(6) { transition-delay: 0.4s; }
+
+/* ── b) Conversación ── */
+.dev-win--chat { display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.74rem; }
+
+.dw-msg { margin: 0; max-width: 84%; padding: 0.45rem 0.7rem; border-radius: 12px; line-height: 1.45; }
+.dw-msg--user { align-self: flex-end; background: #2f6fd0; color: #fff; border-bottom-right-radius: 4px; }
+.dw-msg--bot { background: #eef3fb; color: #33415c; border-bottom-left-radius: 4px; }
+
+.dw-typing { display: flex; gap: 4px; width: fit-content; padding: 0.6rem 0.7rem; }
+.dw-typing i { width: 5px; height: 5px; border-radius: 50%; background: #8aa2c4; }
+.is-in .dw-typing i { animation: dw-blink 1.2s ease-in-out infinite; }
+.dw-typing i:nth-child(2) { animation-delay: 0.15s; }
+.dw-typing i:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes dw-blink { 0%, 60%, 100% { opacity: 0.35; } 30% { opacity: 1; } }
+
+/* La respuesta aparece cuando los puntos ya han "escrito" */
+.dw-answer { opacity: 0; transform: translateY(6px); transition: opacity 0.5s ease 1.5s, transform 0.5s ease 1.5s; }
+.is-in .dw-answer { opacity: 1; transform: none; }
+
+/* ── c) Flujo ── */
+.dev-win--flow svg { width: 100%; height: auto; }
+.dw-path { fill: none; stroke: #d7e3f6; stroke-width: 3; stroke-linecap: round; }
+.dw-path--live { stroke: #2f6fd0; stroke-dasharray: 14 340; stroke-dashoffset: 0; }
+.is-in .dw-path--live { animation: dw-travel 2.6s linear infinite; }
+
+@keyframes dw-travel { to { stroke-dashoffset: -354; } }
+
+.dw-node circle { fill: #ffffff; stroke: #2f6fd0; stroke-width: 2.5; }
+.dw-node text { fill: #2f6fd0; font: 600 11px/1 'IBM Plex Mono', monospace; text-anchor: middle; }
+.dw-node--end circle { fill: #2f6fd0; }
+.dw-node--end text { fill: #ffffff; }
+
+/* ── d) Pasos del agente ── */
+.dev-win--steps { display: flex; flex-direction: column; gap: 0.42rem; font-size: 0.74rem; }
+
+.dw-step {
+  display: flex; align-items: center; gap: 0.5rem; margin: 0;
+  padding: 0.38rem 0.55rem; border-radius: 8px;
+  background: #f2f6fc; color: #33415c;
+  opacity: 0; transform: translateX(-8px);
+  transition: opacity 0.45s ease, transform 0.45s var(--ease-float);
+}
+.is-in .dw-step { opacity: 1; transform: none; }
+.dw-step:nth-child(2) { transition-delay: 0.25s; }
+.dw-step:nth-child(3) { transition-delay: 0.5s; }
+.dw-step:nth-child(4) { transition-delay: 0.75s; }
+
+.dw-step i { font-size: 0.95rem; color: #1e9e6a; }
+.dw-step--run { background: #e8f0fd; color: #1b4b96; }
+.dw-step--run i { color: #2f6fd0; }
+.is-in .dw-step--run i { animation: spin 1.1s linear infinite; }
+
+/* ── e) Código ── */
+.dev-win--code pre { margin: 0; font-size: 0.7rem; line-height: 1.75; color: #33415c; }
+.dw-m { color: #b4541e; font-weight: 700; }
+.dw-k { color: #2f6fd0; }
+.dw-n { color: #1e9e6a; }
+.dw-ok { color: #1e9e6a; font-weight: 700; }
+.dw-ms { color: #8aa2c4; }
+
+/* ── f) Gráfica ── */
+.dev-win--chart svg { width: 100%; height: auto; }
+.dw-line {
+  fill: none; stroke: #2f6fd0; stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 420; stroke-dashoffset: 420;
+  transition: stroke-dashoffset 1.6s var(--ease-float) 0.2s;
+}
+.is-in .dw-line { stroke-dashoffset: 0; }
+.dw-line--soft { stroke: #b9d0f0; transition-delay: 0.45s; }
+.dw-dots circle { fill: #2f6fd0; opacity: 0; transition: opacity 0.4s ease 1.5s; }
+.is-in .dw-dots circle { opacity: 1; }
+
+/* ── Texto de la tarjeta ── */
+.dev-card-title {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.dev-card-title strong { font-weight: 800; }
+
+.dev-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: var(--muted);
 }
 
-.dev-row-tags span + span::before {
+.dev-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.7rem;
+  margin-top: 0.15rem !important;
+  font-size: 0.72rem;
+  color: color-mix(in srgb, var(--muted) 80%, transparent);
+}
+
+.dev-card-tags span + span::before {
   content: "/";
-  margin-right: 0.75rem;
+  margin-right: 0.7rem;
   color: color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
@@ -460,6 +647,98 @@
   font-size: 1.15rem;
 }
 
+
+/* ══ 7. Equipo de desarrollo ══ */
+.dev-team {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.dev-person {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(1.2rem, 2.4vw, 1.8rem);
+  padding: clamp(1.3rem, 2.4vw, 1.9rem);
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: var(--panel-bg);
+  transition: border-color 0.35s ease, transform 0.5s var(--ease-float);
+}
+
+.dev-person:hover {
+  border-color: color-mix(in srgb, var(--accent) 48%, transparent);
+  transform: translateY(-5px);
+}
+
+/* El encuadre recorta los bordes de la foto y centra el rostro */
+.dev-person-foto {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  aspect-ratio: 3 / 4;
+  background: #0d2049;
+}
+
+.dev-person-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  scale: 1.08;
+  transition: scale 0.6s var(--ease-float);
+}
+
+.dev-person:hover .dev-person-foto img {
+  scale: 1.14;
+}
+
+.dev-person-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.dev-person-rol {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.dev-person-cuerpo h3 {
+  margin: 0;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.dev-person-cuerpo p {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.dev-person-chips {
+  list-style: none;
+  margin: 0.2rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.dev-person .cap-link {
+  margin-top: auto;
+  padding-top: 0.8rem;
+}
+
 /* ══ Responsive ══ */
 @media (max-width: 1024px) {
   .dev-rail {
@@ -477,7 +756,8 @@
   }
 
   .dev-ia-layout,
-  .dev-form-inner {
+  .dev-form-inner,
+  .dev-team {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -520,5 +800,17 @@
 
   .dev-stack-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dev-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dev-person {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dev-person-foto {
+    aspect-ratio: 16 / 10;
   }
 }
