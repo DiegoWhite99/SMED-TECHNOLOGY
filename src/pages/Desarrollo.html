@@ -13,7 +13,7 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="icon" href="/src/assets/icons/SmedOfficial.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/src/styles/Foundation.css?v=2.1.0" />
-  <link rel="stylesheet" href="/src/styles/Dev.css?v=2.6.0" />
+  <link rel="stylesheet" href="/src/styles/Dev.css?v=2.8.0" />
   <link rel="stylesheet" href="/src/components/NavigationBar/NavigationBar.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/Footer/Footer.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/WhatsApp/WhatsApp.css?v=2.0.0" />
@@ -204,12 +204,22 @@
           <article class="dev-card">
             <div class="dev-card-media dev-media--f">
               <div class="dev-win">
-                <div class="dev-win-bar"><i class="bx bx-line-chart"></i><span>Analítica en vivo</span><em aria-hidden="true"></em></div>
+                <div class="dev-win-bar"><i class="bx bx-line-chart"></i><span>Analítica en vivo</span><b class="dw-vivo">EN VIVO</b><em aria-hidden="true"></em></div>
                 <div class="dev-win-body dev-win--chart" aria-hidden="true">
                   <svg viewBox="0 0 320 140" role="presentation">
-                    <polyline class="dw-line" points="15,110 60,88 105,96 150,58 195,70 240,34 300,22" />
+                    <defs>
+                      <linearGradient id="dwArea" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#2f6fd0" stop-opacity="0.28" />
+                        <stop offset="100%" stop-color="#2f6fd0" stop-opacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <path class="dw-area" d="M15,110 60,88 105,96 150,58 195,70 240,34 300,22 L300,132 L15,132 Z" fill="url(#dwArea)" />
+                    <line class="dw-scan" x1="0" y1="8" x2="0" y2="132" />
                     <polyline class="dw-line dw-line--soft" points="15,124 60,116 105,120 150,102 195,108 240,92 300,84" />
-                    <g class="dw-dots"><circle cx="150" cy="58" r="4" /><circle cx="240" cy="34" r="4" /><circle cx="300" cy="22" r="4" /></g>
+                    <polyline class="dw-line" points="15,110 60,88 105,96 150,58 195,70 240,34 300,22" />
+                    <g class="dw-dots"><circle cx="150" cy="58" r="4" /><circle cx="240" cy="34" r="4" /></g>
+                    <circle class="dw-pulso" cx="300" cy="22" r="5" />
+                    <circle class="dw-ultimo" cx="300" cy="22" r="4.5" />
                   </svg>
                 </div>
               </div>
