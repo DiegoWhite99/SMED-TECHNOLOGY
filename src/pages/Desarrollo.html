@@ -13,7 +13,7 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="icon" href="/src/assets/icons/SmedOfficial.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/src/styles/Foundation.css?v=2.1.0" />
-  <link rel="stylesheet" href="/src/styles/Dev.css?v=2.3.0" />
+  <link rel="stylesheet" href="/src/styles/Dev.css?v=2.5.0" />
   <link rel="stylesheet" href="/src/components/NavigationBar/NavigationBar.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/Footer/Footer.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/WhatsApp/WhatsApp.css?v=2.0.0" />
@@ -99,16 +99,18 @@
 
           <article class="dev-card" data-reveal="float">
             <div class="dev-card-media dev-media--a">
-              <div class="dev-win">
-                <div class="dev-win-bar"><i class="bx bx-window-alt"></i><span>bakery.smedtech.com.co</span><em aria-hidden="true"></em></div>
-                <div class="dev-win-body dev-win--shot">
-                  <img src="/src/assets/images/projects/smed-bakery.png" alt="SMED Bakery, plataforma web construida por SMED" loading="lazy" />
-                </div>
-              </div>
+              <video class="dev-media-video" muted loop playsinline preload="none"
+                     poster="/src/assets/images/projects/smed-web-poster.jpg"
+                     data-src="/src/assets/video/smed_web.mp4"
+                     aria-label="Video de desarrollo web y SaaS de SMED"></video>
             </div>
             <h3 class="dev-card-title"><strong>Aplicaciones web y SaaS</strong> a medida</h3>
             <p>Plataformas, paneles de control y productos con arquitectura limpia, pensados para crecer sin reescribirse.</p>
-            <p class="dev-card-tags mono"><span>React</span><span>Next.js</span><span>Node</span></p>
+            <ul class="dev-card-tags">
+              <li><i class="bx bxl-react"></i>React</li>
+              <li><i class="bx bx-code-alt"></i>Next.js</li>
+              <li><i class="bx bxl-nodejs"></i>Node</li>
+            </ul>
           </article>
 
           <article class="dev-card" data-reveal="float">
@@ -124,7 +126,11 @@
             </div>
             <h3 class="dev-card-title"><strong>Inteligencia artificial</strong> conectada a tus datos</h3>
             <p>Modelos que responden con el contexto de tu negocio, no con respuestas genéricas sacadas de internet.</p>
-            <p class="dev-card-tags mono"><span>OpenAI</span><span>LangChain</span><span>RAG</span></p>
+            <ul class="dev-card-tags">
+              <li><i class="bx bx-brain"></i>OpenAI</li>
+              <li><i class="bx bx-link-alt"></i>LangChain</li>
+              <li><i class="bx bx-search-alt"></i>RAG</li>
+            </ul>
           </article>
 
           <article class="dev-card" data-reveal="float">
@@ -144,7 +150,11 @@
             </div>
             <h3 class="dev-card-title"><strong>Automatización</strong> de procesos repetitivos</h3>
             <p>Lo que hoy alguien hace a mano cada día pasa a ejecutarse solo, con registro de lo que ocurrió.</p>
-            <p class="dev-card-tags mono"><span>n8n</span><span>Python</span><span>Webhooks</span></p>
+            <ul class="dev-card-tags">
+              <li><i class="bx bx-sitemap"></i>n8n</li>
+              <li><i class="bx bxl-python"></i>Python</li>
+              <li><i class="bx bx-broadcast"></i>Webhooks</li>
+            </ul>
           </article>
 
           <article class="dev-card" data-reveal="float">
@@ -161,7 +171,11 @@
             </div>
             <h3 class="dev-card-title"><strong>Agentes</strong> que razonan y ejecutan</h3>
             <p>Sistemas autónomos que encadenan pasos y usan herramientas para resolver tareas de principio a fin.</p>
-            <p class="dev-card-tags mono"><span>LLM Agents</span><span>Tools</span><span>Autonomía</span></p>
+            <ul class="dev-card-tags">
+              <li><i class="bx bx-bot"></i>LLM Agents</li>
+              <li><i class="bx bx-wrench"></i>Tools</li>
+              <li><i class="bx bx-infinite"></i>Autonomía</li>
+            </ul>
           </article>
 
           <article class="dev-card" data-reveal="float">
@@ -180,21 +194,33 @@
             </div>
             <h3 class="dev-card-title"><strong>APIs e integraciones</strong> entre tus sistemas</h3>
             <p>Conectamos tu ERP, tu CRM y los servicios externos que ya usas para que dejen de vivir separados.</p>
-            <p class="dev-card-tags mono"><span>REST</span><span>GraphQL</span><span>ERP / CRM</span></p>
+            <ul class="dev-card-tags">
+              <li><i class="bx bx-transfer-alt"></i>REST</li>
+              <li><i class="bx bx-network-chart"></i>GraphQL</li>
+              <li><i class="bx bx-buildings"></i>ERP / CRM</li>
+            </ul>
           </article>
 
           <article class="dev-card" data-reveal="float">
             <div class="dev-card-media dev-media--f">
               <div class="dev-win">
-                <div class="dev-win-bar"><i class="bx bx-line-chart"></i><span>betagym.smedtech.com.co</span><em aria-hidden="true"></em></div>
-                <div class="dev-win-body dev-win--shot">
-                  <img src="/src/assets/images/projects/smed-sports.png" alt="SMED Sports, plataforma web construida por SMED" loading="lazy" />
+                <div class="dev-win-bar"><i class="bx bx-line-chart"></i><span>Analítica en vivo</span><em aria-hidden="true"></em></div>
+                <div class="dev-win-body dev-win--chart" aria-hidden="true">
+                  <svg viewBox="0 0 320 140" role="presentation">
+                    <polyline class="dw-line" points="15,110 60,88 105,96 150,58 195,70 240,34 300,22" />
+                    <polyline class="dw-line dw-line--soft" points="15,124 60,116 105,120 150,102 195,108 240,92 300,84" />
+                    <g class="dw-dots"><circle cx="150" cy="58" r="4" /><circle cx="240" cy="34" r="4" /><circle cx="300" cy="22" r="4" /></g>
+                  </svg>
                 </div>
               </div>
             </div>
             <h3 class="dev-card-title"><strong>Dashboards</strong> que se leen de un vistazo</h3>
             <p>Métricas de negocio en tiempo real y reportes automáticos, sin exportar hojas de cálculo a mano.</p>
-            <p class="dev-card-tags mono"><span>Charts.js</span><span>PowerBI</span><span>SQL</span></p>
+            <ul class="dev-card-tags">
+              <li><i class="bx bx-bar-chart-alt-2"></i>Charts.js</li>
+              <li><i class="bx bx-pie-chart-alt-2"></i>PowerBI</li>
+              <li><i class="bx bx-data"></i>SQL</li>
+            </ul>
           </article>
 
         </div>
@@ -352,19 +378,19 @@
         <div class="dev-team" data-reveal-group="150">
           <article class="dev-person" data-reveal="float">
             <figure class="dev-person-foto">
-              <img src="/src/assets/images/Team/Diego.webp" alt="Diego Fernando Castelblanco" loading="lazy" />
+              <img src="/src/assets/images/Team/Diego_castelblanco.jpeg" alt="Diego Fernando Castelblanco" loading="lazy" style="--foco: 50% 46%" />
             </figure>
             <div class="dev-person-cuerpo">
               <span class="dev-person-rol mono">Líder de desarrollo</span>
               <h3>Diego Fernando Castelblanco</h3>
               <p>Ingeniero de sistemas con más de tres años en desarrollo web frontend y backend, administración de sistemas Linux, bases de datos y automatización. Actualmente trabaja en robótica e IA aplicada con ROS&nbsp;2, visión por computador y agentes conversacionales integrados en plataformas robóticas.</p>
               <ul class="dev-person-chips">
-                <li class="tech-chip">JavaScript</li>
-                <li class="tech-chip">Python</li>
-                <li class="tech-chip">Node.js</li>
-                <li class="tech-chip">Linux</li>
-                <li class="tech-chip">Docker</li>
-                <li class="tech-chip">ROS 2</li>
+                <li><i class="bx bxl-javascript"></i>JavaScript</li>
+                <li><i class="bx bxl-python"></i>Python</li>
+                <li><i class="bx bxl-nodejs"></i>Node.js</li>
+                <li><i class="bx bx-terminal"></i>Linux</li>
+                <li><i class="bx bxl-docker"></i>Docker</li>
+                <li><i class="bx bx-chip"></i>ROS 2</li>
               </ul>
               <a class="cap-link" href="https://diegowhite99.netlify.app/" target="_blank" rel="noopener">
                 <span>Ver portafolio</span> <i class="bx bx-right-arrow-alt"></i>
@@ -374,19 +400,19 @@
 
           <article class="dev-person" data-reveal="float">
             <figure class="dev-person-foto">
-              <img src="/src/assets/images/Team/Andrea_Ramirez.jpeg" alt="Andrea Paola Ramírez Torres" loading="lazy" />
+              <img src="/src/assets/images/Team/Andrea_Ramirez.jpeg" alt="Andrea Paola Ramírez Torres" loading="lazy" style="--foco: 50% 20%" />
             </figure>
             <div class="dev-person-cuerpo">
               <span class="dev-person-rol mono">Desarrollo full stack e IA</span>
               <h3>Andrea Paola Ramírez Torres</h3>
               <p>Ingeniera de sistemas con cinco años de experiencia en aplicaciones full stack, integración de servicios en la nube y aseguramiento de calidad. Construye soluciones con IA aplicada a procesos reales y está cursando una especialización en ciberseguridad.</p>
               <ul class="dev-person-chips">
-                <li class="tech-chip">Angular</li>
-                <li class="tech-chip">React</li>
-                <li class="tech-chip">TypeScript</li>
-                <li class="tech-chip">Firebase</li>
-                <li class="tech-chip">Google Cloud</li>
-                <li class="tech-chip">Testing ISTQB</li>
+                <li><i class="bx bxl-angular"></i>Angular</li>
+                <li><i class="bx bxl-react"></i>React</li>
+                <li><i class="bx bxl-typescript"></i>TypeScript</li>
+                <li><i class="bx bxl-firebase"></i>Firebase</li>
+                <li><i class="bx bx-cloud"></i>Google Cloud</li>
+                <li><i class="bx bx-check-shield"></i>Testing ISTQB</li>
               </ul>
               <a class="cap-link" href="https://andrearamirez123.github.io/portafolio/" target="_blank" rel="noopener">
                 <span>Ver portafolio</span> <i class="bx bx-right-arrow-alt"></i>
@@ -459,6 +485,7 @@
   <script src="/src/scripts/scrollScenes.js?v=2.1.0" defer></script>
   <script src="/src/scripts/homeMotion.js?v=2.1.0" defer></script>
   <script src="/src/scripts/devNodes.js?v=2.1.0" defer></script>
+  <script src="/src/scripts/bgVideo.js?v=2.4.0" defer></script>
   <script src="/backend/form/FormHandler.js"></script>
   <script type="module" src="/src/components/BaseComponents.js?v=2.0.0" defer></script>
 </body>
