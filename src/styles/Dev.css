@@ -217,49 +217,53 @@
 
 .dev-caps > .shell { position: relative; z-index: 1; }
 
-/* ── Entrada: cada tarjeta llega desde su lado y encaja ──
-   Quien lleva data-reveal es el CONTENEDOR, no las tarjetas: al
-   desplazarse fuera del encuadre, el IntersectionObserver no las vería
-   nunca entrar y se quedarían invisibles para siempre. El escalonado
-   lo hace el CSS por nth-child, no el JS. */
-/* Deceleración limpia, sin rebase: el rebote hacía el acople brusco */
-.dev-cards { --ease-acople: cubic-bezier(0.16, 0.85, 0.25, 1); }
-
+/* ── Entrada: cada tarjeta llega cuando el scroll alcanza SU posición ──
+   El <article> lleva data-reveal y no se mueve, así el IntersectionObserver
+   puede verlo; quien se desplaza es .dev-card-in. Si moviéramos el propio
+   artículo saldría del viewport y el observador no lo vería entrar nunca. */
 .motion-ready .dev-cards .dev-card {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
+}
+
+.motion-ready .dev-cards .dev-card-in {
+  display: contents;
+}
+
+@supports not (display: contents) {
+  .dev-card-in { display: flex; flex-direction: column; gap: 0.75rem; }
+}
+
+.motion-ready .dev-cards .dev-card > .dev-card-in {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   opacity: 0;
   transform: translate(var(--dx, 0), var(--dy, 3vh)) rotate(var(--rot, 0deg)) scale(0.95);
   filter: blur(2px);
   transition:
-    opacity 0.85s ease var(--paso, 0ms),
-    transform 1.5s var(--ease-acople) var(--paso, 0ms),
-    filter 0.85s ease var(--paso, 0ms);
+    opacity 0.8s ease var(--paso, 0ms),
+    transform 1.3s var(--ease-acople) var(--paso, 0ms),
+    filter 0.8s ease var(--paso, 0ms);
 }
 
-.motion-ready .dev-cards.is-in .dev-card {
+.motion-ready .dev-cards .dev-card.is-in > .dev-card-in {
   opacity: 1;
   transform: none;
   filter: none;
 }
 
-.dev-cards .dev-card:nth-child(1) { --paso: 0ms; }
-.dev-cards .dev-card:nth-child(2) { --paso: 260ms; }
-.dev-cards .dev-card:nth-child(3) { --paso: 520ms; }
-.dev-cards .dev-card:nth-child(4) { --paso: 780ms; }
-.dev-cards .dev-card:nth-child(5) { --paso: 1040ms; }
-.dev-cards .dev-card:nth-child(6) { --paso: 1300ms; }
-
-/* Columna izquierda entra por la izquierda; derecha por la derecha */
-.dev-cards .dev-card:nth-child(odd)  { --dx: min(-34vw, -300px); --rot: -2.5deg; }
-.dev-cards .dev-card:nth-child(even) { --dx: max(34vw, 300px);  --rot:  2.5deg; }
-.dev-cards .dev-card:nth-child(3),
-.dev-cards .dev-card:nth-child(4) { --dy: 5vh; }
-.dev-cards .dev-card:nth-child(5),
-.dev-cards .dev-card:nth-child(6) { --dy: 7vh; }
+/* Dentro de una misma fila, la de la derecha entra un instante después */
+.dev-cards .dev-card:nth-child(even) { --paso: 170ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  .motion-ready .dev-cards .dev-card,
-  .motion-ready .dev-cards.is-in .dev-card { opacity: 1; transform: none; filter: none; }
+  .motion-ready .dev-cards .dev-card > .dev-card-in {
+    opacity: 1; transform: none; filter: none;
+  }
 }
+
 
 /* ══ Tarjetas con ventana ilustrada ══
 
@@ -272,11 +276,7 @@
   gap: clamp(1.6rem, 3vw, 2.6rem);
 }
 
-.dev-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
+.dev-card { display: block; }
 
 /* Fondo irisado bajo la ventana */
 .dev-card-media {
@@ -823,12 +823,13 @@
 
 
 /* ══ 7. Equipo de desarrollo ══
-   La versión plana era una caja gris con la foto encajada. Ahora la foto
-   va a sangre por su lado, hay un resplandor que responde al hover y una
-   cinta de acento arriba.  */
+   Las dos fotos vienen de registros distintos —una escena de oficina y un
+   retrato de estudio sobre blanco—, así que un duotono azul común las
+   convierte en un conjunto. El nombre va sobre la foto, con un velo que
+   sube desde abajo: así no hace falta el degradado lateral que ensuciaba
+   el fondo claro de una de ellas.  */
 .dev-equipo { position: relative; overflow: hidden; }
 
-/* Resplandor de fondo, detrás de las dos tarjetas */
 .dev-equipo::before {
   content: "";
   position: absolute;
@@ -852,143 +853,125 @@
 
 .dev-person {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  border-radius: 26px;
+  border-radius: 24px;
   border: 1px solid var(--line);
-  background:
-    linear-gradient(158deg, color-mix(in srgb, var(--text) 9%, transparent), transparent 55%),
-    var(--panel-bg);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--text) 14%, transparent),
-              0 26px 60px rgba(2, 10, 30, 0.3);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--text) 7%, transparent), transparent 40%), var(--panel-bg);
+  box-shadow: 0 26px 60px rgba(2, 10, 30, 0.32);
   transition: transform 0.55s var(--ease-float), box-shadow 0.55s var(--ease-float), border-color 0.4s ease;
 }
 
-/* Cinta de acento en el borde superior, que se enciende al pasar */
-.dev-person::after {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0.35;
-  transition: opacity 0.4s ease;
-}
-
 .dev-person:hover {
-  transform: translateY(-7px);
+  transform: translateY(-6px);
   border-color: color-mix(in srgb, var(--accent) 50%, transparent);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--text) 20%, transparent),
-              0 40px 90px rgba(2, 10, 30, 0.42);
+  box-shadow: 0 40px 90px rgba(2, 10, 30, 0.45);
 }
 
-.dev-person:hover::after { opacity: 1; }
-
-/* La foto llega a los bordes de la tarjeta por su lado */
+/* ── La foto ── */
 .dev-person-foto {
   position: relative;
   margin: 0;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #0d2049;
 }
 
-/* --zoom iguala el tamaño del rostro entre un plano general y un primer
-   plano; --foco recoloca el encuadre tras ampliar. */
 .dev-person-foto img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: var(--foco, 50% 25%);
+  object-position: var(--foco, 50% 30%);
   scale: var(--zoom, 1);
-  transition: scale 0.7s var(--ease-float);
+  /* Duotono azul: iguala una escena de oficina con un retrato de estudio */
+  filter: grayscale(1) contrast(1.06) sepia(0.45) hue-rotate(178deg) saturate(2.4) brightness(0.92);
+  transition: scale 0.8s var(--ease-float), filter 0.6s ease;
 }
 
-.dev-person:hover .dev-person-foto img { scale: calc(var(--zoom, 1) * 1.06); }
-
-/* Marcas de esquina sobre la foto */
-.dev-foto-marcas {
-  position: absolute;
-  inset: 0.8rem;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    linear-gradient(var(--accent), var(--accent)) 0 0 / 14px 1.5px no-repeat,
-    linear-gradient(var(--accent), var(--accent)) 0 0 / 1.5px 14px no-repeat,
-    linear-gradient(var(--accent), var(--accent)) 100% 100% / 14px 1.5px no-repeat,
-    linear-gradient(var(--accent), var(--accent)) 100% 100% / 1.5px 14px no-repeat;
-  opacity: 0.55;
-  transition: opacity 0.4s ease, inset 0.5s var(--ease-float);
+/* Al pasar el cursor recupera su color real */
+.dev-person:hover .dev-person-foto img {
+  scale: calc(var(--zoom, 1) * 1.05);
+  filter: none;
 }
 
-.dev-person:hover .dev-foto-marcas { opacity: 1; inset: 0.55rem; }
-
-/* Franja de datos */
-.dev-person-datos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 1.3rem;
-  margin: 0.15rem 0 0.2rem;
-  padding: 0.6rem 0;
-  border-block: 1px solid var(--line);
-}
-
-.dev-person-datos > div { display: flex; flex-direction: column; gap: 0.1rem; }
-
-.dev-person-datos dt {
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--muted) 75%, transparent);
-}
-
-.dev-person-datos dd {
-  margin: 0;
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-/* Degradado que funde la foto con la tarjeta */
+/* Velo que sube desde abajo para sostener el nombre */
 .dev-person-foto::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, transparent 55%, color-mix(in srgb, var(--panel-bg) 85%, transparent));
+  inset: 40% 0 0;
+  background: linear-gradient(180deg, transparent, #0a1a3c 88%);
+  pointer-events: none;
 }
 
-.dev-person-cuerpo {
+.dev-person-foto figcaption {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  padding: clamp(1.4rem, 2.6vw, 2rem);
-  min-width: 0;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: clamp(1.1rem, 2.2vw, 1.5rem);
 }
 
 .dev-person-rol {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: fit-content;
-  padding: 0.28rem 0.7rem;
+  padding: 0.26rem 0.7rem;
   border-radius: 999px;
-  background: var(--accent-soft);
-  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
-  font-size: 0.65rem;
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
-.dev-person-cuerpo h3 {
+.dev-person-foto h3 {
   margin: 0;
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-size: clamp(1.25rem, 2.1vw, 1.6rem);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  color: var(--text);
+  line-height: 1.12;
+  letter-spacing: -0.028em;
+  color: #f5f7fa;
+  text-shadow: 0 2px 18px rgba(4, 12, 32, 0.8);
+}
+
+/* ── El cuerpo ── */
+.dev-person-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: clamp(1.2rem, 2.4vw, 1.7rem);
+  flex: 1;
+}
+
+.dev-person-datos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 0;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.dev-person-datos > div { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+
+.dev-person-datos dt {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted) 72%, transparent);
+}
+
+.dev-person-datos dd {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
 }
 
 .dev-person-cuerpo p {
@@ -1000,7 +983,7 @@
 
 .dev-person .cap-link {
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 0.9rem;
 }
 
 /* ══ Responsive ══ */

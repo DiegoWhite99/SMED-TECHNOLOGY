@@ -13,7 +13,7 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="icon" href="/src/assets/icons/SmedOfficial.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/src/styles/Foundation.css?v=2.1.0" />
-  <link rel="stylesheet" href="/src/styles/Dev.css?v=2.8.0" />
+  <link rel="stylesheet" href="/src/styles/Dev.css?v=2.9.0" />
   <link rel="stylesheet" href="/src/components/NavigationBar/NavigationBar.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/Footer/Footer.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/WhatsApp/WhatsApp.css?v=2.0.0" />
@@ -95,9 +95,10 @@
           <p data-reveal>Desde una landing hasta un sistema multiagente con IA. Construimos lo que tu negocio necesita para operar más inteligente.</p>
         </div>
 
-        <div class="dev-cards" data-reveal>
+        <div class="dev-cards">
 
-          <article class="dev-card">
+          <article class="dev-card" data-reveal>
+            <div class="dev-card-in">
             <div class="dev-card-media dev-media--a">
               <video class="dev-media-video" muted loop playsinline preload="none"
                      poster="/src/assets/images/projects/smed-web-poster.jpg"
@@ -111,9 +112,11 @@
               <li><i class="bx bx-code-alt"></i>Next.js</li>
               <li><i class="bx bxl-nodejs"></i>Node</li>
             </ul>
+            </div>
           </article>
 
-          <article class="dev-card">
+          <article class="dev-card" data-reveal>
+            <div class="dev-card-in">
             <div class="dev-card-media dev-media--b">
               <div class="dev-win">
                 <div class="dev-win-bar"><i class="bx bx-brain"></i><span>Asistente con contexto</span><em aria-hidden="true"></em></div>
@@ -131,9 +134,11 @@
               <li><i class="bx bx-link-alt"></i>LangChain</li>
               <li><i class="bx bx-search-alt"></i>RAG</li>
             </ul>
+            </div>
           </article>
 
-          <article class="dev-card">
+          <article class="dev-card" data-reveal>
+            <div class="dev-card-in">
             <div class="dev-card-media dev-media--c">
               <div class="dev-win">
                 <div class="dev-win-bar"><i class="bx bx-loader-circle"></i><span>Flujo automatizado</span><em aria-hidden="true"></em></div>
@@ -155,9 +160,11 @@
               <li><i class="bx bxl-python"></i>Python</li>
               <li><i class="bx bx-broadcast"></i>Webhooks</li>
             </ul>
+            </div>
           </article>
 
-          <article class="dev-card">
+          <article class="dev-card" data-reveal>
+            <div class="dev-card-in">
             <div class="dev-card-media dev-media--d">
               <div class="dev-win">
                 <div class="dev-win-bar"><i class="bx bx-bot"></i><span>Agente en ejecución</span><em aria-hidden="true"></em></div>
@@ -176,9 +183,11 @@
               <li><i class="bx bx-wrench"></i>Tools</li>
               <li><i class="bx bx-infinite"></i>Autonomía</li>
             </ul>
+            </div>
           </article>
 
-          <article class="dev-card">
+          <article class="dev-card" data-reveal>
+            <div class="dev-card-in">
             <div class="dev-card-media dev-media--e">
               <div class="dev-win">
                 <div class="dev-win-bar"><i class="bx bx-transfer-alt"></i><span>api.smedtech.com.co</span><em aria-hidden="true"></em></div>
@@ -199,9 +208,11 @@
               <li><i class="bx bx-network-chart"></i>GraphQL</li>
               <li><i class="bx bx-buildings"></i>ERP / CRM</li>
             </ul>
+            </div>
           </article>
 
-          <article class="dev-card">
+          <article class="dev-card" data-reveal>
+            <div class="dev-card-in">
             <div class="dev-card-media dev-media--f">
               <div class="dev-win">
                 <div class="dev-win-bar"><i class="bx bx-line-chart"></i><span>Analítica en vivo</span><b class="dw-vivo">EN VIVO</b><em aria-hidden="true"></em></div>
@@ -231,6 +242,7 @@
               <li><i class="bx bx-pie-chart-alt-2"></i>PowerBI</li>
               <li><i class="bx bx-data"></i>SQL</li>
             </ul>
+            </div>
           </article>
 
         </div>
@@ -388,18 +400,19 @@
         <div class="dev-team" data-reveal-group="150">
           <article class="dev-person" data-reveal="float">
             <figure class="dev-person-foto">
-              <span class="dev-foto-marcas" aria-hidden="true"></span>
-              <img src="/src/assets/images/Team/Diego_castelblanco.jpeg" alt="Diego Fernando Castelblanco" loading="lazy" style="--foco: 47% 41%; --zoom: 1.82" />
+              <img src="/src/assets/images/Team/Diego_castelblanco.jpeg" alt="Diego Fernando Castelblanco" loading="lazy" style="--foco: 61% 44%; --zoom: 1.55" />
+              <figcaption>
+                <span class="dev-person-rol mono">Líder de desarrollo</span>
+                <h3>Diego Fernando<br />Castelblanco</h3>
+              </figcaption>
             </figure>
             <div class="dev-person-cuerpo">
-              <span class="dev-person-rol mono">Líder de desarrollo</span>
-              <h3>Diego Fernando Castelblanco</h3>
               <dl class="dev-person-datos mono">
                 <div><dt>Exp.</dt><dd>3+ años</dd></div>
                 <div><dt>Proyectos</dt><dd>8</dd></div>
                 <div><dt>Base</dt><dd>Bogotá</dd></div>
               </dl>
-              <p>Ingeniero de sistemas con más de tres años en desarrollo web frontend y backend, administración de sistemas Linux, bases de datos y automatización. Actualmente trabaja en robótica e IA aplicada con ROS&nbsp;2, visión por computador y agentes conversacionales integrados en plataformas robóticas.</p>
+              <p>Ingeniero de sistemas con más de tres años en desarrollo web frontend y backend, administración de sistemas Linux, bases de datos y automatización. Actualmente trabaja en robótica e IA aplicada con ROS&nbsp;2 y visión por computador.</p>
               <ul class="dev-person-chips">
                 <li><i class="bx bxl-javascript"></i>JavaScript</li>
                 <li><i class="bx bxl-python"></i>Python</li>
@@ -416,18 +429,19 @@
 
           <article class="dev-person" data-reveal="float">
             <figure class="dev-person-foto">
-              <span class="dev-foto-marcas" aria-hidden="true"></span>
-              <img src="/src/assets/images/Team/Andrea_Ramirez.jpeg" alt="Andrea Paola Ramírez Torres" loading="lazy" style="--foco: 52% 17%; --zoom: 1" />
+              <img src="/src/assets/images/Team/Andrea_Ramirez.jpeg" alt="Andrea Paola Ramírez Torres" loading="lazy" style="--foco: 52% 22%; --zoom: 1.12" />
+              <figcaption>
+                <span class="dev-person-rol mono">Full stack e IA</span>
+                <h3>Andrea Paola<br />Ramírez Torres</h3>
+              </figcaption>
             </figure>
             <div class="dev-person-cuerpo">
-              <span class="dev-person-rol mono">Desarrollo full stack e IA</span>
-              <h3>Andrea Paola Ramírez Torres</h3>
               <dl class="dev-person-datos mono">
                 <div><dt>Exp.</dt><dd>5 años</dd></div>
                 <div><dt>Proyectos</dt><dd>15</dd></div>
                 <div><dt>Base</dt><dd>Bogotá</dd></div>
               </dl>
-              <p>Ingeniera de sistemas con cinco años de experiencia en aplicaciones full stack, integración de servicios en la nube y aseguramiento de calidad. Construye soluciones con IA aplicada a procesos reales y está cursando una especialización en ciberseguridad.</p>
+              <p>Ingeniera de sistemas con cinco años en aplicaciones full stack, integración de servicios en la nube y aseguramiento de calidad. Construye soluciones con IA aplicada a procesos reales y cursa una especialización en ciberseguridad.</p>
               <ul class="dev-person-chips">
                 <li><i class="bx bxl-angular"></i>Angular</li>
                 <li><i class="bx bxl-react"></i>React</li>
