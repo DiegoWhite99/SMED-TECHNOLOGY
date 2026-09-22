@@ -25,7 +25,6 @@ $rutas = [
     '/desarrollo'   => '/src/pages/Desarrollo.html',
     '/asesorias'    => '/src/pages/Asesorias.html',
     '/tienda'       => '/src/pages/Store.html',
-    '/experiencias' => '/src/pages/Experiences.html',
     '/login'        => '/src/pages/login.html',
     '/habeas-data'  => '/src/pages/HabeasData.html',
 ];

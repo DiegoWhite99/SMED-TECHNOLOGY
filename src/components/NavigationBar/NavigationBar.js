@@ -2,7 +2,7 @@
 // móvil y teclado), menú móvil, idioma y tema.
 export default class NavigationBar extends HTMLElement {
   async connectedCallback() {
-    const resp = await fetch("/src/components/NavigationBar/NavigationBar.html?v=2.0.0");
+    const resp = await fetch("/src/components/NavigationBar/NavigationBar.html?v=2.0.4");
     this.innerHTML = await resp.text();
 
     const esPaginaLogin = this.hasAttribute("login");

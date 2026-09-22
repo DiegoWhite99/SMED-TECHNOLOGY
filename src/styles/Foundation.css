@@ -1,0 +1,408 @@
+/* ════════════════════════════════════════════════════════════
+   SMED — Base compartida de las páginas con recorrido de scroll.
+   Aquí vive solo lo que NO pertenece a ninguna página concreta:
+   variables de tono, rejilla, tipografía de sección, botones,
+   el sistema de entrada (homeMotion.js) y los keyframes comunes.
+
+   La paleta de escenas (qué color toma cada sección) la define
+   cada página en su propia hoja, porque es parte de su guion.
+   ════════════════════════════════════════════════════════════ */
+
+/* Registered so the browser can interpolate them when the text tone flips */
+@property --text { syntax: '<color>'; inherits: true; initial-value: #0e1726; }
+@property --muted { syntax: '<color>'; inherits: true; initial-value: #526071; }
+@property --line { syntax: '<color>'; inherits: true; initial-value: rgba(14, 23, 38, 0.12); }
+@property --accent { syntax: '<color>'; inherits: true; initial-value: #0f52be; }
+@property --accent-soft { syntax: '<color>'; inherits: true; initial-value: rgba(15, 82, 190, 0.1); }
+@property --on-accent { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
+@property --surface { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
+@property --panel-bg { syntax: '<color>'; inherits: true; initial-value: rgba(255, 255, 255, 0.78); }
+/* Registered so getComputedStyle returns rgb() for scrollScenes.js */
+@property --scene-bg { syntax: '<color>'; inherits: false; initial-value: transparent; }
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #0e1726;
+  --muted: #526071;
+  --line: rgba(14, 23, 38, 0.12);
+  --accent: #0f52be;
+  --accent-soft: rgba(15, 82, 190, 0.1);
+  --on-accent: #ffffff;
+  --panel-bg: rgba(255, 255, 255, 0.78);
+  --shadow-float: 0 24px 60px rgba(15, 40, 90, 0.16);
+  --ease-float: cubic-bezier(0.22, 1.15, 0.36, 1);
+  --nav-h: 80px;
+  --tone-speed: 0.45s;
+}
+
+
+/* scrollScenes.js sets the tone from the blended background's lightness.
+   Both tones are explicit so a saved dark site theme can't leak into the home. */
+body[data-tone="light"] {
+  --surface: #ffffff;
+  --text: #0e1726;
+  --muted: #526071;
+  --line: rgba(14, 23, 38, 0.12);
+  --accent: #0f52be;
+  --accent-soft: rgba(15, 82, 190, 0.1);
+  --on-accent: #ffffff;
+  --panel-bg: rgba(255, 255, 255, 0.78);
+  --shadow-float: 0 24px 60px rgba(15, 40, 90, 0.16);
+}
+
+body[data-tone="dark"] {
+  --surface: rgba(255, 255, 255, 0.07);
+  --text: #f5f7fa;
+  --muted: rgba(245, 247, 250, 0.78);
+  --line: rgba(245, 247, 250, 0.18);
+  --accent: #cfe1ff;
+  --accent-soft: rgba(207, 225, 255, 0.16);
+  --on-accent: #0a1c40;
+  --panel-bg: rgba(255, 255, 255, 0.08);
+  --shadow-float: 0 24px 60px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* html body: beats Bootstrap's body rule, which loads after this file.
+   --bg is written every scroll frame by scrollScenes.js, so it has no transition. */
+html body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  transition:
+    --text var(--tone-speed) ease,
+    --muted var(--tone-speed) ease,
+    --line var(--tone-speed) ease,
+    --accent var(--tone-speed) ease,
+    --accent-soft var(--tone-speed) ease,
+    --on-accent var(--tone-speed) ease,
+    --surface var(--tone-speed) ease,
+    --panel-bg var(--tone-speed) ease;
+}
+
+main {
+  padding-top: var(--nav-h);
+}
+
+/* Bootstrap pone margen a p, h1-h6, ul y pre; aquí el layout se apoya solo en gap.
+   (Sin la barra tras la h: "p/h*" cerraba el comentario y anulaba la regla.) */
+.home-section :is(h1, h2, h3, p, ul, ol, figure, pre) {
+  margin: 0;
+}
+
+.home-section {
+  padding: 6.5rem 0;
+}
+
+.shell {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Entrada flotante (homeMotion.js) ── */
+.motion-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(46px);
+  filter: blur(6px);
+  transition:
+    opacity 0.9s ease var(--reveal-delay, 0ms),
+    transform 1.2s var(--ease-float) var(--reveal-delay, 0ms),
+    filter 0.9s ease var(--reveal-delay, 0ms);
+}
+
+.motion-ready [data-reveal="float"] {
+  transform: translateY(80px) rotate(-1.5deg) scale(0.96);
+}
+
+.motion-ready [data-reveal="tilt"] {
+  transform: perspective(1400px) rotateX(16deg) rotateY(-8deg) translateY(90px) scale(0.94);
+  transform-origin: center bottom;
+}
+
+.motion-ready [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Idle floating uses the `translate` property so it composes with reveal transforms */
+@keyframes drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -12px; }
+}
+
+@keyframes flow {
+  to { stroke-dashoffset: -18; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.55; }
+}
+
+@keyframes spin {
+  to { rotate: 360deg; }
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.kicker::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: currentColor;
+}
+
+.home-section h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--text);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2rem 4rem;
+  align-items: end;
+  margin-bottom: 4rem;
+}
+
+.section-head-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.section-head > p {
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.65;
+  max-width: 460px;
+}
+
+/* ── Buttons (own names: Bootstrap owns .btn / .btn-primary) ── */
+.btn-smed {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.7rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-smed:hover {
+  transform: translateY(-2px);
+}
+
+/* WhatsApp.css sizes .bxl-whatsapp globally for the floating button */
+.home-section .btn-smed i {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.btn-smed-primary,
+.btn-smed-primary:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn-smed-primary:hover {
+  filter: brightness(0.94);
+}
+
+.btn-smed-secondary {
+  border: 1.5px solid color-mix(in srgb, var(--text) 35%, transparent);
+  color: var(--text);
+}
+
+.btn-smed-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Componentes compartidos entre páginas ───────────────────
+   Chips de tecnología, enlace con flecha, la rejilla de pasos
+   numerados y la de cifras. Los usan /nosotros y /desarrollo,
+   así que su sitio es la base y no la hoja de una página.
+   ──────────────────────────────────────────────────────────── */
+.tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.tech-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+}
+
+.cap-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: gap 0.2s ease;
+}
+
+.cap-link:hover {
+  gap: 0.6rem;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.steps {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+
+.step {
+  padding-top: 1.6rem;
+  border-top: 2px solid var(--line);
+  transition: border-color 0.35s ease;
+}
+
+.step:has(.step-link:hover) {
+  border-color: var(--accent);
+}
+
+/* Todo el paso es el área clicable, no solo el título */
+.step-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.step-go {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.2rem;
+  font-size: 1.15rem;
+  color: var(--accent);
+  opacity: 0;
+  translate: -6px 0;
+  transition: opacity 0.3s ease, translate 0.3s var(--ease-float);
+}
+
+.step-link:hover .step-go,
+.step-link:focus-visible .step-go {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.step-index {
+  font-size: 2.6rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.step h3 {
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.step p {
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ── 5. Por qué SMED ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1rem 2.5rem 0 0;
+}
+
+.stat + .stat {
+  padding-left: 2.5rem;
+  border-left: 1px solid var(--line);
+}
+
+.stat-number {
+  font-size: clamp(3.4rem, 7.5vw, 6rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.stat-bar {
+  position: relative;
+  display: block;
+  height: 2px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.stat-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion-ready .stat:not(.is-counting) .stat-bar::after {
+  transform: scaleX(0);
+}
+
+.stat-label {
+  max-width: 260px;
+  line-height: 1.55;
+  color: var(--muted);
+}

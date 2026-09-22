@@ -1,33 +1,5 @@
-/* Registered so the browser can interpolate them when the text tone flips */
-@property --text { syntax: '<color>'; inherits: true; initial-value: #0e1726; }
-@property --muted { syntax: '<color>'; inherits: true; initial-value: #526071; }
-@property --line { syntax: '<color>'; inherits: true; initial-value: rgba(14, 23, 38, 0.12); }
-@property --accent { syntax: '<color>'; inherits: true; initial-value: #0f52be; }
-@property --accent-soft { syntax: '<color>'; inherits: true; initial-value: rgba(15, 82, 190, 0.1); }
-@property --on-accent { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
-@property --surface { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
-@property --panel-bg { syntax: '<color>'; inherits: true; initial-value: rgba(255, 255, 255, 0.78); }
-/* Registered so getComputedStyle returns rgb() for scrollScenes.js */
-@property --scene-bg { syntax: '<color>'; inherits: false; initial-value: transparent; }
-
-:root {
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --text: #0e1726;
-  --muted: #526071;
-  --line: rgba(14, 23, 38, 0.12);
-  --accent: #0f52be;
-  --accent-soft: rgba(15, 82, 190, 0.1);
-  --on-accent: #ffffff;
-  --panel-bg: rgba(255, 255, 255, 0.78);
-  --shadow-float: 0 24px 60px rgba(15, 40, 90, 0.16);
-  --ease-float: cubic-bezier(0.22, 1.15, 0.36, 1);
-  --nav-h: 80px;
-  --tone-speed: 0.45s;
-}
-
-/* The home always keeps the white → deep-blue journey: AboutUs.html locks the
-   light theme (data-theme-lock) and the nav hides the theme toggle here. */
+/* El home mantiene siempre el viaje blanco → azul profundo: AboutUs.html
+   fija el tema claro (data-theme-lock) y el nav oculta aquí el conmutador. */
 
 /* ── Paleta de scroll (scrollScenes.js): blanco → azul semi oscuro → azul muy oscuro ── */
 .hero { --scene-bg: #ffffff; }
@@ -47,215 +19,6 @@
   --accent-soft: rgba(255, 255, 255, 0.16);
   --on-accent: #06122b;
 }
-
-/* scrollScenes.js sets the tone from the blended background's lightness.
-   Both tones are explicit so a saved dark site theme can't leak into the home. */
-body[data-tone="light"] {
-  --surface: #ffffff;
-  --text: #0e1726;
-  --muted: #526071;
-  --line: rgba(14, 23, 38, 0.12);
-  --accent: #0f52be;
-  --accent-soft: rgba(15, 82, 190, 0.1);
-  --on-accent: #ffffff;
-  --panel-bg: rgba(255, 255, 255, 0.78);
-  --shadow-float: 0 24px 60px rgba(15, 40, 90, 0.16);
-}
-
-body[data-tone="dark"] {
-  --surface: rgba(255, 255, 255, 0.07);
-  --text: #f5f7fa;
-  --muted: rgba(245, 247, 250, 0.78);
-  --line: rgba(245, 247, 250, 0.18);
-  --accent: #cfe1ff;
-  --accent-soft: rgba(207, 225, 255, 0.16);
-  --on-accent: #0a1c40;
-  --panel-bg: rgba(255, 255, 255, 0.08);
-  --shadow-float: 0 24px 60px rgba(0, 0, 0, 0.3);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* html body: beats Bootstrap's body rule, which loads after this file.
-   --bg is written every scroll frame by scrollScenes.js, so it has no transition. */
-html body {
-  margin: 0;
-  color: var(--text);
-  background: var(--bg);
-  transition:
-    --text var(--tone-speed) ease,
-    --muted var(--tone-speed) ease,
-    --line var(--tone-speed) ease,
-    --accent var(--tone-speed) ease,
-    --accent-soft var(--tone-speed) ease,
-    --on-accent var(--tone-speed) ease,
-    --surface var(--tone-speed) ease,
-    --panel-bg var(--tone-speed) ease;
-}
-
-main {
-  padding-top: var(--nav-h);
-}
-
-/* Bootstrap adds margins to p/h*/ul/pre; layout here relies on gap only */
-.home-section :is(h1, h2, h3, p, ul, ol, figure, pre) {
-  margin: 0;
-}
-
-.home-section {
-  padding: 6.5rem 0;
-}
-
-.shell {
-  width: min(1200px, 100%);
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-/* ── Entrada flotante (homeMotion.js) ── */
-.motion-ready [data-reveal] {
-  opacity: 0;
-  transform: translateY(46px);
-  filter: blur(6px);
-  transition:
-    opacity 0.9s ease var(--reveal-delay, 0ms),
-    transform 1.2s var(--ease-float) var(--reveal-delay, 0ms),
-    filter 0.9s ease var(--reveal-delay, 0ms);
-}
-
-.motion-ready [data-reveal="float"] {
-  transform: translateY(80px) rotate(-1.5deg) scale(0.96);
-}
-
-.motion-ready [data-reveal="tilt"] {
-  transform: perspective(1400px) rotateX(16deg) rotateY(-8deg) translateY(90px) scale(0.94);
-  transform-origin: center bottom;
-}
-
-.motion-ready [data-reveal].is-in {
-  opacity: 1;
-  transform: none;
-  filter: none;
-}
-
-/* Idle floating uses the `translate` property so it composes with reveal transforms */
-@keyframes drift {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -12px; }
-}
-
-@keyframes flow {
-  to { stroke-dashoffset: -18; }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.35); opacity: 0.55; }
-}
-
-@keyframes spin {
-  to { rotate: 360deg; }
-}
-
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.kicker::before {
-  content: "";
-  width: 26px;
-  height: 2px;
-  background: currentColor;
-}
-
-.home-section h2 {
-  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: var(--text);
-}
-
-.section-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 2rem 4rem;
-  align-items: end;
-  margin-bottom: 4rem;
-}
-
-.section-head-title {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.section-head > p {
-  color: var(--muted);
-  font-size: 1.08rem;
-  line-height: 1.65;
-  max-width: 460px;
-}
-
-/* ── Buttons (own names: Bootstrap owns .btn / .btn-primary) ── */
-.btn-smed {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.95rem 1.7rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.btn-smed:hover {
-  transform: translateY(-2px);
-}
-
-/* WhatsApp.css sizes .bxl-whatsapp globally for the floating button */
-.home-section .btn-smed i {
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.btn-smed-primary,
-.btn-smed-primary:hover {
-  background: var(--accent);
-  color: var(--on-accent);
-}
-
-.btn-smed-primary:hover {
-  filter: brightness(0.94);
-}
-
-.btn-smed-secondary {
-  border: 1.5px solid color-mix(in srgb, var(--text) 35%, transparent);
-  color: var(--text);
-}
-
-.btn-smed-secondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 /* ── 1. Hero: huge uppercase title with inline founder avatars, a twisting
    ribbon (heroRibbon.js), an outlined marquee and floating cards ── */
 .home-section.hero {
@@ -576,6 +339,22 @@ main {
 a.h-card:hover {
   color: var(--text);
   border-color: var(--accent);
+}
+
+/* La flecha aparece solo en las tarjetas que son enlace */
+.h-card-go {
+  margin-left: auto;
+  font-size: 1.15rem;
+  color: var(--accent);
+  opacity: 0;
+  translate: -6px 0;
+  transition: opacity 0.3s ease, translate 0.3s var(--ease-float);
+}
+
+a.h-card:hover .h-card-go,
+a.h-card:focus-visible .h-card-go {
+  opacity: 1;
+  translate: 0 0;
 }
 
 .h-card--profile {
@@ -1153,59 +932,94 @@ body[data-tone="dark"] .logo-row img,
   line-height: 1.7;
 }
 
-.tech-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.3rem;
-}
-
-.tech-chip {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--muted);
-}
-
-.cap-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-top: 0.6rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text);
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
-  transition: gap 0.2s ease;
-}
-
-.cap-link:hover {
-  gap: 0.6rem;
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
 /* ── 3. Trabajo real ── */
 .case-list {
   display: flex;
   flex-direction: column;
-  gap: 7rem;
+  gap: clamp(3rem, 5vw, 4.5rem);
 }
 
+/* Cada caso vive en un panel de cristal con borde luminoso */
 .case {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: 4.5rem;
+  gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
+  padding: clamp(1.75rem, 3.4vw, 3.25rem);
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(152deg, color-mix(in srgb, var(--text) 9%, transparent), transparent 58%),
+    var(--panel-bg);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--text) 16%, transparent),
+    0 34px 90px rgba(2, 10, 30, 0.26);
+  transition:
+    transform 0.6s var(--ease-float),
+    border-color 0.4s ease,
+    box-shadow 0.6s var(--ease-float);
+}
+
+.case:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--text) 22%, transparent),
+    0 44px 110px rgba(2, 10, 30, 0.34);
+}
+
+/* Resplandor radial que sigue al cursor (homeMotion.js escribe --mx / --my).
+   z-index -1: pinta sobre el fondo de la tarjeta, debajo del contenido. */
+.case::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    460px circle at var(--mx, 50%) var(--my, 0%),
+    color-mix(in srgb, var(--accent) 13%, transparent),
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.case:hover::after {
+  opacity: 1;
+}
+
+/* Cifra gigante de marca de agua, del lado del texto.
+   --py lo escribe el parallax de homeMotion.js. */
+.case::before {
+  content: attr(data-num);
+  position: absolute;
+  z-index: -1;
+  top: -0.3em;
+  right: 0.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(9rem, 19vw, 17rem);
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--text) 20%, transparent);
+  translate: 0 var(--py, 0px);
+  pointer-events: none;
+  user-select: none;
 }
 
 .case-reverse {
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+
+.case-reverse::before {
+  right: auto;
+  left: 0.6rem;
 }
 
 .case-reverse .case-media {
@@ -1214,33 +1028,35 @@ body[data-tone="dark"] .logo-row img,
 
 .case-media {
   position: relative;
+  z-index: 1;
 }
 
-/* Soft glow and a dot matrix behind each browser mockup */
+/* Resplandor suave detrás del mockup */
 .case-media::before {
   content: "";
   position: absolute;
-  inset: 10% 4% -8%;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 45%, transparent), transparent);
-  filter: blur(34px);
+  inset: 12% 2% -6%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 42%, transparent), transparent);
+  filter: blur(38px);
 }
 
+/* Matriz de puntos, ahora contenida dentro de la tarjeta */
 .case-media::after {
   content: "";
   position: absolute;
-  top: -44px;
-  right: -36px;
-  width: 190px;
-  height: 190px;
-  background-image: radial-gradient(color-mix(in srgb, var(--accent) 65%, transparent) 1.4px, transparent 1.4px);
+  top: -10px;
+  right: -14px;
+  width: 150px;
+  height: 150px;
+  background-image: radial-gradient(color-mix(in srgb, var(--accent) 55%, transparent) 1.4px, transparent 1.4px);
   background-size: 16px 16px;
-  -webkit-mask-image: radial-gradient(circle, #000 45%, transparent 72%);
-  mask-image: radial-gradient(circle, #000 45%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle, #000 42%, transparent 70%);
+  mask-image: radial-gradient(circle, #000 42%, transparent 70%);
 }
 
 .case-reverse .case-media::after {
   right: auto;
-  left: -36px;
+  left: -14px;
 }
 
 .browser {
@@ -1248,12 +1064,50 @@ body[data-tone="dark"] .logo-row img,
   z-index: 1;
   display: block;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 16px;
   background: #0d1a33;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 40px 90px rgba(2, 8, 24, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 50px 100px -24px rgba(2, 8, 24, 0.62),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
   animation: drift 9s ease-in-out infinite;
-  transition: transform 0.5s var(--ease-float);
+  transition: transform 0.55s var(--ease-float), box-shadow 0.55s var(--ease-float);
+}
+
+/* Destello que cruza la captura al pasar el cursor por la tarjeta */
+.browser::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: -60%;
+  bottom: -60%;
+  left: 0;
+  width: 22%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transform: skewX(-14deg);
+  translate: -180% 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.case:hover .browser::before {
+  animation: shine 1.4s var(--ease-float) 0.06s;
+}
+
+@keyframes shine {
+  0% { translate: -180% 0; opacity: 0; }
+  14% { opacity: 1; }
+  86% { opacity: 1; }
+  100% { translate: 560% 0; opacity: 0; }
+}
+
+/* Brillo diagonal de vidrio sobre la captura */
+.browser::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 42%);
+  pointer-events: none;
 }
 
 .case-reverse .browser {
@@ -1261,7 +1115,10 @@ body[data-tone="dark"] .logo-row img,
 }
 
 .case:hover .browser {
-  transform: translateY(-8px) rotate(-0.6deg);
+  transform: translateY(-6px) rotate(-0.5deg) scale(1.012);
+  box-shadow:
+    0 60px 120px -24px rgba(2, 8, 24, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.09);
 }
 
 .browser-bar {
@@ -1294,18 +1151,99 @@ body[data-tone="dark"] .logo-row img,
   width: 100%;
 }
 
-.case-body {
+/* Video de producto: mismo marco, sombra y destello que el mockup, pero sin
+   barra ni URL. Es una pieza de marca, no una captura del sitio, y el encuadre
+   no debe afirmar lo contrario. */
+.reel {
+  position: relative;
+  z-index: 1;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
-.case-index {
-  font-size: clamp(3rem, 6vw, 4.6rem);
-  font-weight: 500;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  color: color-mix(in srgb, var(--accent) 45%, transparent);
+.reel-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #0d1a33;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 50px 100px -24px rgba(2, 8, 24, 0.62),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  animation: drift 9s ease-in-out infinite;
+  transition: transform 0.55s var(--ease-float), box-shadow 0.55s var(--ease-float);
+}
+
+.reel-frame::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: -60%;
+  bottom: -60%;
+  left: 0;
+  width: 22%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transform: skewX(-14deg);
+  translate: -180% 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.case:hover .reel-frame::before {
+  animation: shine 1.4s var(--ease-float) 0.06s;
+}
+
+.reel-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 42%);
+  pointer-events: none;
+}
+
+.case:hover .reel-frame {
+  transform: translateY(-6px) rotate(-0.5deg) scale(1.012);
+  box-shadow:
+    0 60px 120px -24px rgba(2, 8, 24, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.09);
+}
+
+/* aspect-ratio fija la caja antes de que cargue el archivo: sin salto de layout */
+.reel-el {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Etiqueta en el mismo registro que el kicker y el chip EN PRODUCCIÓN */
+.reel-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.reel-tag::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+}
+
+.case-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
 }
 
 .case-meta {
@@ -1319,8 +1257,9 @@ body[data-tone="dark"] .logo-row img,
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.32rem 0.75rem;
   border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   background: var(--accent-soft);
   color: var(--accent);
   font-size: 0.7rem;
@@ -1344,9 +1283,10 @@ body[data-tone="dark"] .logo-row img,
 }
 
 .case-body h3 {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: var(--text);
 }
 
@@ -1362,6 +1302,16 @@ body[data-tone="dark"] .logo-row img,
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 0.15rem;
+}
+
+.case-features .tech-chip {
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.case:hover .case-features .tech-chip {
+  border-color: color-mix(in srgb, var(--accent) 34%, transparent);
+  color: var(--text);
 }
 
 .case-foot {
@@ -1370,13 +1320,32 @@ body[data-tone="dark"] .logo-row img,
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-top: 0.4rem;
-  padding-top: 1.2rem;
+  margin-top: 0.5rem;
+  padding-top: 1.3rem;
   border-top: 1px solid var(--line);
 }
 
+/* El CTA pasa de subrayado a píldora */
 .case-foot .cap-link {
   margin-top: 0;
+  padding: 0.6rem 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  transition:
+    gap 0.25s ease,
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.35s var(--ease-float);
+}
+
+.case-foot .cap-link:hover {
+  gap: 0.65rem;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .case-line {
@@ -1385,97 +1354,6 @@ body[data-tone="dark"] .logo-row img,
 }
 
 /* ── 4. Cómo trabajamos ── */
-.steps {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 2.5rem;
-}
-
-.step {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  padding-top: 1.6rem;
-  border-top: 2px solid var(--line);
-}
-
-.step-index {
-  font-size: 2.6rem;
-  font-weight: 500;
-  line-height: 1;
-  color: var(--accent);
-}
-
-.step h3 {
-  margin-top: 0.6rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.step p {
-  font-size: 0.97rem;
-  line-height: 1.65;
-  color: var(--muted);
-}
-
-/* ── 5. Por qué SMED ── */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  padding: 1rem 2.5rem 0 0;
-}
-
-.stat + .stat {
-  padding-left: 2.5rem;
-  border-left: 1px solid var(--line);
-}
-
-.stat-number {
-  font-size: clamp(3.4rem, 7.5vw, 6rem);
-  font-weight: 500;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
-  color: var(--text);
-}
-
-.stat-bar {
-  position: relative;
-  display: block;
-  height: 2px;
-  overflow: hidden;
-  background: var(--line);
-}
-
-.stat-bar::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  transform: scaleX(1);
-  transform-origin: left;
-  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.motion-ready .stat:not(.is-counting) .stat-bar::after {
-  transform: scaleX(0);
-}
-
-.stat-label {
-  max-width: 260px;
-  line-height: 1.55;
-  color: var(--muted);
-}
-
 /* ── 6. Equipo fundador ── */
 .team-layout {
   display: grid;
@@ -1610,24 +1488,100 @@ body[data-tone="dark"] .logo-row img,
 }
 
 /* ── 7. Identidad ── */
-.identity-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 5rem;
+.identidad {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(6.5rem, 12vw, 10.5rem) 0;
+}
+
+/* Resplandor azul que enmarca la declaración */
+.identidad::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(1200px, 130%);
+  aspect-ratio: 1 / 0.8;
+  translate: -50% -50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 20%, transparent), transparent 72%);
+  filter: blur(46px);
+  pointer-events: none;
+}
+
+.identity-stack {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vw, 5rem);
 }
 
 .identity-block {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1.5rem;
+  padding-top: clamp(1.5rem, 4vw, 3.25rem);
 }
 
+/* La palabra repetida, en contorno, como marca de agua */
+.identity-ghost {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: -0.05em;
+  font-size: clamp(4rem, 13vw, 11rem);
+  font-weight: 800;
+  line-height: 0.74;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--text) 14%, transparent);
+  white-space: nowrap;
+  translate: 0 var(--py, 0px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* El segundo bloque se desplaza al borde derecho: ritmo editorial
+   sin sacrificar la lectura (el texto sigue alineado a la izquierda) */
+.identity-block-alt {
+  align-items: flex-end;
+}
+
+.identity-block-alt .identity-ghost {
+  left: auto;
+  right: -0.05em;
+}
+
+/* El kicker invierte su línea cuando el bloque va alineado a la derecha */
+.identity-block-alt .kicker {
+  flex-direction: row-reverse;
+}
+
+/* La declaración: tipografía display, alto contraste */
 .identity-block p {
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
-  font-weight: 500;
-  line-height: 1.55;
-  letter-spacing: -0.01em;
+  max-width: 20em;
+  font-size: clamp(1.55rem, 3.4vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.028em;
   color: var(--text);
+  text-wrap: balance;
+}
+
+/* Subrayado fino en vez de bloque de fondo: un bloque translúcido
+   se lee como texto seleccionado, no como énfasis */
+.identity-year {
+  font-style: normal;
+  color: var(--accent);
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 92% / 100% 0.075em;
+  padding-inline: 0.03em;
+}
+
+.identity-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
 }
 
 /* ── 8. CTA final ── */
@@ -1786,7 +1740,6 @@ body[data-tone="dark"] .logo-row img,
   .section-head,
   .case,
   .case-reverse,
-  .identity-grid,
   .steps,
   .stats {
     grid-template-columns: minmax(0, 1fr);
@@ -1809,13 +1762,23 @@ body[data-tone="dark"] .logo-row img,
   }
 
   .case-media::after {
-    width: 120px;
-    height: 120px;
-    right: -12px;
+    width: 110px;
+    height: 110px;
+    top: -8px;
+    right: -8px;
   }
 
   .case-reverse .case-media::after {
-    left: -12px;
+    right: auto;
+    left: -8px;
+  }
+
+  .case::before {
+    font-size: clamp(6rem, 26vw, 9rem);
+  }
+
+  .case-foot {
+    justify-content: flex-start;
   }
 
   .stat,
@@ -1824,8 +1787,26 @@ body[data-tone="dark"] .logo-row img,
     border-left: none;
   }
 
-  .identity-grid {
-    gap: 3rem;
+  .identity-stack {
+    gap: 2.5rem;
+  }
+
+  /* En una sola columna la alineación a la derecha pierde sentido */
+  .identity-block-alt {
+    align-items: stretch;
+  }
+
+  .identity-block-alt .identity-ghost {
+    right: auto;
+    left: -0.05em;
+  }
+
+  .identity-block-alt .kicker {
+    flex-direction: row;
+  }
+
+  .identity-block p {
+    max-width: none;
   }
 
   .logo-row {
@@ -1860,6 +1841,17 @@ body[data-tone="dark"] .logo-row img,
 @media (max-width: 480px) {
   :root {
     --nav-h: 68px;
+  }
+
+  .case {
+    padding: 1.35rem;
+    border-radius: 22px;
+  }
+
+  .case::before,
+  .case-reverse::before {
+    right: 0.4rem;
+    left: auto;
   }
 
   .hero-actions,

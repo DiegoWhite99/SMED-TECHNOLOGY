@@ -35,6 +35,66 @@
     }
   });
 
+  // Parallax sutil: las marcas de agua (palabras MISIÓN/VISIÓN y las cifras de
+  // cada caso) se quedan atrás del scroll y se leen como una capa de fondo.
+  // Solo escribe --py; el CSS decide qué elemento se mueve.
+  const layers = [];
+  const addLayer = (selector, amplitude) => {
+    document.querySelectorAll(selector).forEach((el) => layers.push({ el, amplitude }));
+  };
+  addLayer('.identity-ghost', 34);
+  addLayer('.case', 26);
+
+  if (layers.length) {
+    // Solo se recalculan las capas que están en pantalla
+    const onScreen = new Set();
+    let layerFrame = 0;
+    const queueLayers = () => {
+      if (layerFrame) return;
+      layerFrame = requestAnimationFrame(updateLayers);
+    };
+    const layerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) onScreen.add(entry.target);
+        else onScreen.delete(entry.target);
+      });
+      queueLayers();
+    }, { rootMargin: '20% 0px' });
+    layers.forEach(({ el }) => layerObserver.observe(el));
+
+    const updateLayers = () => {
+      layerFrame = 0;
+      const vh = window.innerHeight;
+      layers.forEach(({ el, amplitude }) => {
+        if (!onScreen.has(el)) return;
+        const rect = el.getBoundingClientRect();
+        // +1 al entrar por abajo, -1 al salir por arriba
+        const raw = (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
+        const progress = Math.max(-1, Math.min(1, raw));
+        // Signo negativo: la capa se rezaga respecto al scroll y parece más lejana
+        el.style.setProperty('--py', `${(-progress * amplitude).toFixed(1)}px`);
+      });
+    };
+    window.addEventListener('scroll', queueLayers, { passive: true });
+    window.addEventListener('resize', queueLayers, { passive: true });
+    updateLayers();
+  }
+
+  // Spotlight: la tarjeta de cada caso se ilumina donde está el cursor
+  document.querySelectorAll('.case').forEach((card) => {
+    let spotFrame = 0;
+    card.addEventListener('pointermove', (event) => {
+      const { clientX, clientY } = event;
+      if (spotFrame) return;
+      spotFrame = requestAnimationFrame(() => {
+        spotFrame = 0;
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${(((clientX - rect.left) / rect.width) * 100).toFixed(1)}%`);
+        card.style.setProperty('--my', `${(((clientY - rect.top) / rect.height) * 100).toFixed(1)}%`);
+      });
+    }, { passive: true });
+  });
+
   const render = (el, value) => {
     el.textContent = `${Math.round(value)}${el.dataset.suffix || ''}`;
   };

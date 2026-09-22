@@ -22,7 +22,8 @@
   </script>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="icon" href="/src/assets/icons/SmedOfficial.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="/src/styles/AboutUs.css?v=2.0.0" />
+  <link rel="stylesheet" href="/src/styles/Foundation.css?v=2.1.0" />
+  <link rel="stylesheet" href="/src/styles/AboutUs.css?v=2.1.0" />
   <link rel="stylesheet" href="/src/components/NavigationBar/NavigationBar.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/Footer/Footer.css?v=2.0.0" />
   <link rel="stylesheet" href="/src/components/Form/Form.css?v=2.0.0" />
@@ -115,16 +116,16 @@
               <a href="#trabajo"><span data-i18n="work.kicker">Trabajo real</span><em class="mono">/ 02</em><span class="h-dots"><i></i><i></i><i></i></span><i class="bx bx-right-arrow-alt"></i></a>
               <a href="#fundadores"><span data-i18n="founders.h2">Equipo fundador</span><em class="mono">/ 03</em><span class="h-dots"><i></i><i></i><i></i></span><i class="bx bx-right-arrow-alt"></i></a>
             </nav>
-            <div class="h-card" data-reveal="float">
-              <div class="h-card-head"><span class="h-card-icon"><i class="bx bx-code-alt"></i></span><strong>SMED Software</strong></div>
+            <a class="h-card" href="/desarrollo" data-reveal="float">
+              <div class="h-card-head"><span class="h-card-icon"><i class="bx bx-code-alt"></i></span><strong>SMED Software</strong><i class="bx bx-right-arrow-alt h-card-go"></i></div>
               <p data-i18n="hero.card1.p">Aplicaciones web y software a medida, del diseño de la arquitectura al despliegue.</p>
               <div class="h-chips"><span class="h-chip">Web</span><span class="h-chip">SaaS</span><span class="h-chip">APIs</span></div>
-            </div>
-            <div class="h-card" data-reveal="float">
-              <div class="h-card-head"><span class="h-card-icon"><i class="bx bx-network-chart"></i></span><strong data-i18n="hero.card2.title">Soporte y redes</strong></div>
+            </a>
+            <a class="h-card" href="/soporte" data-reveal="float">
+              <div class="h-card-head"><span class="h-card-icon"><i class="bx bx-network-chart"></i></span><strong data-i18n="hero.card2.title">Soporte y redes</strong><i class="bx bx-right-arrow-alt h-card-go"></i></div>
               <p data-i18n="hero.card2.p">Mantenimiento, conectividad y cloud para que tu operación no se detenga.</p>
               <div class="h-chips"><span class="h-chip" data-i18n="cap.support.chip3">Soporte remoto</span><span class="h-chip" data-i18n="cap.net.chip1">Redes</span><span class="h-chip">Cloud</span></div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -251,15 +252,19 @@
           <p data-i18n="work.p" data-reveal>Plataformas reales que diseñamos, desarrollamos y desplegamos. Tecnología SMED funcionando hoy.</p>
         </div>
         <div class="case-list">
-          <article class="case" data-reveal-group="120">
+          <article class="case" data-num="01" data-reveal-group="120">
             <div class="case-media" data-reveal="tilt">
-              <a class="browser" href="https://bakery.smedtech.com.co/" target="_blank" rel="noopener">
-                <div class="browser-bar"><span></span><span></span><span></span><em class="mono">bakery.smedtech.com.co</em></div>
-                <img src="/src/assets/images/projects/smed-bakery.png" alt="Captura de SMED Bakery" loading="lazy" />
-              </a>
+              <figure class="reel">
+                <div class="reel-frame">
+                  <video class="reel-el" muted loop playsinline preload="none"
+                         poster="/src/assets/images/projects/smed-bakery-poster.jpg"
+                         data-src="/src/assets/video/Smed_bakery.mp4"
+                         aria-label="Video de presentación de SMED Bakery"></video>
+                </div>
+                <figcaption class="reel-tag mono" data-i18n="work.bakery.reel">Video de producto</figcaption>
+              </figure>
             </div>
             <div class="case-body">
-              <span class="case-index mono" data-reveal>01</span>
               <div class="case-meta" data-reveal>
                 <span class="case-status mono" data-i18n="work.status">En producción</span>
                 <span class="case-sector mono" data-i18n="work.bakery.sector">Sector: panaderías y food service</span>
@@ -278,7 +283,7 @@
               </div>
             </div>
           </article>
-          <article class="case case-reverse" data-reveal-group="120">
+          <article class="case case-reverse" data-num="02" data-reveal-group="120">
             <div class="case-media" data-reveal="tilt">
               <a class="browser" href="https://betagym.smedtech.com.co/" target="_blank" rel="noopener">
                 <div class="browser-bar"><span></span><span></span><span></span><em class="mono">betagym.smedtech.com.co</em></div>
@@ -286,7 +291,6 @@
               </a>
             </div>
             <div class="case-body">
-              <span class="case-index mono" data-reveal>02</span>
               <div class="case-meta" data-reveal>
                 <span class="case-status mono" data-i18n="work.status">En producción</span>
                 <span class="case-sector mono" data-i18n="work.sports.sector">Sector: gimnasios y centros deportivos</span>
@@ -321,24 +325,36 @@
         </div>
         <ol class="steps" data-reveal-group="150">
           <li class="step" data-reveal="float">
+            <a class="step-link" href="/asesorias">
             <span class="step-index mono">01</span>
             <h3 data-i18n="proc.s1.h3">Diagnóstico</h3>
             <p data-i18n="proc.s1.p">Entendemos el problema real antes de proponer una solución: infraestructura actual, restricciones y objetivos de negocio.</p>
+            <span class="step-go mono" aria-hidden="true"><i class="bx bx-right-arrow-alt"></i></span>
+            </a>
           </li>
           <li class="step" data-reveal="float">
+            <a class="step-link" href="/desarrollo">
             <span class="step-index mono">02</span>
             <h3 data-i18n="proc.s2.h3">Arquitectura</h3>
             <p data-i18n="proc.s2.p">Diseñamos la solución técnica: stack, integraciones y plan de implementación, con foco en escalabilidad.</p>
+            <span class="step-go mono" aria-hidden="true"><i class="bx bx-right-arrow-alt"></i></span>
+            </a>
           </li>
           <li class="step" data-reveal="float">
+            <a class="step-link" href="/servicios">
             <span class="step-index mono">03</span>
             <h3 data-i18n="proc.s3.h3">Construcción</h3>
             <p data-i18n="proc.s3.p">Desarrollamos e implementamos por iteraciones, con visibilidad del avance en cada etapa.</p>
+            <span class="step-go mono" aria-hidden="true"><i class="bx bx-right-arrow-alt"></i></span>
+            </a>
           </li>
           <li class="step" data-reveal="float">
+            <a class="step-link" href="/soporte">
             <span class="step-index mono">04</span>
             <h3 data-i18n="proc.s4.h3">Operación</h3>
             <p data-i18n="proc.s4.p">Acompañamos la puesta en producción y damos soporte continuo para que la solución se sostenga en el tiempo.</p>
+            <span class="step-go mono" aria-hidden="true"><i class="bx bx-right-arrow-alt"></i></span>
+            </a>
           </li>
         </ol>
       </div>
@@ -425,15 +441,18 @@
 
     <!-- 7. Identidad -->
     <section class="home-section identidad" id="identidad" data-scene>
-      <div class="shell identity-grid" data-reveal-group="180">
-        <div class="identity-block" data-reveal>
+      <div class="shell identity-stack" data-reveal-group="180">
+        <article class="identity-block" data-reveal>
+          <span class="identity-ghost" aria-hidden="true" data-i18n="mv.mission.label">Misión</span>
           <span class="kicker" data-i18n="mv.mission.label">Misión</span>
           <p data-i18n="mv.mission.p">En SMED acompañamos a empresas y profesionales colombianos con tecnología accesible, resolviendo cualquier reto técnico con confianza y eficacia, sin importar el tamaño del cliente.</p>
-        </div>
-        <div class="identity-block" data-reveal>
+        </article>
+        <span class="identity-rule" aria-hidden="true"></span>
+        <article class="identity-block identity-block-alt" data-reveal>
+          <span class="identity-ghost" aria-hidden="true" data-i18n="mv.vision.label">Visión</span>
           <span class="kicker" data-i18n="mv.vision.label">Visión</span>
-          <p data-i18n="mv.vision.p">Ser una de las empresas tecnológicas referentes de Latinoamérica para 2032, reconocida por su excelencia en servicio B2B y por un entorno laboral donde las personas quieren trabajar.</p>
-        </div>
+          <p data-i18n-html="mv.vision.p">Ser una de las empresas tecnológicas referentes de Latinoamérica para <em class="identity-year">2032</em>, reconocida por su excelencia en servicio B2B y por un entorno laboral donde las personas quieren trabajar.</p>
+        </article>
       </div>
     </section>
 
@@ -460,11 +479,11 @@
     <chatbot-container></chatbot-container>
   </main>
 
-  <script src="/src/scripts/i18n.js?v=2.0.0"></script>
-  <script src="/src/scripts/scrollScenes.js?v=2.0.0" defer></script>
-  <script src="/src/scripts/homeMotion.js?v=2.0.0" defer></script>
+  <script src="/src/scripts/i18n.js?v=2.1.0"></script>
+  <script src="/src/scripts/scrollScenes.js?v=2.1.0" defer></script>
+  <script src="/src/scripts/homeMotion.js?v=2.1.0" defer></script>
   <script src="/src/scripts/heroRibbon.js?v=2.0.0" defer></script>
-  <script src="/src/scripts/bgVideo.js?v=2.0.0" defer></script>
+  <script src="/src/scripts/bgVideo.js?v=2.1.0" defer></script>
   <script>
     // Aplicar idioma guardado antes de que carguen los componentes
     if (window.SMED_I18N) window.SMED_I18N.initLang();
