@@ -217,10 +217,21 @@
 
 .dev-caps > .shell { position: relative; z-index: 1; }
 
-/* ── Entrada: cada tarjeta llega cuando el scroll alcanza SU posición ──
-   El <article> lleva data-reveal y no se mueve, así el IntersectionObserver
-   puede verlo; quien se desplaza es .dev-card-in. Si moviéramos el propio
-   artículo saldría del viewport y el observador no lo vería entrar nunca. */
+/* ── Entrada: cada tarjeta se acopla cuando el scroll llega a ella ──
+   data-reveal va en el <article>, que NO se mueve: si se desplazara
+   saldría del viewport y el IntersectionObserver no lo vería entrar
+   nunca. Quien viaja es .dev-card-in.  */
+.dev-cards {
+  --ease-acople: cubic-bezier(0.17, 0.78, 0.22, 1);
+}
+
+/* Impares desde la izquierda, pares desde la derecha */
+.dev-cards .dev-card:nth-child(odd)  { --dx: -70vw; }
+.dev-cards .dev-card:nth-child(even) { --dx:  70vw; }
+
+/* Dentro de una fila, la segunda entra cuando la primera ya se asentó */
+.dev-cards .dev-card:nth-child(even) { --paso: 420ms; }
+
 .motion-ready .dev-cards .dev-card {
   opacity: 1;
   transform: none;
@@ -228,42 +239,29 @@
   transition: none;
 }
 
-.motion-ready .dev-cards .dev-card-in {
-  display: contents;
-}
-
-@supports not (display: contents) {
-  .dev-card-in { display: flex; flex-direction: column; gap: 0.75rem; }
-}
-
 .motion-ready .dev-cards .dev-card > .dev-card-in {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   opacity: 0;
-  transform: translate(var(--dx, 0), var(--dy, 3vh)) rotate(var(--rot, 0deg)) scale(0.95);
-  filter: blur(2px);
+  transform: translateX(var(--dx, 0));
   transition:
-    opacity 0.8s ease var(--paso, 0ms),
-    transform 1.3s var(--ease-acople) var(--paso, 0ms),
-    filter 0.8s ease var(--paso, 0ms);
+    opacity 0.5s ease var(--paso, 0ms),
+    transform 1.25s var(--ease-acople) var(--paso, 0ms);
 }
 
 .motion-ready .dev-cards .dev-card.is-in > .dev-card-in {
   opacity: 1;
   transform: none;
-  filter: none;
 }
-
-/* Dentro de una misma fila, la de la derecha entra un instante después */
-.dev-cards .dev-card:nth-child(even) { --paso: 170ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .motion-ready .dev-cards .dev-card > .dev-card-in {
-    opacity: 1; transform: none; filter: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
-
 
 /* ══ Tarjetas con ventana ilustrada ══
 
@@ -885,15 +883,12 @@
   object-fit: cover;
   object-position: var(--foco, 50% 30%);
   scale: var(--zoom, 1);
-  /* Duotono azul: iguala una escena de oficina con un retrato de estudio */
-  filter: grayscale(1) contrast(1.06) sepia(0.45) hue-rotate(178deg) saturate(2.4) brightness(0.92);
-  transition: scale 0.8s var(--ease-float), filter 0.6s ease;
+  transition: scale 0.8s var(--ease-float);
 }
 
 /* Al pasar el cursor recupera su color real */
 .dev-person:hover .dev-person-foto img {
   scale: calc(var(--zoom, 1) * 1.05);
-  filter: none;
 }
 
 /* Velo que sube desde abajo para sostener el nombre */
