@@ -38,6 +38,16 @@ html.cc-lock {
   overflow: hidden;
 }
 
+/* El atributo [hidden] aplica display:none desde la hoja del navegador, y
+   cualquier display de autor lo anula. Sin estas reglas, .cc-modal (fixed,
+   inset:0, display:flex) queda como una capa invisible a pantalla completa
+   que intercepta todos los clics de la página, y .cc-banner bloquea su
+   esquina. Mismo patrón que ya usa Chatbot.css. */
+.cc-banner[hidden],
+.cc-modal[hidden] {
+  display: none;
+}
+
 /* ── Banner ── */
 .cc-banner {
   position: fixed;

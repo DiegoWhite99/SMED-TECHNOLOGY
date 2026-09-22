@@ -201,7 +201,7 @@ window.SMED_CONSENT = {
 if (!document.querySelector('link[href*="CookieConsent.css"]')) {
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "/src/components/CookieConsent/CookieConsent.css?v=2.0.0";
+  link.href = "/src/components/CookieConsent/CookieConsent.css?v=2.2.1";
   document.head.appendChild(link);
 }
 
