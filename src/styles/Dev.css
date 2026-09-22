@@ -179,7 +179,87 @@
   translate: 3px -3px;
 }
 
-/* ══ 2. Capacidades: tarjetas con ventana ilustrada ══
+/* ══ 2. Capacidades ══
+   La sección destaca por tres cosas: grano sobre el fondo, un resplandor
+   propio, y una entrada en la que las tarjetas llegan desde fuera del
+   encuadre y se acoplan en la rejilla.  */
+.dev-caps {
+  position: relative;
+  /* Las tarjetas arrancan fuera del viewport: sin esto habría scroll lateral */
+  overflow: hidden;
+}
+
+/* Grano: ruido fractal generado en SVG, sin archivo externo */
+.dev-caps::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Resplandor que separa la sección de sus vecinas */
+.dev-caps::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(1300px, 130%);
+  aspect-ratio: 1 / 0.5;
+  translate: -50% -35%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.dev-caps > .shell { position: relative; z-index: 1; }
+
+/* ── Entrada: cada tarjeta llega desde su lado y encaja ──
+   Quien lleva data-reveal es el CONTENEDOR, no las tarjetas: al
+   desplazarse fuera del encuadre, el IntersectionObserver no las vería
+   nunca entrar y se quedarían invisibles para siempre. El escalonado
+   lo hace el CSS por nth-child, no el JS. */
+.motion-ready .dev-cards .dev-card {
+  opacity: 0;
+  transform: translate(var(--dx, 0), var(--dy, 6vh)) rotate(var(--rot, 0deg)) scale(0.88);
+  filter: blur(4px);
+  transition:
+    opacity 0.7s ease var(--paso, 0ms),
+    transform 1.15s var(--ease-float) var(--paso, 0ms),
+    filter 0.7s ease var(--paso, 0ms);
+}
+
+.motion-ready .dev-cards.is-in .dev-card {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.dev-cards .dev-card:nth-child(1) { --paso: 0ms; }
+.dev-cards .dev-card:nth-child(2) { --paso: 110ms; }
+.dev-cards .dev-card:nth-child(3) { --paso: 230ms; }
+.dev-cards .dev-card:nth-child(4) { --paso: 340ms; }
+.dev-cards .dev-card:nth-child(5) { --paso: 460ms; }
+.dev-cards .dev-card:nth-child(6) { --paso: 570ms; }
+
+/* Columna izquierda entra por la izquierda; derecha por la derecha */
+.dev-cards .dev-card:nth-child(odd)  { --dx: min(-52vw, -420px); --rot: -5deg; }
+.dev-cards .dev-card:nth-child(even) { --dx: max(52vw, 420px);  --rot:  5deg; }
+.dev-cards .dev-card:nth-child(3),
+.dev-cards .dev-card:nth-child(4) { --dy: 10vh; }
+.dev-cards .dev-card:nth-child(5),
+.dev-cards .dev-card:nth-child(6) { --dy: 14vh; }
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .dev-cards .dev-card,
+  .motion-ready .dev-cards.is-in .dev-card { opacity: 1; transform: none; filter: none; }
+}
+
+/* ══ Tarjetas con ventana ilustrada ══
+
    Las ventanas son diagramas esquemáticos en CSS/SVG, no capturas de
    producto: ilustran qué hace cada línea sin afirmar que sean pantallas
    reales. Las animaciones arrancan con .is-in, que pone homeMotion.js.  */
@@ -757,16 +837,62 @@
   background: #0d2049;
 }
 
+/* --zoom iguala el tamaño del rostro entre un plano general y un primer
+   plano; --foco recoloca el encuadre tras ampliar. */
 .dev-person-foto img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: var(--foco, 50% 25%);
+  scale: var(--zoom, 1);
   transition: scale 0.7s var(--ease-float);
 }
 
-.dev-person:hover .dev-person-foto img { scale: 1.06; }
+.dev-person:hover .dev-person-foto img { scale: calc(var(--zoom, 1) * 1.06); }
+
+/* Marcas de esquina sobre la foto */
+.dev-foto-marcas {
+  position: absolute;
+  inset: 0.8rem;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--accent), var(--accent)) 0 0 / 14px 1.5px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 0 0 / 1.5px 14px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 100% 100% / 14px 1.5px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 100% 100% / 1.5px 14px no-repeat;
+  opacity: 0.55;
+  transition: opacity 0.4s ease, inset 0.5s var(--ease-float);
+}
+
+.dev-person:hover .dev-foto-marcas { opacity: 1; inset: 0.55rem; }
+
+/* Franja de datos */
+.dev-person-datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.3rem;
+  margin: 0.15rem 0 0.2rem;
+  padding: 0.6rem 0;
+  border-block: 1px solid var(--line);
+}
+
+.dev-person-datos > div { display: flex; flex-direction: column; gap: 0.1rem; }
+
+.dev-person-datos dt {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted) 75%, transparent);
+}
+
+.dev-person-datos dd {
+  margin: 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--accent);
+}
 
 /* Degradado que funde la foto con la tarjeta */
 .dev-person-foto::after {
