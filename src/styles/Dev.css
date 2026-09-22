@@ -871,7 +871,9 @@
 .dev-person-foto {
   position: relative;
   margin: 0;
-  aspect-ratio: 4 / 3;
+  /* Cuadrado: en apaisado la franja visible era tan baja que recortaba
+     la cabeza en un retrato vertical. */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #0d2049;
 }
